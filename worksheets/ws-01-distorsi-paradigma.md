@@ -53,25 +53,25 @@ Mata kuliah ini menggunakan pendekatan **Positivist** (fenomena TI bisa diukur o
 ## Template A.1 — Research Mindset Self-Assessment
 
 ```
-Nama Peneliti    : ____________________
-Tanggal          : ____________________
+Nama Peneliti    : Muhammad Nuur Fathan
+Tanggal          : 19 April 2026
 
 1. Ketika membaca klaim "metode X 95% akurat":
-   - Pertanyaan pertama saya: ____________________
-   - Data yang dibutuhkan untuk verifikasi: ____________________
+   - Pertanyaan pertama saya: "Bagaimana cara pengukuran akurasi dilakukan (metrik apa yang digunakan dan pada dataset seperti apa)?"
+   - Data yang dibutuhkan untuk verifikasi: Dataset uji (test set), metode validasi (train-test split atau cross-validation) serta perbandingan dengan metode lain.
 
 2. Posisi paradigma:
-   - Pendekatan: [ ] Positivis  [ ] Interpretivis  [ ] Design Science  [ ] Mixed
-   - Alasan: ____________________
+   - Pendekatan: [✔] Positivis  [ ] Interpretivis  [ ] Design Science  [ ] Mixed
+   - Alasan: Penelitian berfokus pada pengukuran kuantitatif (akurasi) dan menggunakan data serta eksperimen untuk membuktikan hipotesis secara objektif.
 
 3. Identifikasi distorsi:
-   - Asumsi tersembunyi: ____________________
-   - Sumber bias potensial: ____________________
-   - Langkah mitigasi: ____________________
+   - Asumsi tersembunyi: Dataset yang digunakan merepresentasikan kondisi dunia nyata secara menyeluruh.
+   - Sumber bias potensial: Data tidak seimbang (imbalanced dataset), overfitting pada data latih, atau pemilihan data yang terlalu “bersih”.
+   - Langkah mitigasi: Menggunakan cross-validation, dataset yang beragam, evaluasi dengan beberapa metrik (precision, recall, F1-score), serta uji pada data baru (unseen data).
 
 4. Komitmen etika:
-   - Data yang tidak akan dimanipulasi: ____________________
-   - Batasan yang diakui sejak awal: ____________________
+   - Data yang tidak akan dimanipulasi: Seluruh data hasil eksperimen, termasuk hasil yang buruk atau tidak sesuai harapan.
+   - Batasan yang diakui sejak awal: Keterbatasan jumlah data, potensi bias dataset, serta keterbatasan generalisasi model ke kondisi berbeda.
 ```
 
 ---
@@ -81,22 +81,22 @@ Tanggal          : ____________________
 Pilih satu paper riset di bidang TI yang mengklaim "metode X meningkatkan performa." Telusuri setiap tahap Research Trust Model.
 
 **Paper yang dipilih:**
-> Judul: _______________________________________________
-> Penulis (Tahun): ______________________________________
+> Judul: Penerapan Sistem Informasi untuk Meningkatkan Efisiensi Operasional dan Pengambilan Keputusan di Perusahaan
+> Penulis (Tahun): Erwin Teguh Arujisaputra (2025)
 
 | Tahap | Apa yang Dilakukan | Potensi Distorsi |
 |-------|-------------------|-----------------|
-| Reality → Data | *Contoh: Kumpulkan log server 30 hari* | *Contoh: Hanya ambil jam sibuk* |
-| Data → Processing | | |
-| Processing → Analysis | | |
-| Analysis → Inference | | |
-| Inference → Knowledge | | |
+| Reality → Data | Mengumpulkan data sekunder dari Scopus, ScienceDirect, dan Google Scholar | Selection Bias: Hanya memilih literatur 10 tahun terakhir, sehingga teori fundamental yang lebih tua mungkin terabaikan. |
+| Data → Processing | Menyaring literatur menggunakan kata kunci spesifik seperti "sistem informasi" | Language/Terminology Bias: Artikel relevan yang menggunakan istilah teknis berbeda mungkin tidak terjaring. |
+| Processing → Analysis | Menggunakan analisis tematik untuk mengidentifikasi pola efisiensi | Subjective Interpretation: Penentuan tema "manfaat" dan "tantangan" sangat bergantung pada perspektif subjektif peneliti. |
+| Analysis → Inference | Menyimpulkan efisiensi ERP mencapai 85-90% pada manajemen keuangan dan persediaan. | Generalization Bias: Angka efisiensi ini mungkin berbeda jauh pada UKM yang memiliki keterbatasan sumber daya dibanding perusahaan besar. |
+| Inference → Knowledge | Menyatakan sistem informasi adalah komponen kunci pilar efisiensi operasional. | Confirmation Bias: Cenderung menyoroti sisi sukses implementasi, sementara data kegagalan sistem sering jarang dipublikasikan di jurnal. |
 
-**Distorsi paling besar di tahap:** ________________________
+**Distorsi paling besar di tahap:** Reality → Data karena ketergantungan penuh pada data sekunder.
 
 **Dua distorsi spesifik yang teridentifikasi:**
-1. ___________________________________________________
-2. ___________________________________________________
+1. Inclusion Criteria Limitation: Pembatasan waktu publikasi 10 tahun terakhir dapat memutus konteks evolusi teknologi yang lebih panjang.
+2. Operational Complexity Oversight: Angka efisiensi tinggi pada grafik sering kali mengabaikan "biaya tersembunyi" dari pelatihan berkelanjutan dan adaptasi budaya.
 
 ---
 
@@ -106,27 +106,28 @@ Skenario: Seorang peneliti menemukan bahwa jika 3 data point outlier dihapus, ha
 
 | Perspektif | Analisis |
 |------------|---------|
-| Kejujuran ilmiah | *Contoh: Laporkan kedua versi (dengan dan tanpa outlier)* |
-| Transparansi | |
-| Peer review | |
+| Kejujuran ilmiah | Peneliti wajib melaporkan bahwa ERP meningkatkan efisiensi persediaan hingga 90% tetapi mungkin kurang berdampak pada fungsi lain jika integrasinya gagal. |
+| Transparansi | Menjelaskan tantangan seperti biaya tinggi dan resistensi perubahan secara jujur agar pembaca tidak mendapat ekspektasi palsu |
+| Peer review | Memberikan ruang bagi peneliti lain untuk melakukan validasi empiris atas klaim literatur tersebut.|
 
 **Keputusan akhir dan justifikasi:**
-> ___________________________________________________
+> Melaporkan hasil secara komprehensif termasuk kendala teknis dan non-teknis. Justifikasi: Kegagalan atau stagnansi data adalah informasi krusial bagi manajer untuk melakukan perencanaan yang lebih matang.
 
 ---
 
 ## Latihan 3 — Posisi Paradigma
 
-**Topik riset:** ________________________________________
+**Topik riset:** Penerapan Sistem Informasi untuk Meningkatkan Efisiensi Operasional dan Pengambilan Keputusan di Perusahaan.
 
 | Kriteria | Positivis | Interpretivis | Design Science |
 |----------|-----------|---------------|----------------|
-| Kesesuaian dengan topik (1–5) | *Contoh: 4* | *Contoh: 2* | *Contoh: 5* |
-| Jenis data yang dikumpulkan | | | |
-| Limitasi paradigma | | | |
+| Kesesuaian dengan topik (1–5) | 4 | 3 | 5 |
+| Jenis data yang dikumpulkan | Data statistik efisiensi (misal: kenaikan efisiensi dari 50% ke 85%). | Deskripsi mengenai tantangan resistensi perubahan dan budaya organisasi. | Analisis peran sistem ERP sebagai instrumen untuk otomatisasi proses bisnis. |
+| Limitasi paradigma | Angka efisiensi sekunder mungkin tidak mencerminkan variabel unik di tiap perusahaan. | Tidak memberikan solusi teknis yang terukur secara matematis. | Terlalu fokus pada kegunaan alat (tool) sehingga mengabaikan sisi psikologi pengguna. |
 
-**Paradigma yang dipilih:** _____________________________
-**Alasan:** ____________________________________________
+**Paradigma yang dipilih:** Design Science Research diperkuat dengan Positivis.
+
+**Alasan:** Penelitian ini berfokus pada bagaimana sebuah artefak teknologi (Sistem Informasi/ERP) dirancang dan diterapkan untuk menyelesaikan masalah nyata di perusahaan (inefisiensi). Penggunaan paradigma Positivis juga terlihat dari cara peneliti mevalidasi keberhasilan sistem tersebut menggunakan metrik yang objektif dan terukur, seperti persentase efisiensi pada fungsi keuangan, persediaan, dan produksi.
 
 ---
 
@@ -135,5 +136,4 @@ Skenario: Seorang peneliti menemukan bahwa jika 3 data point outlier dihapus, ha
 > Sebelum membaca materi ini, apakah pernah mempertanyakan klaim "95% akurat"? Setelah memahami rantai distorsi, pertanyaan apa yang sekarang akan diajukan saat membaca paper?
 
 **Jawaban:**
-> ___________________________________________________
-> ___________________________________________________
+>Sebelum membaca materi ini, saya sering menganggap grafik peningkatan efisiensi (seperti kenaikan dari 60% ke 90% pada stok barang) adalah kebenaran mutlak. Setelah memahami rantai distorsi, saya sekarang akan mempertanyakan "Bagaimana cara peneliti mengukur angka 90% tersebut dalam sebuah studi literatur tanpa observasi langsung?". Saya akan lebih hati hati terhadap klaim otomatisasi yang mengabaikan faktor manusia/resistensi karyawan.
