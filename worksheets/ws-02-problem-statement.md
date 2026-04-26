@@ -67,33 +67,33 @@ Masalah riset yang layak harus memenuhi 5 kriteria:
 PROBLEM STATEMENT BUILDER
 
 Domain & Konteks
-  Domain   : ____________________
-  Konteks  : ____________________
+  Domain   : Sistem Transportasi Cerdas (Intelligent Transportation System)
+  Konteks  : Pengaturan durasi lampu lalu lintas di persimpangan kota dengan volume kendaraan dinamis
 
 System Context
-  Input       : ____________________
-  Process     : ____________________
-  Output      : ____________________
-  Outcome     : ____________________
-  Constraints : ____________________
-  Stakeholders: ____________________
+  Input       : Volume kendaraan tiap arah, waktu siklus lampu, parameter algoritma genetika 
+  Process     : Optimasi durasi lampu hijau menggunakan algoritma genetika berdasarkan fungsi fitness
+  Output      : Durasi optimal lampu hijau untuk tiap arah
+  Outcome     : Pengurangan antrean kendaraan dan waktu tunggu di persimpangan
+  Constraints : Batas waktu siklus maksimum, variasi volume kendaraan, keterbatasan komputasi
+  Stakeholders: Pengendara, Dinas Perhubungan, pemerintah kota
 
 Fenomena → Problem
-  Fenomena yang diamati             : ____________________
-  Gejala (symptom) yang terukur     : ____________________
-  Masalah yang didiagnosis          : ____________________
-  Masalah riset (researchable)      : ____________________
-  Variabel yang terukur             : ____________________
+  Fenomena yang diamati             : Terjadi kemacetan di persimpangan saat jam sibuk
+  Gejala (symptom) yang terukur     : Panjang antrean kendaraan tinggi dan waktu tunggu lama
+  Masalah yang didiagnosis          : Pengaturan durasi lampu lalu lintas tidak adaptif terhadap kondisi aktual
+  Masalah riset (researchable)      : Bagaimana mengoptimalkan durasi lampu lalu lintas untuk meminimalkan antrean kendaraan?
+  Variabel yang terukur             : Volume kendaraan, durasi lampu hijau, total antrean, nilai fitness
 
 Problem Quality Check
-  [ ] Clarity — Apakah satu orang membaca akan paham?
-  [ ] Measurability — Apakah ada metrik kuantitatif?
-  [ ] Relevance — Apakah penting untuk domain?
-  [ ] Testability — Apakah bisa gagal?
-  [ ] Impact — Apakah ada kontribusi jika terjawab?
+  [✔] Clarity — Apakah satu orang membaca akan paham?
+  [✔] Measurability — Apakah ada metrik kuantitatif?
+  [✔] Relevance — Apakah penting untuk domain?
+  [✔] Testability — Apakah bisa gagal?
+  [✔] Impact — Apakah ada kontribusi jika terjawab?
 
 Problem Statement (1 paragraf):
-  ____________________
+  Kemacetan pada persimpangan jalan di area perkotaan sering terjadi akibat pengaturan durasi lampu lalu lintas yang tidak adaptif terhadap volume kendaraan yang dinamis. Hal ini menyebabkan peningkatan panjang antrean dan waktu tunggu kendaraan, terutama pada jam sibuk. Oleh karena itu, diperlukan suatu metode optimasi yang mampu menentukan durasi lampu hijau secara optimal. Penelitian ini bertujuan untuk mengoptimalkan durasi lampu lalu lintas menggunakan algoritma genetika dengan meminimalkan total antrean kendaraan sebagai fungsi fitness, sehingga dapat meningkatkan efisiensi arus lalu lintas di persimpangan.
 ```
 
 ---
@@ -102,17 +102,17 @@ Problem Statement (1 paragraf):
 
 Pilih satu topik di bidang TI yang diminati. Transformasikan melalui 5 tahap Problem Formation Model.
 
-**Topik awal:** ________________________________________
+**Topik awal:** Optimasi Sistem ERP untuk Perusahaan
 
 | Tahap | Hasil |
 |-------|-------|
-| Reality | *Contoh: Aplikasi e-commerce sering ditinggalkan saat checkout* |
-| Observed Issue (Symptom) | *Contoh: Bounce rate checkout 68%* |
-| Diagnosed Problem (Root Cause) | |
-| Researchable Problem | |
-| Measurable Variable | |
+| Reality | Perusahaan masih pakai cara manual (catat di buku/Excel terpisah) |
+| Observed Issue (Symptom) | Stok barang sering tidak cocok antara gudang dan laporan. |
+| Diagnosed Problem (Root Cause) | Tidak ada sistem pusat (platform terintegrasi) yang menghubungkan divisi gudang dan admin. |
+| Researchable Problem | Analisis perbandingan efisiensi kerja manual vs otomatisasi ERP pada bagian gudang. |
+| Measurable Variable | Waktu proses input data dan persentase akurasi stok. |
 
-**Apakah terjebak solution-first thinking?** [ ] Ya / [ ] Tidak
+**Apakah terjebak solution-first thinking?** [ ] Ya / [✔] Tidak
 > Jika ya, kembali ke tahap mana? ________________________
 
 ---
@@ -123,12 +123,12 @@ Gambarkan konteks sistem dari masalah riset di Latihan 1.
 
 | Komponen | Deskripsi |
 |----------|----------|
-| Input | *Contoh: Request HTTP dari browser pengguna* |
-| Process | |
-| Output | |
-| Outcome | |
-| Constraints | |
-| Stakeholders | |
+| Input | Data transaksi harian dan jumlah stok masuk/keluar. |
+| Process | Pengolahan data otomatis oleh modul ERP. |
+| Output | Informasi stok barang yang terupdate secara real-time. |
+| Outcome | Berkurangnya kesalahan hitung dan proses kerja jadi lebih cepat. |
+| Constraints | Karyawan butuh waktu buat belajar sistem baru (pelatihan) |
+| Stakeholders | Staff gudang dan Manajer Operasional |
 
 **Komponen mana yang paling relevan dengan masalah riset?** _______________
 
@@ -140,18 +140,16 @@ Evaluasi problem statement yang sudah dibuat menggunakan 5 kriteria.
 
 | Kriteria | Skor (1-5) | Justifikasi |
 |----------|-----------|-------------|
-| Clarity | *Contoh: 4 — cukup jelas tapi perlu spesifikasi dataset* | |
-| Measurability | | |
-| Relevance | | |
-| Testability | | |
-| Impact | | |
+| Clarity | 5 | Sangat jelas karena membandingkan dua kondisi (manual vs otomatis). |
+| Measurability | 5 | Menggunakan angka persen yang mudah diukur secara kuantitatif. |
+| Relevance | 5 | Sangat relevan dengan kebutuhan transformasi digital saat ini. |
+| Testability | 4 | Bisa diuji, meski butuh akses ke data internal perusahaan. |
+| Impact | 5 | Hasilnya bisa jadi panduan buat perusahaan lain yang mau pakai ERP. |
 
-**Skor total:** _____ / 25
+**Skor total:** 24 / 25
 
 **Problem statement versi final (1 paragraf):**
-> ___________________________________________________
-> ___________________________________________________
-
+> Sekarang banyak perusahaan masih menghadapi kendala efisiensi operasional karena ketergantungan pada pengolahan data secara manual yang berisiko tinggi terhadap kesalahan manusia (human error) serta kurangnya integrasi antar-departemen. Masalah ini mengakibatkan lambatnya alur kerja dan rendahnya akurasi data yang diperlukan untuk merespons dinamika pasar. Penelitian ini bertujuan untuk menganalisis bagaimana penerapan sistem informasi, seperti Enterprise Resource Planning (ERP), dapat meningkatkan efisiensi operasional di berbagai fungsi bisnis dan menyediakan data real-time untuk mendukung pengambilan keputusan strategis yang lebih cepat dan akurat.
 ---
 
 ## Refleksi
@@ -159,5 +157,4 @@ Evaluasi problem statement yang sudah dibuat menggunakan 5 kriteria.
 > Bandingkan "masalah" yang biasa ditemui saat coding (bug, error) dengan masalah riset. Apa perbedaan fundamental dalam cara mendefinisikan dan mendekati keduanya?
 
 **Jawaban:**
-> ___________________________________________________
-> ___________________________________________________
+> Saat melakukan coding, masalahnya itu teknis yaitu bug/error, fokusnya hanya bagaimana cara supaya program dapat jalan. Tapi dalam masalah riset, kita tidak hanya buat program berjalan, tapi harus membuktikan secara ilmiah kenapa masalah itu ada dan seberapa besar pengaruh solusinya (seperti peningkatan efisiensi) berdasarkan data. Riset itu mencari jawaban kenapa dan seberapa efektif, bukan hanya bisa jalan atau tidak.
