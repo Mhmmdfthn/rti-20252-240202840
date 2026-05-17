@@ -54,7 +54,7 @@ Mata kuliah ini menggunakan pendekatan **Positivist** (fenomena TI bisa diukur o
 
 ```
 Nama Peneliti    : Muhammad Nuur Fathan
-Tanggal          : 19 April 2026
+Tanggal          : 17 Mei 2026
 
 1. Ketika membaca klaim "metode X 95% akurat":
    - Pertanyaan pertama saya: "Bagaimana cara pengukuran akurasi dilakukan (metrik apa yang digunakan dan pada dataset seperti apa)?"
@@ -81,53 +81,53 @@ Tanggal          : 19 April 2026
 Pilih satu paper riset di bidang TI yang mengklaim "metode X meningkatkan performa." Telusuri setiap tahap Research Trust Model.
 
 **Paper yang dipilih:**
-> Judul: Penerapan Sistem Informasi untuk Meningkatkan Efisiensi Operasional dan Pengambilan Keputusan di Perusahaan
-> Penulis (Tahun): Erwin Teguh Arujisaputra (2025)
+> Judul: Sistem Pendukung Keputusan Penilaian Soft skill Siswa Menggunakan Metode AHP-TOPSIS
+> Penulis (Tahun): Yuwono Wisudo Pramono, Berlilana, Azhari Shouni Barkah (2026)
 
 | Tahap | Apa yang Dilakukan | Potensi Distorsi |
 |-------|-------------------|-----------------|
-| Reality → Data | Mengumpulkan data sekunder dari Scopus, ScienceDirect, dan Google Scholar | Selection Bias: Hanya memilih literatur 10 tahun terakhir, sehingga teori fundamental yang lebih tua mungkin terabaikan. |
-| Data → Processing | Menyaring literatur menggunakan kata kunci spesifik seperti "sistem informasi" | Language/Terminology Bias: Artikel relevan yang menggunakan istilah teknis berbeda mungkin tidak terjaring. |
-| Processing → Analysis | Menggunakan analisis tematik untuk mengidentifikasi pola efisiensi | Subjective Interpretation: Penentuan tema "manfaat" dan "tantangan" sangat bergantung pada perspektif subjektif peneliti. |
-| Analysis → Inference | Menyimpulkan efisiensi ERP mencapai 85-90% pada manajemen keuangan dan persediaan. | Generalization Bias: Angka efisiensi ini mungkin berbeda jauh pada UKM yang memiliki keterbatasan sumber daya dibanding perusahaan besar. |
-| Inference → Knowledge | Menyatakan sistem informasi adalah komponen kunci pilar efisiensi operasional. | Confirmation Bias: Cenderung menyoroti sisi sukses implementasi, sementara data kegagalan sistem sering jarang dipublikasikan di jurnal. |
+| Reality → Data | Mengumpulkan data soft skill dari 140 siswa menggunakan kuesioner penilaian mandiri dan lembar observasi guru. | Selection Bias & Self-Reporting Bias: Teknik purposive sampling  berisiko memilih sampel yang kurang heterogen, serta siswa cenderung menilai dirinya lebih baik dari realitas asli|
+| Data → Processing | Mengubah data kualitatif menjadi numerik (skala 1-5) , menguji instrumen lewat PLS-SEM , dan menormalisasi matriks keputusan | Information Loss: Mengubah penilaian perilaku manusia yang kompleks menjadi skala angka kaku (1-5) berpotensi menghilangkan konteks atau anomali perilaku tertentu |
+| Processing → Analysis | Menghitung bobot kriteria melalui matriks perbandingan berpasangan AHP dan menghitung kedekatan solusi ideal dengan TOPSIS |Expert Subjectivity Bias: Bobot kriteria sepenuhnya bergantung pada penilaian 3 pakar internal. Jika pandangan para pakar tersebut bias, seluruh hasil pembobotan sistem ikut terdistorsi |
+| Analysis → Inference | Mendapatkan nilai koefisien kedekatan  untuk meranking siswa dan mengelompokkannya ke dalam 4 kategori kompetensi | Penentuan batas interval kategori ditentukan secara subjektif oleh peneliti tanpa justifikasi teoretis yang kuat |
+| Inference → Knowledge | Menyimpulkan bahwa integrasi AHP-TOPSIS efektif, objektif, transparan , dan dapat diadaptasi luas di lingkungan pendidikan. | Overgeneralization: Menarik kesimpulan umum bahwa model ini siap menjadi standar evaluasi berskala besar, padahal validasinya baru diuji pada satu sekolah spesifik. |
 
-**Distorsi paling besar di tahap:** Reality → Data karena ketergantungan penuh pada data sekunder.
+**Distorsi paling besar di tahap:** Reality → Data dan Processing → Analysis.
 
 **Dua distorsi spesifik yang teridentifikasi:**
-1. Inclusion Criteria Limitation: Pembatasan waktu publikasi 10 tahun terakhir dapat memutus konteks evolusi teknologi yang lebih panjang.
-2. Operational Complexity Oversight: Angka efisiensi tinggi pada grafik sering kali mengabaikan "biaya tersembunyi" dari pelatihan berkelanjutan dan adaptasi budaya.
+1. Keterbatasan jumlah pakar (hanya 3 orang internal sekolah) dalam mengisi matriks perbandingan berpasangan AHP, sehingga bobot prioritas kriteria yang dihasilkan sangat rentan terhadap bias cara pandang manajemen internal institusi tersebut.
+2. Adanya gap validitas pada data input akibat penggunaan self-assessment oleh siswa yang rentan terhadap penilaan subjektif yang tidak jujur atau terlalu optimis (halo effect/social desirability bias).
 
 ---
 
 ## Latihan 2 — Analisis Kasus Etika
 
-Skenario: Seorang peneliti menemukan bahwa jika 3 data point outlier dihapus, hasil eksperimennya menjadi signifikan. Dengan outlier, hasilnya tidak signifikan.
+Skenario: Seorang peneliti menemukan bahwa jika 3 data point outlier dihapus, hasil eksperimennya menjadi signifikan. Dengan outlier, hasilnya tidak signifikan. (Konteks paper: Misal nilai matriks perbandingan pakar awalnya tidak konsisten (CR > 0.1), namun menjadi konsisten (CR = 0) setelah membuang penilaian salah satu pakar yang dianggap outlier ).
 
 | Perspektif | Analisis |
 |------------|---------|
-| Kejujuran ilmiah | Peneliti wajib melaporkan bahwa ERP meningkatkan efisiensi persediaan hingga 90% tetapi mungkin kurang berdampak pada fungsi lain jika integrasinya gagal. |
-| Transparansi | Menjelaskan tantangan seperti biaya tinggi dan resistensi perubahan secara jujur agar pembaca tidak mendapat ekspektasi palsu |
-| Peer review | Memberikan ruang bagi peneliti lain untuk melakukan validasi empiris atas klaim literatur tersebut.|
+| Kejujuran ilmiah | Peneliti wajib melaporkan seluruh data point secara utuh. Menghapus outlier hanya demi mengejar target angka agar terlihat "sempurna" atau konsisten (CR = 0) tanpa alasan teknis yang valid adalah bentuk manipulasi data. |
+| Transparansi | Jika outlier terpaksa dihapus (misal karena adanya kesalahan input atau kerusakan instrumen), alasan tersebut harus didokumentasikan dan dijelaskan secara eksplisit pada bagian metodologi naskah. |
+| Peer review | Menyembunyikan data point outlier akan menyesatkan reviewer dan pembaca, serta membuat riset tersebut kehilangan sifat reproducible (tidak dapat ditiru secara akurat oleh peneliti lain).|
 
 **Keputusan akhir dan justifikasi:**
-> Melaporkan hasil secara komprehensif termasuk kendala teknis dan non-teknis. Justifikasi: Kegagalan atau stagnansi data adalah informasi krusial bagi manajer untuk melakukan perencanaan yang lebih matang.
+> Outlier tidak boleh dihapus jika data tersebut merupakan representasi valid dari lapangan. Peneliti harus menyajikan kedua versi analisis (dengan dan tanpa outlier) atau melakukan analisis ketahanan (robustness check). Justifikasi penghapusan hanya sah jika terbukti ada kegagalan teknis/prosedural saat pengambilan data point tersebut.
 
 ---
 
 ## Latihan 3 — Posisi Paradigma
 
-**Topik riset:** Penerapan Sistem Informasi untuk Meningkatkan Efisiensi Operasional dan Pengambilan Keputusan di Perusahaan.
+**Topik riset:** Sistem Pendukung Keputusan Penilaian Soft skill Siswa Menggunakan Metode AHP-TOPSIS
 
 | Kriteria | Positivis | Interpretivis | Design Science |
 |----------|-----------|---------------|----------------|
-| Kesesuaian dengan topik (1–5) | 4 | 3 | 5 |
-| Jenis data yang dikumpulkan | Data statistik efisiensi (misal: kenaikan efisiensi dari 50% ke 85%). | Deskripsi mengenai tantangan resistensi perubahan dan budaya organisasi. | Analisis peran sistem ERP sebagai instrumen untuk otomatisasi proses bisnis. |
-| Limitasi paradigma | Angka efisiensi sekunder mungkin tidak mencerminkan variabel unik di tiap perusahaan. | Tidak memberikan solusi teknis yang terukur secara matematis. | Terlalu fokus pada kegunaan alat (tool) sehingga mengabaikan sisi psikologi pengguna. |
+| Kesesuaian dengan topik (1–5) | 4 | 2 | 5 |
+| Jenis data yang dikumpulkan | Metrik numerik skala Likert , nilai eigenvector , indeks konsistensi (CI/CR) , dan koefisien preferensi (Cci)  | Data wawancara awal dengan guru, wali kelas, dan pembina ekskul mengenai kebutuhan kontekstual. | Spesifikasi rancangan model hierarki kriteria , formula integrasi algoritma AHP-TOPSIS , dan hasil uji efektivitas artefak DSS. |
+| Limitasi paradigma | Mengabaikan faktor psikologis atau alasan mendalam mengapa nilai soft skill siswa tertentu rendah secara angka | Tidak mampu memberikan standardisasi, peringkat, dan klasifikasi yang objektif untuk skala 140 alternatif siswa. | Artefak model DSS yang sukses di satu sekolah belum tentu bekerja optimal di sekolah lain jika sistem kurikulum dan budayanya berbeda. |
 
 **Paradigma yang dipilih:** Design Science Research diperkuat dengan Positivis.
 
-**Alasan:** Penelitian ini berfokus pada bagaimana sebuah artefak teknologi (Sistem Informasi/ERP) dirancang dan diterapkan untuk menyelesaikan masalah nyata di perusahaan (inefisiensi). Penggunaan paradigma Positivis juga terlihat dari cara peneliti mevalidasi keberhasilan sistem tersebut menggunakan metrik yang objektif dan terukur, seperti persentase efisiensi pada fungsi keuangan, persediaan, dan produksi.
+**Alasan:** Tujuan utama penelitian ini adalah menghasilkan solusi praktis berupa produk/artefak metode baru (Sistem Pendukung Keputusan)  untuk mengevaluasi soft skill. Keberhasilan dan kinerja dari artefak tersebut kemudian diukur dan divalidasi menggunakan perhitungan matematis-kuantitatif yang objektif (Positivis).
 
 ---
 
