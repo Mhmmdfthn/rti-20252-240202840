@@ -102,15 +102,15 @@ Problem Statement (1 paragraf):
 
 Pilih satu topik di bidang TI yang diminati. Transformasikan melalui 5 tahap Problem Formation Model.
 
-**Topik awal:** Optimasi Sistem ERP untuk Perusahaan
+**Topik awal:** Sistem Pendukung Keputusan (DSS) Pendidikan
 
 | Tahap | Hasil |
 |-------|-------|
-| Reality | Perusahaan masih pakai cara manual (catat di buku/Excel terpisah) |
-| Observed Issue (Symptom) | Stok barang sering tidak cocok antara gudang dan laporan. |
-| Diagnosed Problem (Root Cause) | Tidak ada sistem pusat (platform terintegrasi) yang menghubungkan divisi gudang dan admin. |
-| Researchable Problem | Analisis perbandingan efisiensi kerja manual vs otomatisasi ERP pada bagian gudang. |
-| Measurable Variable | Waktu proses input data dan persentase akurasi stok. |
+| Reality | Lembaga pendidikan dituntut untuk mengukur dan mengembangkan kompetensi soft skill siswa guna menghadapi dinamika abad ke-21. |
+| Observed Issue (Symptom) | Penilaian soft skill di lapangan sering kali bias, tidak konsisten antar-guru, dan tidak memberikan perbedaan tingkat kompetensi yang jelas bagi 140 siswa. |
+| Diagnosed Problem (Root Cause) | Evaluasi konvensional hanya bertumpu pada pengamatan kualitatif sesaat dan skala likert sederhana tanpa adanya pembobotan terstruktur untuk kriteria multidimensi. |
+| Researchable Problem |Terbatasnya model DSS berbasis MCDM yang mengintegrasikan metode pembobotan hierarkis (AHP) dan pemeringkatan berbasis jarak solusi ideal (TOPSIS) secara komprehensif khusus untuk penilaian soft skill siswa. |
+| Measurable Variable | Nilai batas uji konsistensi kriteria (CR ≤ 0.1) dan ketajaman hasil peringkat alternatif berdasarkan parameter kedekatan solusi ideal (C) |
 
 **Apakah terjebak solution-first thinking?** [ ] Ya / [✔] Tidak
 > Jika ya, kembali ke tahap mana? ________________________
@@ -123,14 +123,14 @@ Gambarkan konteks sistem dari masalah riset di Latihan 1.
 
 | Komponen | Deskripsi |
 |----------|----------|
-| Input | Data transaksi harian dan jumlah stok masuk/keluar. |
-| Process | Pengolahan data otomatis oleh modul ERP. |
-| Output | Informasi stok barang yang terupdate secara real-time. |
-| Outcome | Berkurangnya kesalahan hitung dan proses kerja jadi lebih cepat. |
-| Constraints | Karyawan butuh waktu buat belajar sistem baru (pelatihan) |
-| Stakeholders | Staff gudang dan Manajer Operasional |
+| Input | Nilai kuesioner penilaian mandiri siswa, lembar observasi guru (skala 1–5), serta matriks penilaian perbandingan kepentingan kriteria oleh 3 pakar (skala Saaty 1–9). |
+| Process | Pembentukan hierarki 4 kriteria utama dan 13 indikator, perhitungan bobot prioritas dengan AHP, uji rasio konsistensi (CR), normalisasi matriks keputusan, serta pemeringkatan kedekatan solusi ideal positif dan negatif dengan TOPSIS. |
+| Output | Nilai koefisien kedekatan akhir ($C_{ci}$), daftar peringkat urutan siswa, serta hasil pemetaan kategori kompetensi siswa. |
+| Outcome | Tersedianya instrumen evaluasi yang objektif dan transparan sebagai dasar analitis bagi guru dalam merancang program pembinaan karakter yang dipersonalisasi. |
+| Constraints | Ruang lingkup data terbatas pada satu instusi (MA Mu'allimin Sruweng), sensitivitas tinggi terhadap variasi bobot pakar, dan guru memerlukan pelatihan pemrosesan data berbasis kuantitatif.|
+| Stakeholders | Tim manajemen sekolah (Kepala Madrasah, Waka Kurikulum, Guru BK), guru kelas sebagai evaluator lapangan, serta 140 siswa kelas X dan XI. |
 
-**Komponen mana yang paling relevan dengan masalah riset?** _______________
+**Komponen mana yang paling relevan dengan masalah riset?** Process. Karena inovasi utama dan kebaruan dari riset ini terletak pada integrasi komprehensif algoritma AHP dan TOPSIS dalam memproses struktur kriteria hierarkis penilaian soft skill
 
 ---
 
@@ -140,16 +140,16 @@ Evaluasi problem statement yang sudah dibuat menggunakan 5 kriteria.
 
 | Kriteria | Skor (1-5) | Justifikasi |
 |----------|-----------|-------------|
-| Clarity | 5 | Sangat jelas karena membandingkan dua kondisi (manual vs otomatis). |
-| Measurability | 5 | Menggunakan angka persen yang mudah diukur secara kuantitatif. |
-| Relevance | 5 | Sangat relevan dengan kebutuhan transformasi digital saat ini. |
-| Testability | 4 | Bisa diuji, meski butuh akses ke data internal perusahaan. |
-| Impact | 5 | Hasilnya bisa jadi panduan buat perusahaan lain yang mau pakai ERP. |
+| Clarity | 5 | Rumusan masalah sangat jelas membedakan kelemahan sistem konvensional (subjektif/bias) dengan keunggulan sistem yang diusulkan (sistematis/transparan). |
+| Measurability | 5 | Keberhasilan model diukur secara eksak menggunakan parameter matematis baku seperti nilai reliabilitas instrumen PLS-SEM, nilai $CR = 0$ (konsistensi sempurna), dan koefisien preferensi preferensi $C_{ci}$ |
+| Relevance | 5 | Menjawab tantangan riil dunia pendidikan modern yang membutuhkan standardisasi instrumen penilaian aspek non-akademik siswa. |
+| Testability | 5 | Kebenaran hipotesis model diuji langsung menggunakan data sampel riil 3 siswa dari total 140 responden untuk membuktikan akurasi kalkulasi algoritma. |
+| Impact | 4 | Memberikan kontribusi nyata bagi pendidik, namun dampaknya masih terbatas pada skala institusi lokal dan membutuhkan replikasi lebih lanjut untuk skala makro. |
 
 **Skor total:** 24 / 25
 
 **Problem statement versi final (1 paragraf):**
-> Sekarang banyak perusahaan masih menghadapi kendala efisiensi operasional karena ketergantungan pada pengolahan data secara manual yang berisiko tinggi terhadap kesalahan manusia (human error) serta kurangnya integrasi antar-departemen. Masalah ini mengakibatkan lambatnya alur kerja dan rendahnya akurasi data yang diperlukan untuk merespons dinamika pasar. Penelitian ini bertujuan untuk menganalisis bagaimana penerapan sistem informasi, seperti Enterprise Resource Planning (ERP), dapat meningkatkan efisiensi operasional di berbagai fungsi bisnis dan menyediakan data real-time untuk mendukung pengambilan keputusan strategis yang lebih cepat dan akurat.
+> Proses evaluasi kompetensi soft skill siswa di MA Mu'allimin Sruweng selama ini masih bergantung pada pengamatan subjektif guru tanpa mekanisme pembobotan kriteria multidimensi yang jelas, sehingga hasil penilaian rentan terhadap bias dan inkonsistensi. Keterbatasan model Decision Support System (DSS) yang mampu mengintegrasikan pembobotan kriteria hierarkis dengan mekanisme peringkat alternatif secara transparan memperparah sulitnya mengklasifikasikan tingkat kemampuan siswa secara adil dan terukur. Kondisi ini menyebabkan pendidik tidak memiliki basis data analitis yang andal untuk merancang program pembinaan karakter yang dipersonalisasi. Untuk mengatasi gap tersebut, penelitian ini merancang dan mengimplementasikan model DSS berbasis integrasi metode AHP-TOPSIS guna mentransformasi penilaian kualitatif perilaku siswa menjadi output kuantitatif yang objektif, konsisten, dan reproducible bagi pengambil keputusan di sekolah.
 ---
 
 ## Refleksi
