@@ -67,34 +67,34 @@ Jika rantai ini tidak lengkap, RQ belum mature. Bi-directional: RQ yang tidak bi
 ```
 RQ-CONTRIBUTION-HYPOTHESIS
 
-Gap Statement  : Sistem informasi saat ini (seperti SIM dan ERP standar) mayoritas masih bersifat reaktif dan deskriptif, sehingga pengambilan keputusan hanya didasarkan pada data masa lalu tanpa kemampuan prediksi otomatis untuk masa depan.
+Gap Statement  : Proses penilaian kompetensi soft skill siswa di sekolah saat ini masih didominasi oleh observasi kualitatif dan deskriptif guru yang rentan terhadap bias subjektivitas dan inkonsistensi antar-penilai karena ketiadaan mekanisme pembobotan kriteria multidimensi yang terstruktur. Di sisi lain, mayoritas penelitian Multi-Criteria Decision Making (MCDM) di dunia pendidikan masih diterapkan secara parsial (hanya pada tahap pembobotan atau pemeringkatan saja), sehingga model hibrida terintegrasi yang dirancang khusus dengan kriteria hierarkis untuk domain soft skill siswa masih sangat terbatas.
 
 Research Question:
-  Tipe         : [ ] Comparison  [x] Improvement  [ ] Exploratory
-  Formulasi    : Apakah integrasi algoritma Machine Learning (seperti Random Forest) untuk prediksi permintaan layanan dapat menghasilkan waktu pengambilan keputusan yang lebih singkat dibandingkan sistem SIM reaktif standar pada operasional organisasi?
-  Variabel IV  : Jenis Sistem Informasi (Reaktif standar vs Prediktif berbasis ML)
-  Variabel DV  : Kecepatan pengambilan keputusan.
-  Metrik       : Waktu pemrosesan keputusan (dalam satuan hari/jam).
-  Dataset      : Data historis transaksi dan operasional dari sistem ERP.
-  Baseline     : Hasil riset Hafiz & Nasution (2024) yang mencatat kecepatan keputusan 7 hari (peningkatan 50% dari sistem manual).
+  Tipe         : [ ] Comparison  [X] Improvement  [ ] Exploratory
+  Formulasi    : Apakah penerapan model Decision Support System (DSS) yang mengintegrasikan metode AHP dan TOPSIS secara komprehensif berdasarkan 13 indikator operasional mampu menghasilkan nilai koefisien kedekatan (closeness coefficient) yang konsisten (CR =< 0.1), transparan, dan bebas dari bias subjektivitas penilai dibandingkan dengan sistem evaluasi konvensional di MA Mu'allimin Sruweng?
+  Variabel IV  : Model DSS berbasis integrasi komprehensif metode AHP-TOPSIS dengan struktur kriteria hierarkis.
+  Variabel DV  : Nilai Rasio Konsistensi (CR) kriteria dan akurasi diferensiasi peringkat preferensi akhir siswa (Vi).
+  Metrik       : Consistency Ratio (CR =< 0.1) dan skor Closeness Coefficient ($0 \le V_i \le 1$).
+  Dataset      : Data penilaian kualitatif (skala Likert 1–5) dari sampel 140 siswa kelas X dan XI MA Mu'allimin Sruweng.
+  Baseline     : Sistem penilaian konvensional sekolah yang bertumpu pada observasi deskriptif guru tanpa pembobotan kriteria.
 
 Quality Check RQ:
-  [x] Variabel spesifik
-  [x] Metrik jelas
-  [x] Baseline ada
-  [x] Konteks disebutkan
-  [x] Memerlukan eksperimen (bukan hanya survei literatur)
+  [X] Variabel spesifik
+  [X] Metrik jelas
+  [X] Baseline ada
+  [X] Konteks disebutkan
+  [X] Memerlukan eksperimen (bukan hanya survei literatur)
 
 Contribution Statement:
-  Apa yang baru diketahui : Sejauh mana model prediktif dapat mengotomatisasi titik keputusan strategis yang sebelumnya dilakukan secara manual oleh manajer.
-  Jenis kontribusi        : [x] Improvement  [ ] Comparison  [ ] Novel approach
-  Gap yang diisi          : Method Gap (Integrasi AI/ML pada sistem manajemen tradisional).
+  Apa yang baru diketahui : Integrasi komprehensif metode AHP dan TOPSIS terbukti efektif mentransformasi parameter penilaian perilaku manusia yang intangible menjadi output kuantitatif terstruktur , di mana kriteria sosial-interpersonal seperti Kolaborasi ($w = 0.421$) dan Komunikasi ($w = 0.263$) divalidasi oleh para pakar sebagai indikator utama dalam mengukur keberhasilan soft skill siswa abad ke-21.
+  Jenis kontribusi        : [X] Improvement  [ ] Comparison  [X] Novel approach
+  Gap yang diisi          : Menyediakan kerangka evaluasi hibrida baru yang dirancang khusus untuk domain soft skill dengan pengujian validitas instrumen statistik (PLS-SEM) sebelum pemrosesan algoritma keputusan.
 
 Hypothesis Pair:
-  H₀ : Tidak ada perbedaan signifikan dalam kecepatan pengambilan keputusan antara sistem SIM prediktif berbasis ML dengan sistem SIM reaktif standar.
-  H₁ : Sistem SIM prediktif berbasis ML menghasilkan waktu pengambilan keputusan yang secara signifikan lebih singkat dibandingkan sistem SIM reaktif standar.
-  Threshold              : 0,5
-  Justifikasi threshold  : Ambang batas ini umum digunakan dalam riset sistem informasi untuk meminimalkan risiko kesalahan pengambilan kesimpulan.
+  H₀ : Penerapan integrasi metode AHP-TOPSIS tidak memberikan perbedaan signifikan dalam menghasilkan pemeringkatan kompetensi soft skill siswa yang konsisten CR > 0.1 dan informatif dibandingkan sistem evaluasi konvensional.
+  H₁ : Penerapan integrasi metode AHP-TOPSIS secara signifikan mampu menghasilkan pemeringkatan kompetensi soft skill siswa yang objektif, konsisten (CR =< 0.1), dan transparan dibandingkan sistem evaluasi konvensional.
+  Threshold              : Nilai Rasio Konsistensi CR =< 0.1 dan sebaran nilai preferensi akhir Vi ke dalam 4 kategori interval kompetensi yang tegas.
+  Justifikasi threshold  : Mengacu pada teori batas toleransi penyimpangan matriks perbandingan berpasangan Saaty (CR =< 0.1) serta batas baku fungsi pembagian solusi ideal positif dan negatif pada algoritma TOPSIS.
 ```
 
 ---
@@ -103,24 +103,24 @@ Hypothesis Pair:
 
 Gunakan gap yang ditemukan di WS-03. Transformasikan menjadi Research Question.
 
-**Gap dari WS-03:** Sistem saat ini masih reaktif dan hanya mengolah data yang sudah terjadi, belum memiliki fitur prediksi otomatis berbasis AI.
+**Gap dari WS-03:** Terbatasnya penerapan model MCDM komprehensif terintegrasi yang dirancang khusus dengan struktur kriteria hierarkis untuk menilai kompetensi soft skill siswa di sekolah formal.
 
 **RQ versi pertama (tulis bebas):**
-> Bagaimana pengaruh penggunaan AI untuk membantu manajer mengambil keputusan di perusahaan?.
+> Bagaimana cara membangun sistem komputer menggunakan kombinasi metode AHP dan TOPSIS yang bisa membantu guru-guru menilai nilai soft skill murid secara adil dan tidak pilih kasih?
 
 **Evaluasi RQ:**
 
 | Komponen | Ada? | Isi |
 |----------|------|-----|
-| Metode spesifik |YA|Integrasi algoritma prediktif (AI/ML)|
-| Metrik terukur |YA|Kecepatan pengambilan keputusan (hari).|
-| Baseline |YA|Sistem SIM reaktif standar (Hafiz & Nasution, 2024).|
-| Dataset/konteks |YA|Operasional organisasi/perusahaan otobus|
+| Metode spesifik | YA | Menggunakan integrasi algoritma AHP dan TOPSIS. |
+| Metrik terukur | YA | Diukur lewat tingkat konsistensi logika ($CR$) dan ketajaman peringkat ($V_i$). |
+| Baseline | YA | Dibandingkan dengan evaluasi konvensional/deskriptif guru. |
+| Dataset/konteks | YA | Diuji pada studi kasus 140 siswa kelas X & XI MA Mu'allimin Sruweng. |
 
-**Tipe RQ:** [ ] Comparison / [x] Improvement / [ ] Exploratory
+**Tipe RQ:** [X] Comparison / [X] Improvement / [ ] Exploratory
 
 **RQ versi revisi (setelah evaluasi):**
-> Apakah model prediksi berbasis Random Forest dapat mempercepat pengambilan keputusan manajerial hingga di bawah 7 hari pada operasional perusahaan dibandingkan sistem SIM standar?
+> Apakah implementasi model DSS hibrida berbasis integrasi komprehensif AHP-TOPSIS dengan struktur 13 indikator operasional mampu menghasilkan nilai closeness coefficient yang stabil, konsisten secara logis ($CR \le 0.1$), dan bebas bias evaluator dibandingkan sistem penilaian konvensional sekolah?
 ---
 
 ## Latihan 2 — Hypothesis Pair
@@ -129,14 +129,14 @@ Rumuskan pasangan hipotesis dari RQ di Latihan 1.
 
 | Komponen | Isi |
 |----------|-----|
-| H₀ | Penggunaan model prediksi Random Forest tidak memberikan percepatan yang signifikan dibandingkan durasi 7 hari pada sistem baseline. |
-| H₁ |Penggunaan model prediksi Random Forest secara signifikan mempercepat waktu pengambilan keputusan menjadi kurang dari 7 hari.|
-| Metrik |Mean Lead Time (Rata-rata waktu keputusan).|
-| Threshold |P-value < 0,05.|
-| Justifikasi threshold |Menjamin bahwa percepatan yang ditemukan bukan karena faktor kebetulan.|
+| H₀ | Model DSS berbasis integrasi AHP-TOPSIS tidak menghasilkan nilai rasio konsistensi matriks kriteria yang valid (CR>0.1) serta gagal memberikan diferensiasi peringkat kompetensi siswa yang jelas dibandingkan evaluasi konvensional. |
+| H₁ | Model DSS berbasis integrasi AHP-TOPSIS menghasilkan nilai rasio konsistensi matriks kriteria yang konsisten (CR≤0.1) serta memberikan pemisahan peringkat preferensi (Vi) yang tajam untuk memetakan 4 klasifikasi tingkat kompetensi siswa. |
+| Metrik | Consistency Ratio (CR) dan Closeness Coefficient (Vi). |
+| Threshold | CR≤0.1 dan koefisien akhir alternatif bernilai rentang 0≤Vi≤1. |
+| Justifikasi threshold | Aturan baku nilai indeks acak (RI) penentu konsistensi penilaian pakar kriteria dan standarisasi proporsional jarak kedekatan solusi ideal positif/negatif TOPSIS. |
 
-**Apakah hipotesis ini falsifiable?** [x] Ya / [ ] Tidak
-> Bagaimana cara membuktikannya salah? Jika setelah eksperimen dilakukan, rata-rata waktu keputusan tetap 7 hari atau bahkan lebih lama, maka H₁ ditolak dan riset membuktikan metode prediktif tersebut tidak efektif.
+**Apakah hipotesis ini falsifiable?** [X] Ya / [ ] Tidak
+> Bagaimana cara membuktikannya salah? Jika setelah pengujian ternyata matriks penilaian pakar menghasilkan CR > 0.1 atau sistem gagal memberikan pemisahan peringkat akhir (Vi) yang lebih tajam dibandingkan penilaian konvensional guru, maka H₁ ditolak.
 ---
 
 ## Latihan 3 — Rantai Operasionalisasi
@@ -145,12 +145,12 @@ Lengkapi rantai dari RQ hingga metode analisis.
 
 | Tahap | Isi |
 |-------|-----|
-| RQ |Apakah sistem prediktif berbasis ML mempercepat keputusan dibandingkan SIM standar?.|
-| Variable (IV) |Penggunaan Algoritma Prediktif (ML) vs Deskriptif (SIM standar).|
-| Variable (DV) |Durasi waktu pengambilan keputusan.|
-| Metric |Satuan waktu (hari).|
-| Data source |Log transaksi ERP dan data survei waktu manajerial.|
-| Analysis method |T-Test untuk membandingkan rata-rata waktu dua sistem.|
+| RQ | Apakah implementasi model DSS hibrida berbasis integrasi komprehensif AHP-TOPSIS dengan struktur 13 indikator operasional mampu menghasilkan nilai closeness coefficient yang konsisten ($CR \le 0.1$) dan bebas bias evaluator dibandingkan sistem penilaian konvensional sekolah? |
+| Variable (IV) | Penggunaan model DSS berbasis kombinasi algoritma hibrida AHP dan TOPSIS. |
+| Variable (DV) | Tingkat konsistensi matematis pembobotan kriteria dan ketajaman diferensiasi klasifikasi peringkat alternatif siswa. |
+| Metric | Nilai indeks konsistensi ($CI$), rasio konsistensi ($CR$), dan nilai preferensi akhir kedekatan solusi ideal ($V_i$). |
+| Data source | Kuesioner Penilaian Mandiri Siswa (skala 1-5), lembar Observasi Perilaku Siswa oleh Guru, dan matriks penilaian kepentingan kriteria dari 3 ahli (skala 1-9). |
+| Analysis method | Perhitungan rata-rata baris matriks ternormalisasi (Eigenvector) , uji perkalian silang nilai eigen maksimum $\lambda_{max}$ , perkalian vektor bobot AHP ke matriks normalisasi terbobot TOPSIS , dan kalkulasi jarak Euclidean. |
 
 **Apakah rantai lengkap?** [x] Ya / [ ] Tidak
 > Jika tidak, tahap mana yang perlu direvisi? ______________
@@ -161,6 +161,6 @@ Lengkapi rantai dari RQ hingga metode analisis.
 
 > Ambil satu judul skripsi/paper yang pernah dibaca. Coba ekstrak RQ-nya. Apakah RQ tersebut memenuhi semua komponen (metode, metrik, baseline, konteks)? Jika tidak, apa yang hilang?
 
-**Judul:** Analisis Dampak Implementasi Sistem Informasi Manajemen pada Efisiensi Proses Bisnis.
-**RQ yang diekstrak:** Sejauh mana implementasi SIM memengaruhi efisiensi operasional organisasi?.
-**Komponen yang hilang:** Kurangnya penyebutan metode spesifik (jenis algoritma atau sistem yang digunakan tidak dirinci secara teknis) dan tidak ada baseline pembanding dari riset lain yang setara di bagian RQ-nya.
+**Judul Jurnal Pendukung yang Dianalisis:** Sistem Pendukung Keputusan untuk Pemilihan Lokasi Usaha di Kota Kupang dengan SMART Method
+**RQ yang Diekstrak:** Bagaimana penerapan metode Simple Multi Attribute Rating Technique (SMART) dalam sistem pendukung keputusan berbasis website dapat memberikan urutan rekomendasi alternatif lokasi usaha yang optimal bagi pelaku UMKM di Kota Kupang berdasarkan 5 kriteria spasial-ekonomi?
+**Komponen yang Hilang:** RQ pada paper tersebut tidak menyertakan baseline pembanding operasional yang riil (tidak menghadapkan algoritma SMART secara langsung dengan metode MCDM sejenis seperti SAW atau AHP untuk mengukur akurasi perankingan alternatifnya). Selain itu, metrik validitas eksperimennya longgar karena pengujian sistem hanya bertumpu pada fungsionalitas antarmuka (Black box testing) , tanpa melakukan pengujian performa komputasi tingkat lanjut (load testing) atau uji kegunaan nyata (usability testing) oleh para pelaku UMKM selaku pengguna akhir. Rantai operasionalisasinya terputus di tingkat pembuktian keandalan model ketika berhadapan dengan data dinamis real-time.
