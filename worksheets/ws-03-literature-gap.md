@@ -61,43 +61,43 @@ Membandingkan deep learning 2024 dengan decision tree sederhana tanpa justifikas
 ```
 LITERATURE MAPPING
 
-Topik      : Efisiensi Operasional dan Pengambilan Keputusan Strategis melalui Sistem Informasi.
+Topik      : Sistem Pendukung Keputusan (DSS) Berbasis Multi-Criteria Decision Making (MCDM) pada Domain Manajemen Pendidikan dan Publik.
 Database   : Google Scholar.
-Query      : "Sistem Informasi Manajemen Efisiensi Operasional ERP 2024-2025".
-Tahun      : 2024 – 2025.
-Hasil awal : 15 paper → Screening → 5 paper final
+Query      : ("Sistem Pendukung Keputusan" OR "SPK" OR "MCDM") AND ("AHP" OR "TOPSIS" OR "SAW" OR "SMART") AND ("Pendidikan" OR "Evaluasi")
+Tahun      : 2024 – 2026.
+Hasil awal : 27 paper → Screening → 5 paper final
 
 Literature Matrix (concept-centric):
 
 | Study | Tahun | Method | Data | Result | Limitation |
 |-------|-------|--------|------|--------|------------|
-| Hidayah et al.|2024|BPMN & Workflow|Data ERP|Berhasil mengidentifikasi 7 titik keputusan kritis. Validasi pesanan mengurangi waktu proses hingga 25% , dan rute optimal memotong waktu perjalanan 15%.|Sistem masih bersifat reaktif/deskriptif. Disarankan integrasi AI untuk prediksi permintaan di masa depan.|
-| Ikhwan et al.|2025|VALSAT & VSM|Kualitatif|Fokus pada eliminasi pemborosan (waste) dalam prosedur bisnis dan peningkatan efektivitas sumber daya manusia.|Riset sangat spesifik pada satu lini bisnis (logistik sewa hardware), sehingga sulit untuk digeneralisasi langsung ke industri lain.|
-| Fakhrezy|2025|Tematik & Literatur|Literatur terdahulu|Manajemen Risiko Operasional (MRO) krusial untuk mencegah kebocoran data dan serangan siber. Suksesnya digitalisasi bergantung pada teknologi canggih seperti AI dan Blockchain.|Adanya tantangan ketidakpastian regulasi dan keterbatasan kemampuan digital SDM dalam memitigasi risiko siber.|
-| Hafiz & Nasution|2025|Mixed (Qual & Quan)|Survei & Wawancara|Produktivitas karyawan meningkat rata-rata 21-25%. Kecepatan pengambilan keputusan meningkat drastis sebesar 50% (dari 14 hari menjadi 7 hari).|Menemukan hambatan berupa resistensi dari anggota organisasi dan kebutuhan investasi awal yang besar.|
-| Nandina & Firdaus|2025|Studi Kasus & Literatur|Data Sekunder|SIM berfungsi sebagai pilar integrasi data untuk keputusan efektif. Implementasi terbukti meningkatkan efisiensi operasional dan kualitas produk.|Identifikasi tantangan biaya tinggi, kebutuhan pelatihan intensif bagi karyawan, dan masalah keamanan data.|
+| Pramono, Berlilana, & Barkah | 2026 | Integrasi AHP-TOPSIS | 140 siswa kelas X & XI MA Mu'allimin Sruweng dengan 4 kriteria & 13 indikator. | Mengubah penilaian kualitatif menjadi peringkat kuantitatif berbasis koefisien kedekatan solusi ideal (Cci) secara objektif. | Cakupan data terbatas pada satu lembaga pendidikan lokal, berisiko melahirkan variasi bobot berbeda jika diuji di tempat lain. |
+| Afi & Lenggu | 2025 | SMART Method | 10 Alternatif kelurahan di Kota Kupang dengan 5 kriteria spasial-ekonomi. | Berhasil mengotomatisasi pemeringkatan lokasi usaha terfavorit (Sikumana peringkat 1 dengan nilai 0,6625). | Data bersifat statis dari satu instansi dan belum terintegrasi dengan pemetaan geospasial interaktif secara real-time. |
+| Husnaini | 2025 | Integrasi AHP-TOPSIS | Data sampel 10 desa pesisir di Kabupaten Pidie berdasarkan 4 indikator ekonomi. | Mampu memproses data hingga 50 entri dengan waktu respons cepat < 5 detik disertai visualisasi grafik. | Keamanan data belum dilengkapi enkripsi tingkat lanjut, sehingga rentan manipulasi data jika diskalakan makro. |
+| Oktari, Dernata, & Priyopradono | 2025 | Simple Additive Weighting (SAW) | 10 alternatif calon mahasiswa baru penerima beasiswa KIP Kuliah. | Mempercepat penentuan penerima bantuan finansial secara transparan berdasarkan total poin linear. | Bobot kriteria ditentukan langsung secara subjektif oleh panitia tanpa pengujian rasio konsistensi hierarkis. |
+| M. Lutfi & A. Lutfi | 2024 | Analytical Hierarchy Process (AHP) | Parameter kinerja berkala petugas Dinas Kominfo Bondowoso. | Menyusun struktur matriks perbandingan berpasangan untuk meminimalkan subjektivitas kepala dinas. | Evaluasi masih bertumpu pada metode tunggal sehingga visualisasi luaran akhir kurang komprehensif. |
 
 Pola yang ditemukan:
-  Metode dominan     : enggunaan metode campuran (kualitatif/kuantitatif) dan pemodelan alur kerja (BPMN)
-  Dataset umum       : Hasil survei karyawan, data transaksi ERP, dan kajian literatur.
-  Limitasi berulang  : Masalah integrasi dengan sistem lama, adaptasi budaya organisasi, dan tantangan keamanan data.
+  Metode dominan     : Metode MCDM konvensional dan integrasinya (AHP, TOPSIS, SAW, SMART).
+  Dataset umum       : Data sampel spesifik suatu instansi/daerah dengan jumlah kriteria dan alternatif yang terbatas.
+  Limitasi berulang  : Subjektivitas dalam pembobotan kriteria, cakupan data yang sempit (lokal), dan hasil evaluasi yang kurang komprehensif/interaktif.
 
 GAP IDENTIFICATION
 
-Gap 1: [Jenis:  method ]
-  Deskripsi    : Sebagian besar riset (termasuk Hafiz & Nasution) fokus pada mengukur dampak setelah sistem jadi, tapi sedikit yang menggabungkan analitik prediktif untuk mencegah masalah sebelum terjadi.
-  Bukti        : Hasil penelitian Hafiz menunjukkan kecepatan keputusan naik 50%, namun masih bersifat reaktif terhadap data yang sudah ada.
-  Signifikansi : Integrasi AI/Machine Learning dibutuhkan agar sistem tidak cuma mencatat efisiensi, tapi juga memprediksi risiko kegagalan.
+Gap 1: [Jenis: Method Gap]
+  Deskripsi    : Sebagian besar sistem pendukung keputusan seleksi bantuan dan evaluasi kinerja di bidang pendidikan masih mengandalkan metode pembobotan tunggal yang subjektif atau perhitungan linear sederhana (seperti SAW) tanpa menguji konsistensi logika dari preferensi kriteria multidimensi yang digunakan.
+  Bukti        : Pada riset seleksi beasiswa KIP Kuliah, panitia menetapkan bobot 8 kriteria secara deterministik (C1=10, C2=7, dst.) tanpa melalui proses penormalan matriks perbandingan berpasangan, sehingga kebenaran relasi antar-kriteria tidak teruji secara matematis.
+  Signifikansi : Kegagalan menguji konsistensi bobot kriteria berpotensi melahirkan rank reversal (pembalikan peringkat yang salah) ketika terdapat alternatif baru yang memiliki nilai kemiripan tinggi.
 
-Gap 2: [Jenis: data]
-  Deskripsi    : Kurangnya data mengenai keberlanjutan pemeliharaan SIM setelah fase implementasi awal selesai.
-  Bukti        : Hafiz & Nasution menyebutkan ketersediaan anggaran dan pemeliharaan sebagai tantangan jangka panjang yang perlu dipertimbangkan sejak awal.
-  Signifikansi : Tanpa rencana pemeliharaan yang jelas, efisiensi yang dicapai di awal (seperti penghematan USD 15.000) bisa hilang karena sistem menjadi usang.
+Gap 2: [Jenis: Data & Context Gap]
+  Deskripsi    : Belum adanya model DSS evaluasi perilaku (soft skill) atau spasial yang mampu mengintegrasikan data lapangan secara dinamis (real-time) dan fleksibel dari sisi interaksi pengguna (user-level criteria adjustment).
+  Bukti        : Sistem penentuan lokasi usaha masih menggunakan data statis kualitatif Dinas , dan sistem evaluasi terdahulu hanya membatasi hak penentuan kriteria pada level administrator.
+  Signifikansi : Tanpa adanya pembaruan data dinamis dan fleksibilitas penyesuaian kriteria oleh pengguna akhir, rekomendasi sistem akan cepat usang dan tidak adaptif terhadap perubahan kondisi lapangan yang fluktuatif.
 Baseline Selection:
 | Baseline | Relevansi | Representatif | Source |
 |----------|-----------|---------------|--------|
-| SIM Standar |Fokus pada efisiensi biaya dan waktu|Digunakan di banyak organisasi sebagai patokan sukses|Hafiz & Nasution (2024)|
-| BPMN & ERP |Fokus pada identifikasi titik keputusan|Metode paling umum untuk audit alur kerja|Hidayah et al. (2024)|
+| AHP-TOPSIS Terintegrasi (Kesejahteraan Pesisir) | Menggunakan kombinasi algoritma yang sama untuk menyelesaikan masalah multi-kriteria. +1 | Mewakili state-of-the-art sistem pendukung keputusan berbasis web yang responsif (< 5 detik). +1 | Husnaini (2025) |
+| Simple Additive Weighting (Seleksi Beasiswa) | Sama-sama melakukan penilaian performa individu dalam skala multi-alternatif di institusi akademik. +1 | Mewakili common practice (metode yang paling sering dijadikan pembanding klasik). +4 | Oktari et al. (2025) |
 ```
 
 ---
@@ -106,20 +106,20 @@ Baseline Selection:
 
 Gunakan topik riset dari WS-02. Cari minimal 5 paper relevan menggunakan Google Scholar atau database lain.
 
-**Topik riset:** Dampak Implementasi Sistem Informasi terhadap Efisiensi Bisnis.
-**Query pencarian:** Dampak Sistem Informasi Manajemen Efisiensi Operasional 2024.
+**Topik riset:** Sistem Pendukung Keputusan (DSS) Berbasis Multi-Criteria Decision Making (MCDM) pada Domain Manajemen Pendidikan dan Publik.
+**Query pencarian:** ("Sistem Pendukung Keputusan" OR "SPK" OR "MCDM") AND ("AHP" OR "TOPSIS" OR "SAW" OR "SMART") AND ("Pendidikan" OR "Evaluasi")
 **Database:** Google Scholar.
 
 | # | Study | Tahun | Method | Dataset | Result | Limitasi |
 |---|-------|-------|--------|---------|--------|----------|
-| 1 | Hidayah et al.|2024|BPMN & Workflow|Data ERP|Berhasil mengidentifikasi 7 titik keputusan kritis. Validasi pesanan mengurangi waktu proses hingga 25% , dan rute optimal memotong waktu perjalanan 15%.|Sistem masih bersifat reaktif/deskriptif. Disarankan integrasi AI untuk prediksi permintaan di masa depan.|
-| 2 | Ikhwan et al.|2025|VALSAT & VSM|Kualitatif|Fokus pada eliminasi pemborosan (waste) dalam prosedur bisnis dan peningkatan efektivitas sumber daya manusia.|Riset sangat spesifik pada satu lini bisnis (logistik sewa hardware), sehingga sulit untuk digeneralisasi langsung ke industri lain.|
-| 3 | Fakhrezy|2025|Tematik & Literatur|Literatur terdahulu|Manajemen Risiko Operasional (MRO) krusial untuk mencegah kebocoran data dan serangan siber. Suksesnya digitalisasi bergantung pada teknologi canggih seperti AI dan Blockchain.|Adanya tantangan ketidakpastian regulasi dan keterbatasan kemampuan digital SDM dalam memitigasi risiko siber.|
-| 4 | Hafiz & Nasution|2025|Mixed (Qual & Quan)|Survei & Wawancara|Produktivitas karyawan meningkat rata-rata 21-25%. Kecepatan pengambilan keputusan meningkat drastis sebesar 50% (dari 14 hari menjadi 7 hari).|Menemukan hambatan berupa resistensi dari anggota organisasi dan kebutuhan investasi awal yang besar.|
-| 5 | Nandina & Firdaus|2025|Studi Kasus & Literatur|Data Sekunder|SIM berfungsi sebagai pilar integrasi data untuk keputusan efektif. Implementasi terbukti meningkatkan efisiensi operasional dan kualitas produk.|Identifikasi tantangan biaya tinggi, kebutuhan pelatihan intensif bagi karyawan, dan masalah keamanan data.|
+| Pramono, Berlilana, & Barkah | 2026 | Integrasi AHP-TOPSIS | 140 siswa kelas X & XI MA Mu'allimin Sruweng dengan 4 kriteria & 13 indikator. | Mengubah penilaian kualitatif menjadi peringkat kuantitatif berbasis koefisien kedekatan solusi ideal (Cci) secara objektif. | Cakupan data terbatas pada satu lembaga pendidikan lokal, berisiko melahirkan variasi bobot berbeda jika diuji di tempat lain. |
+| Afi & Lenggu | 2025 | SMART Method | 10 Alternatif kelurahan di Kota Kupang dengan 5 kriteria spasial-ekonomi. | Berhasil mengotomatisasi pemeringkatan lokasi usaha terfavorit (Sikumana peringkat 1 dengan nilai 0,6625). | Data bersifat statis dari satu instansi dan belum terintegrasi dengan pemetaan geospasial interaktif secara real-time. |
+| Husnaini | 2025 | Integrasi AHP-TOPSIS | Data sampel 10 desa pesisir di Kabupaten Pidie berdasarkan 4 indikator ekonomi. | Mampu memproses data hingga 50 entri dengan waktu respons cepat < 5 detik disertai visualisasi grafik. | Keamanan data belum dilengkapi enkripsi tingkat lanjut, sehingga rentan manipulasi data jika diskalakan makro. |
+| Oktari, Dernata, & Priyopradono | 2025 | Simple Additive Weighting (SAW) | 10 alternatif calon mahasiswa baru penerima beasiswa KIP Kuliah. | Mempercepat penentuan penerima bantuan finansial secara transparan berdasarkan total poin linear. | Bobot kriteria ditentukan langsung secara subjektif oleh panitia tanpa pengujian rasio konsistensi hierarkis. |
+| M. Lutfi & A. Lutfi | 2024 | Analytical Hierarchy Process (AHP) | Parameter kinerja berkala petugas Dinas Kominfo Bondowoso. | Menyusun struktur matriks perbandingan berpasangan untuk meminimalkan subjektivitas kepala dinas. | Evaluasi masih bertumpu pada metode tunggal sehingga visualisasi luaran akhir kurang komprehensif. |
 
-**Pola yang terlihat — Metode dominan:** Penggunaan metode campuran (kualitatif/kuantitatif) dan pemodelan alur kerja (BPMN).
-**Limitasi yang berulang:** Masalah integrasi dengan sistem lama, adaptasi budaya organisasi, dan tantangan keamanan data.
+**Pola yang terlihat — Metode dominan:** Penggabungan metode hibrida (hybrid MCDM) jauh lebih dominan digunakan pada tahun 2025–2026 dibandingkan metode tunggal karena mampu memisahkan tahap pembobotan dan tahap eliminasi jarak alternatif secara objektif.
+**Limitasi yang berulang:** Ketiadaan pengujian reliabilitas instrumen data input sebelum masuk ke rumus perhitungan inti DSS, menyebabkan sistem sangat rentan terhadap data pencilan (outlier) atau data kualitatif yang bias.
 
 ---
 
@@ -129,14 +129,14 @@ Berdasarkan tabel di Latihan 1, identifikasi gap.
 
 | Jenis Gap | Ditemukan? | Gap Statement |
 |-----------|-----------|---------------|
-| Performance Gap | [✔] Ya / [ ] Tidak |Meskipun kecepatan keputusan naik 50% , performa ini masih bisa ditingkatkan melalui sistem yang bekerja secara proaktif. |
-| Method Gap | [✔] Ya / [ ] Tidak |Riset saat ini mayoritas menggunakan pemodelan deskriptif (BPMN) , namun belum banyak mengintegrasikan kecerdasan buatan (AI) untuk prediksi otomatis.|
-| Data Gap | [ ] Ya / [✔] Tidak | |
-| Context Gap | [✔] Ya / [ ] Tidak |Masih terbatasnya strategi manajemen risiko operasional yang spesifik untuk membantu transformasi digital UMKM di Indonesia.|
+| Performance Gap | [X] Ya / [ ] Tidak | Metode tunggal seperti SAW atau SMART gagal memberikan diferensiasi nilai yang tajam saat alternatif memiliki skor kualitatif yang mirip, sehingga memicu inkonsistensi peringkat. +1 |
+| Method Gap | [X] Ya / [ ] Tidak | Jarangnya penggunaan model PLS-SEM sebagai fondasi validitas konvergen instrumen kualitatif sebelum data tersebut diproses ke dalam matriks normalisasi AHP-TOPSIS. +4 |
+| Data Gap | [X] Ya / [ ] Tidak | Penggunaan parameter pengukur yang bersifat statis dari kuesioner lembar observasi tradisional tanpa adanya data pembanding sekunder yang bersifat objektif. +1 |
+| Context Gap | [X] Ya / [ ] Tidak | Implementasi integrasi algoritma analitis komprehensif untuk mengukur indikator perilaku non-teknis (soft skill) siswa di sekolah formal masih sangat langka. |
 
-**Gap utama yang dipilih:** Method Gap (Integrasi AI dan Analitik Prediktif)
+**Gap utama yang dipilih:** Method Gap (Integrasi PLS-SEM sebagai validator instrumen pra-MCDM) dikombinasikan dengan Context Gap (Penilaian struktur kriteria hierarkis untuk kompetensi soft skill abad ke-21)
 **Mengapa gap ini penting (bukan sekadar "belum ada yang meneliti")?**
-> Karena riset dari Hafiz & Nasution (2024) membuktikan bahwa Sistem Informasi Manajemen (SIM) mampu meningkatkan produktivitas hingga 25% dan mempercepat keputusan sebanyak 50%. Namun, sistem tersebut masih bersifat reaktif atau hanya mengolah data yang sudah terjadi. Gap ini penting untuk diisi agar sistem masa depan tidak hanya mencatat efisiensi, tetapi bisa memprediksi kebutuhan operasional dan risiko sebelum masalah muncul.
+> Karena soft skill memiliki sifat yang tidak berwujud (intangible) dan sangat bergantung pada persepsi psikologis guru penilai. Jika instrumen penilaian tidak divalidasi terlebih dahulu menggunakan pengujian statistik yang ketat seperti PLS-SEM (untuk mengukur Average Variance Extracted dan Cronbach's Alpha) , maka data angka yang dimasukkan ke dalam rumus AHP-TOPSIS hanyalah akumulasi dari bias subjektif guru semata. Penataan inter-relasi metode statistik kuantitatif dan MCDM ini krusial untuk menjamin bahwa luaran rekomendasi peringkat benar-benar valid secara ilmiah dan dapat dipertanggungjawabkan
 
 ---
 
@@ -146,11 +146,11 @@ Pilih 2 baseline dari literatur yang sudah dibaca.
 
 | # | Baseline | Mengapa Relevan | Mengapa Representatif | Apakah SOTA? | Sumber |
 |---|----------|----------------|----------------------|-------------|--------|
-| 1 | SIM Standar | Fokus pada efisiensi biaya dan waktu | Digunakan di banyak organisasi sebagai patokan sukses | Ya | Hafiz & Nasution (2024) |
-| 2 |BPMN & ERP|Fokus pada identifikasi titik keputusan|Metode paling umum untuk audit alur kerja|Ya|Hidayah et al. (2024)|
+| 1 | Model Kombinasi AHP-TOPSIS Web-Based | Menyelesaikan persoalan kalkulasi multi-kriteria menggunakan integrasi dua algoritma penentu bobot dan jarak ideal yang serupa. +1 | Menjadi standar arsitektur sistem berbasis web (PHP-MySQL via XAMPP) yang memiliki efisiensi waktu respons tinggi. +1 | Ya, dipublikasikan pada Februari 2025. | Husnaini (2025) |
+| 2 | Model Komparasi SAW & AHP Tingkat Sekolah | Memiliki ranah/domain objek penelitian yang sama, yaitu seleksi dan pemeringkatan siswa di institusi pendidikan formal. +1 | Menggunakan metode Simple Additive Weighting yang menjadi standar acuan evaluasi performa linear di sekolah. +3 | Tidak, namun merupakan common practice yang wajib dijadikan pembanding. +2 | Ningtyas & Diartono (2024) |
 
 **Apakah pemilihan baseline ini bisa dianggap straw man?** [ ] Ya / [✔] Tidak
-> Justifikasi: Pemilihan baseline ini tidak dianggap straw man karena metode yang dijadikan pembanding (seperti SIM dan BPMN-ERP) diambil dari penelitian terbaru tahun 2024-2025 yang memang menjadi standar praktik saat ini. Misalnya, riset dari Hafiz & Nasution menunjukkan bahwa SIM standar saja sudah mampu meningkatkan kecepatan pengambilan keputusan hingga 50%. Dengan membandingkan riset baru kita terhadap sistem yang sudah punya performa tinggi tersebut, berarti kita melakukan perbandingan yang jujur dan menantang, bukan sengaja memilih lawan yang lemah atau ketinggalan zaman hanya agar metode kita terlihat lebih unggul.
+> Justifikasi: Pemilihan baseline di atas sama sekali bukan perbandingan yang lemah (straw man). Penelitian ini menghadapkan sistem yang diusulkan langsung dengan model AHP-TOPSIS kontemporer (2025) untuk menguji keandalan fungsionalitas sistem , serta membandingkannya dengan metode SAW yang merupakan penguasa standar common practice dalam evaluasi multi-kriteria di dunia pendidikan. Dengan demikian, pengujian keunggulan sistem dilakukan secara adil, jujur, dan menantang metode yang setara (rigorous evaluation).
 
 ---
 
