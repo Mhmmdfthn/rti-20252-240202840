@@ -9,6 +9,7 @@ Catatan kronologis pelaksanaan tiap tahap (sumber: riwayat commit git & dokumen 
 | 2026-06-25 14:55 | Tahap 2 | Penyusunan dokumen ws08 | [ws-08](../../worksheets/ws-08-proposal-integration.md) |
 | 2026-06-26 | Tahap 3 | Pencarian data dan penyusunan dokumen ws09 | [ws-09](../../worksheets/ws-09-implementation.md) |
 | 2026-06-26 16:34 | Tahap 3 | Mengirim email ke jurnal rujukan untuk meminta data riil untuk pengujian | - |
+| 2026-06-26 20:29 | - | Commit & push dokumen ws08 dan folder example-riset-directory (Pesan: "ws08-selesai") | - |
 
 ## Status Ringkas 
 
