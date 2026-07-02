@@ -97,7 +97,7 @@ Gunakan RQ dari WS-04. Definisikan variabel dan metriknya.
 | Kecepatan Sistem | DV | Efisiensi algoritma | Waktu Eksekusi (Execution Time) | Ratio | ms (Milidetik) |
 | Beban Data | CV | Volume data penguji | Dimensi Matriks (140 $\times$ 13) | Ratio | Entri |
 
-**Apakah ada lompatan logis dalam rantai?** [ ] Ya / [ ] Tidak
+**Apakah ada lompatan logis dalam rantai?** [ ] Ya / [x] Tidak
 > Jika ya, di mana? ____________________________________
 
 ---

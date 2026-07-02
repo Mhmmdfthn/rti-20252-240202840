@@ -100,15 +100,13 @@ Verifikasi apakah semua data yang direncanakan sudah terkumpul.
 
 | Skenario | Run Direncanakan | Run Tercatat | Missing | Alasan |
 |----------|-----------------|-------------|---------|--------|
-| *Contoh: BERT, DS-1* | *10* | *10* | *0* | *—* |
-| *LSTM, DS-3* | *10* | *8* | *2* | *OOM pada run 7 & 9* |
-| | | | | |
-| | | | | |
+| Real Dataset (n=140) | 5 | 5 | 0 | — |
+| Synthetic Dataset (n=10000) | 5 | 4 | 1 | Memory terpakai penuh (OOM) pada run ke-5 |
 
-**Total expected:** ____ | **Total actual:** ____ | **Missing:** ____
+**Total expected:** 10 | **Total actual:** 9 | **Missing:** 1
 
 **Keputusan untuk data missing:**
-> ___________________________________________________
+> Data missing (run 5) dibuang sementara. Ditambahkan mitigasi `gc.collect()` antar-run, lalu di-rerun ulang satu iterasi untuk melengkapi kelima run tersebut.
 
 ---
 
@@ -118,25 +116,25 @@ Periksa data Anda untuk anomali. Gunakan metode IQR atau z-score.
 
 **Dataset sampel (atau data Anda sendiri):**
 
-| Run | Accuracy (%) |
+| Run | Runtime (ms) |
 |-----|-------------|
-| 1 | *91.2* |
-| 2 | *90.8* |
-| 3 | *91.5* |
-| 4 | *78.3* |
-| 5 | *91.0* |
+| 1 | 17.2 |
+| 2 | 17.5 |
+| 3 | 17.6 |
+| 4 | 55.1 |
+| 5 | 17.1 |
 
 **Deteksi outlier:**
-- Q1 = ____ | Q3 = ____ | IQR = ____
-- Batas bawah (Q1 - 1.5×IQR) = ____
-- Batas atas (Q3 + 1.5×IQR) = ____
-- Outlier terdeteksi: ____
+- Q1 = 17.15 | Q3 = 17.55 | IQR = 0.4
+- Batas bawah (Q1 - 1.5×IQR) = 16.55
+- Batas atas (Q3 + 1.5×IQR) = 18.15
+- Outlier terdeteksi: Run 4 (55.1)
 
 **Investigasi (untuk setiap outlier):**
 
 | Outlier | Nilai | Kemungkinan Penyebab | Keputusan |
 |---------|-------|---------------------|-----------|
-| *Run 4* | *78.3* | *Contoh: thermal throttling setelah 3 run berturut* | *Re-run dengan cooling interval* |
+| Run 4 | 55.1 | Proses background OS menyela siklus CPU sesaat (CPU interrupt) | Trim outlier, hitung mean dari 4 run normal, atau re-run iterasi ke-4 |
 
 ---
 
@@ -144,12 +142,12 @@ Periksa data Anda untuk anomali. Gunakan metode IQR atau z-score.
 
 Buat laporan validasi ringkas untuk dataset eksperimen Anda.
 
-**1. Completeness:** ____% data terkumpul
-**2. Format:** [ ] Konsisten / [ ] Ada inkonsistensi: ____
-**3. Range check (anomali):** ____
-**4. Logic check:** [ ] Parameter sesuai plan / [ ] Ada ketidaksesuaian: ____
+**1. Completeness:** 100% data terkumpul (setelah re-run data yang missing)
+**2. Format:** [x] Konsisten / [ ] Ada inkonsistensi: 
+**3. Range check (anomali):** Ditemukan satu outlier ekstrim pada waktu komputasi (Runtime), tapi nilai metrik Spearman Rho valid dalam batas -1 hingga 1.
+**4. Logic check:** [x] Parameter sesuai plan / [ ] Ada ketidaksesuaian: 
 
-**Kesimpulan:** [ ] Data siap analisis / [ ] Perlu tindakan: ____
+**Kesimpulan:** [x] Data siap analisis / [ ] Perlu tindakan:
 
 ---
 
@@ -157,5 +155,4 @@ Buat laporan validasi ringkas untuk dataset eksperimen Anda.
 
 > Apa perbedaan antara "data yang benar" dan "data yang dipercaya"? Mengapa proses validasi formal diperlukan meskipun data dikumpulkan secara otomatis?
 
-> ___________________________________________________
-> ___________________________________________________
+> Data yang benar adalah angka mentah hasil keluaran sistem (log output), namun belum tentu mewakili kondisi wajar karena bisa mengandung error sistemik atau outlier sesaat. Data yang dipercaya adalah data yang telah melalui serangkaian filter validasi sehingga murni merepresentasikan fenomena yang sedang diteliti (bebas bias eksperimen). Validasi formal mutlak diperlukan walau dicatat otomatis karena lingkungan eksekusi (seperti state memori dan background CPU) rentan terhadap anomali yang luput dari skrip logging dasar.

@@ -1,0 +1,38 @@
+{
+  "experiment": {
+    "name": "Uji Sensitivitas & Stabilitas Peringkat AHP-TOPSIS",
+    "version": "1.0.0",
+    "description": "Eksperimen pengujian sensitivitas bobot dan stabilitas peringkat algoritma hibrida AHP-TOPSIS pada DSS Evaluasi Soft Skill Siswa MA Mu'allimin Sruweng"
+  },
+  "seed": 42,
+  "scenarios": {
+    "real": {
+      "n": 140,
+      "description": "Dataset riil 140 siswa MA Mu'allimin Sruweng"
+    },
+    "synthetic": {
+      "n": 10000,
+      "description": "Dataset sintetis 10.000 entri untuk uji beban"
+    }
+  },
+  "delta_w": {
+    "min_pct": 0,
+    "max_pct": 50,
+    "step_pct": 10,
+    "description": "Rentang gangguan bobot dalam persen (0% = baseline, 50% = gangguan maksimum)"
+  },
+  "runs_per_scenario": 5,
+  "seeds_per_run": [42, 123, 456, 789, 1001],
+  "criteria": ["K1", "K2", "K3", "K4", "KO1", "KO2", "KO3", "KP1", "KP2", "KP3", "TJ1", "TJ2", "TJ3"],
+  "criteria_categories": {
+    "K": ["K1", "K2", "K3", "K4"],
+    "KO": ["KO1", "KO2", "KO3"],
+    "KP": ["KP1", "KP2", "KP3"],
+    "TJ": ["TJ1", "TJ2", "TJ3"]
+  },
+  "output": {
+    "dir": "results",
+    "filename": "benchmark_log.csv",
+    "log_filename": "run_log.jsonl"
+  }
+}

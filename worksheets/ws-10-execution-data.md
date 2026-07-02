@@ -96,15 +96,20 @@ Susun execution plan untuk eksperimen Anda. Tentukan skenario, jumlah run, dan s
 
 | Run # | Skenario | Seed | Parameter Kunci | Status |
 |-------|----------|------|----------------|--------|
-| *1* | *Contoh: BERT-base, DS-1* | *42* | *lr=2e-5, epoch=10* | *Planned* |
-| *2* | *BERT-base, DS-1* | *123* | *lr=2e-5, epoch=10* | *Planned* |
-| 3 | | | | |
-| 4 | | | | |
-| 5 | | | | |
+| 1 | Real Dataset | 42 | n=140, delta=0-50% | Planned |
+| 2 | Real Dataset | 123 | n=140, delta=0-50% | Planned |
+| 3 | Real Dataset | 456 | n=140, delta=0-50% | Planned |
+| 4 | Real Dataset | 789 | n=140, delta=0-50% | Planned |
+| 5 | Real Dataset | 1001 | n=140, delta=0-50% | Planned |
+| 6 | Synthetic Dataset | 42 | n=10000, delta=0-50% | Planned |
+| 7 | Synthetic Dataset | 123 | n=10000, delta=0-50% | Planned |
+| 8 | Synthetic Dataset | 456 | n=10000, delta=0-50% | Planned |
+| 9 | Synthetic Dataset | 789 | n=10000, delta=0-50% | Planned |
+| 10 | Synthetic Dataset | 1001 | n=10000, delta=0-50% | Planned |
 
-**Total skenario:** ____
-**Run per skenario:** ____
-**Total run keseluruhan:** ____
+**Total skenario:** 2 (Real & Synthetic)
+**Run per skenario:** 5
+**Total run keseluruhan:** 10
 
 ---
 
@@ -115,25 +120,26 @@ Desain format data log untuk eksperimen Anda. Tentukan field apa saja yang akan 
 **Identitas:**
 | Field | Contoh |
 |-------|--------|
-| Run ID | *run-001* |
-| Timestamp | *2025-03-15T10:30:00* |
-| | |
+| Run ID | run-synthetic-001 |
+| Timestamp | 2026-06-27T10:30:00 |
+| Skenario | Synthetic Dataset |
 
 **Konfigurasi:**
 | Field | Contoh |
 |-------|--------|
-| Seed | *42* |
-| Code version | *commit abc1234* |
-| | |
+| Seed | 42 |
+| Code version | commit abc1234 |
+| Dataset Size | 10000 |
+| Delta Range | 0-50%, step 10% |
 
 **Hasil:**
 | Metrik | Tipe Data | Range Valid |
 |--------|----------|-------------|
-| *Contoh: Accuracy* | *float* | *0.0 – 1.0* |
-| | | |
-| | | |
+| Spearman Rho | float | -1.0 – 1.0 |
+| Runtime (ms) | float | > 0.0 |
+| Reversal Detected | boolean | True/False |
 
-**Format output:** [ ] CSV / [ ] JSON / [ ] Database / [ ] Lainnya: ____
+**Format output:** [x] CSV / [x] JSONL / [ ] Database / [ ] Lainnya: ____
 
 ---
 
@@ -143,10 +149,10 @@ Rencanakan bagaimana menangani anomali. Untuk setiap jenis, tentukan langkah yan
 
 | Jenis Anomali | Contoh | Tindakan |
 |---------------|--------|----------|
-| Run gagal (crash) | *Contoh: OOM pada batch_size=64* | *Contoh: Dokumentasi, re-run batch_size=32, catat perubahan* |
-| Hasil ekstrem | | |
-| Waktu eksekusi anomali | | |
-| Inkonsistensi dengan run lain | | |
+| Run gagal (crash) | Out of Memory (OOM) pada n=100000 | Dokumentasi batasan memori, kurangi ukuran dataset menjadi 50000, lalu re-run |
+| Hasil ekstrem | Nilai Spearman Rho anjlok ke 0.1 | Investigasi distribusi data matriks awal, periksa apakah terjadi pembagian dengan nol saat normalisasi |
+| Waktu eksekusi anomali | Runtime tiba-tiba melonjak 5x lipat pada run tertentu | Cek CPU throttling atau proses latar OS, singkirkan outlier (trim), re-run uji waktu |
+| Inkonsistensi dengan run lain | Algoritma sangat sensitif/berubah jauh saat ganti seed | Catat temuan, tingkatkan jumlah sampel simulasi (n runs) untuk mendapatkan nilai ekspektasi yang representatif |
 
 **Prinsip:** Detect → Investigate → Document → Decide
 
@@ -157,6 +163,6 @@ Rencanakan bagaimana menangani anomali. Untuk setiap jenis, tentukan langkah yan
 > Pernahkah Anda melaporkan hasil riset/tugas dari single run? Apa risikonya? Bagaimana multiple run mengubah kepercayaan terhadap hasil?
 
 **Pengalaman sebelumnya:**
-> ___________________________________________________
+> Biasanya hanya menjalankan eksperimen satu kali saja dan langsung menggunakan waktu komputasi (execution time) dari run tersebut sebagai kesimpulan akhir, tanpa menyadari fluktuasi akibat proses background OS.
 **Yang akan dilakukan berbeda:**
-> ___________________________________________________
+> Menjalankan multiple run (minimal 5-10 kali dengan pengaturan random seed yang berbeda) lalu mengambil nilai rata-rata serta mengukur deviasi standar dari waktu komputasi, agar kesimpulan ilmiah lebih kokoh dan stabil terhadap anomali lingkungan.
