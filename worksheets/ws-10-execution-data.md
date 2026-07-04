@@ -166,3 +166,4 @@ Rencanakan bagaimana menangani anomali. Untuk setiap jenis, tentukan langkah yan
 > Biasanya hanya menjalankan eksperimen satu kali saja dan langsung menggunakan waktu komputasi (execution time) dari run tersebut sebagai kesimpulan akhir, tanpa menyadari fluktuasi akibat proses background OS.
 **Yang akan dilakukan berbeda:**
 > Menjalankan multiple run (minimal 5-10 kali dengan pengaturan random seed yang berbeda) lalu mengambil nilai rata-rata serta mengukur deviasi standar dari waktu komputasi, agar kesimpulan ilmiah lebih kokoh dan stabil terhadap anomali lingkungan.
+
