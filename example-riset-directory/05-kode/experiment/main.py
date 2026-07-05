@@ -91,8 +91,8 @@ Contoh penggunaan:
     parser.add_argument(
         "--output",
         type=str,
-        default="output",
-        help="Direktori output hasil (default: output/)",
+        default="../../06-output/logs",
+        help="Direktori output hasil (default: ../../06-output/logs)",
     )
     parser.add_argument(
         "--quiet",

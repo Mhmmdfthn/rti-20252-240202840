@@ -31,8 +31,8 @@
     "C4": ["C41", "C42", "C43"]
   },
   "output": {
-    "dir": "output",
-    "filename": "benchmark_log.csv",
-    "log_filename": "run_log.jsonl"
+    "dir": "../../06-output/logs",
+    "save_logs": true,
+    "save_plots": true
   }
 }

@@ -104,13 +104,13 @@ Periksa dataset Anda (atau dataset contoh) dan dokumentasikan masalah yang ditem
 | Masalah | Jumlah Kasus | Penanganan | Justifikasi |
 |---------|-------------|------------|-------------|
 | *Contoh: Missing di kolom "label"* | *12 dari 500 (2.4%)* | *Listwise deletion* | *< 5%, distribusi random (MCAR)* |
-| | | | |
-| | | | |
-| | | | |
+| Missing values (kosong pada beberapa kriteria) | 3 dari 143 (2.1%) | Mean imputation per kelas/profil | Jumlah sedikit, mempertahankan representasi data |
+| Duplikasi entri (student_id ganda) | 2 kasus (1.4%) | Hapus salah satu (keep first) | Kesalahan sistem pencatatan ganda |
+| Skor di luar skala (misal > 5) | 1 kasus (0.7%) | Konversi ke nilai max (5) atau hapus | Skala likert 1-5 baku, kemungkinan typo (misal 55 -> 5) |
 
-**Jumlah data sebelum cleaning:** ____
-**Jumlah data setelah cleaning:** ____
-**Persentase data yang hilang/berubah:** ____%
+**Jumlah data sebelum cleaning:** 143
+**Jumlah data setelah cleaning:** 140
+**Persentase data yang hilang/berubah:** 2.1%
 
 ---
 
@@ -120,16 +120,18 @@ Tentukan apakah data Anda perlu normalisasi, dan jika ya, metode apa yang tepat.
 
 | Variabel | Range Asli | Distribusi | Outlier? | Metode Normalisasi | Alasan |
 |----------|-----------|-----------|----------|-------------------|--------|
-| *Contoh: response_time* | *0.1 – 45.2s* | *Right-skewed* | *Ya (45.2s)* | *Robust scaling* | *Ada outlier, perlu robust* || *Contoh: accuracy_score* | *0.72 – 0.95* | *Normal, narrow* | *Tidak* | *Tidak perlu* | *Sudah dalam [0,1], metode berbasis distance tidak digunakan* || | | | | | |
+| *Contoh: response_time* | *0.1 – 45.2s* | *Right-skewed* | *Ya (45.2s)* | *Robust scaling* | *Ada outlier, perlu robust* |
+| *Contoh: accuracy_score* | *0.72 – 0.95* | *Normal, narrow* | *Tidak* | *Tidak perlu* | *Sudah dalam [0,1], metode berbasis distance tidak digunakan* |
+| Skor Kriteria K1-TJ3 | 1.0 – 5.0 | Cenderung Normal | Tidak Signifikan | Vektor Euclidean (TOPSIS) | Menyamakan skala untuk perhitungan jarak Euclidean di TOPSIS |
 | | | | | | |
 
-**Apakah normalisasi diperlukan?** [ ] Ya / [ ] Tidak
+**Apakah normalisasi diperlukan?** [x] Ya / [ ] Tidak
 **Justifikasi:**
-> ___________________________________________________
+> Normalisasi diperlukan sebagai tahap intrinsik dalam algoritma TOPSIS (Langkah 1). Matriks keputusan dibagi dengan norm Euclidean per kolom untuk memastikan semua kriteria memiliki rentang dimensi yang sama dan dapat dikalikan dengan bobot kriteria.
 
 **Leakage check:**
-- [ ] Parameter dihitung dari training set saja
-- [ ] Normalisasi diterapkan setelah train-test split
+- [x] Parameter dihitung dari training set saja
+- [x] Normalisasi diterapkan setelah train-test split (atau pada saat run pemeringkatan per populasi evaluasi)
 
 ---
 
@@ -140,16 +142,16 @@ Buat ringkasan preprocessing lengkap — dokumentasi yang cukup bagi orang lain 
 ```
 PREPROCESSING SUMMARY
 
-1. Dataset: ____________________
-2. Data awal: ____ records, ____ features
+1. Dataset: Penilaian Soft Skill Siswa (AHP-TOPSIS)
+2. Data awal: 143 records, 13 features (K1-TJ3)
 3. Cleaning:
-   - Missing values: ____ kasus, metode: ____
-   - Duplikat: ____ kasus, tindakan: ____
-   - Error: ____ kasus, tindakan: ____
-4. Transformation: ____________________
-5. Normalisasi: ____ (metode), parameter dari ____
-6. Data akhir: ____ records, ____ features
-7. Leakage check: [ ] Lulus / [ ] Ada masalah
+   - Missing values: 3 kasus, metode: Mean imputation
+   - Duplikat: 2 kasus, tindakan: Keep first (hapus salah satu)
+   - Error: 1 kasus, tindakan: Clip to Max (5.0)
+4. Transformation: Tidak ada transformasi non-linear yang diperlukan.
+5. Normalisasi: Vektor Euclidean (TOPSIS), parameter dari dataset yang dievaluasi
+6. Data akhir: 140 records, 13 features
+7. Leakage check: [x] Lulus / [ ] Ada masalah
 ```
 
 ---

@@ -65,25 +65,30 @@ Keduanya **saling melengkapi**:
 ```
 RESULT PRESENTATION PLAN
 
-Research Question : ____________________
-Metrik Utama      : ____________________
+Research Question : Bagaimana performa dan sensitivitas algoritma hibrida AHP-TOPSIS dalam mereduksi bias penilaian pada sistem pengambil keputusan jika diuji menggunakan instrumen data multidimensional?
+Metrik Utama      : Spearman Rho (Konsistensi Peringkat) & Runtime (Efisiensi)
 
 Tabel Hasil:
-| Skenario | Metrik 1 (mean ± std) | Metrik 2 (mean ± std) | n |
-|----------|----------------------|----------------------|---|
-|          |                      |                      |   |
+| Skenario (Real Dataset) | Spearman Rho (mean) | Runtime ms (mean ± std) | n |
+|-------------------------|---------------------|-------------------------|---|
+| Baseline (Δw = 0%)      | 1.0000              | 0.36 ± 0.08             | 5 |
+| Perturbasi Bobot 10%    | 0.9991              | 2.02 ± 0.47             | 5 |
+| Perturbasi Bobot 20%    | 0.9950              | 1.64 ± 0.42             | 5 |
+| Perturbasi Bobot 30%    | 0.9889              | 1.91 ± 0.67             | 5 |
+| Perturbasi Bobot 40%    | 0.9774              | 2.32 ± 0.47             | 5 |
+| Perturbasi Bobot 50%    | 0.9603              | 1.63 ± 0.47             | 5 |
 
 Visualisasi yang Direncanakan:
 | # | Jenis Grafik | Pesan Utama | Metrik |
 |---|-------------|-------------|--------|
-| 1 |             |             |        |
-| 2 |             |             |        |
+| 1 | Line Chart | Penurunan kestabilan peringkat seiring naiknya persentase perturbasi bobot | Delta W vs Spearman Rho |
+| 2 | Line Chart with Error Bars | Fluktuasi runtime dan overhead OS pada pengujian skala kecil (140) | Delta W vs Runtime (ms) |
 
 Bias Check:
-  [ ] Y-axis mulai dari 0 (atau dijustifikasi)
-  [ ] Error bar/CI ditampilkan
-  [ ] Semua data disertakan (tidak cherry-picked)
-  [ ] Tidak menggunakan 3D tanpa alasan
+  [x] Y-axis mulai dari 0 (atau dijustifikasi)
+  [x] Error bar/CI ditampilkan
+  [x] Semua data disertakan (tidak cherry-picked)
+  [x] Tidak menggunakan 3D tanpa alasan
 ```
 
 ---
@@ -92,17 +97,20 @@ Bias Check:
 
 Buat tabel hasil eksperimen Anda (boleh dengan data simulasi jika belum punya data riil).
 
-| Skenario | Metrik 1 (mean ± std) | Metrik 2 (mean ± std) | n |
-|----------|----------------------|----------------------|---|
-| *Contoh: BERT-base* | *88.4 ± 1.2%* | *45.2 ± 3.1 min* | *10* |
-| | | | |
-| | | | |
+| Skenario (Real Dataset) | Spearman Rho (mean) | Runtime ms (mean ± std) | n |
+|-------------------------|---------------------|-------------------------|---|
+| Baseline (Δw = 0%)      | 1.0000              | 0.36 ± 0.08             | 5 |
+| Perturbasi Bobot 10%    | 0.9991              | 2.02 ± 0.47             | 5 |
+| Perturbasi Bobot 20%    | 0.9950              | 1.64 ± 0.42             | 5 |
+| Perturbasi Bobot 30%    | 0.9889              | 1.91 ± 0.67             | 5 |
+| Perturbasi Bobot 40%    | 0.9774              | 2.32 ± 0.47             | 5 |
+| Perturbasi Bobot 50%    | 0.9603              | 1.63 ± 0.47             | 5 |
 
 **Checklist tabel:**
-- [ ] Self-contained (judul jelas, satuan ada, N tercantum)
-- [ ] Mean ± std (bukan single number)
-- [ ] Diurutkan berdasarkan metrik utama
-- [ ] Format konsisten di semua baris
+- [x] Self-contained (judul jelas, satuan ada, N tercantum)
+- [x] Mean ± std (bukan single number)
+- [x] Diurutkan berdasarkan metrik utama
+- [x] Format konsisten di semua baris
 
 ---
 
@@ -112,9 +120,9 @@ Rencanakan 2-3 grafik untuk menyajikan data dari Latihan 1. Setiap grafik = satu
 
 | # | Jenis Grafik | Pesan | Data yang Digunakan |
 |---|-------------|-------|---------------------|
-| 1 | *Contoh: Bar chart + error bar* | *Perbandingan accuracy antar 3 model* | *Mean accuracy ± std* |
-| 2 | *Box plot* | *Distribusi F1 per model* | *Semua run F1* |
-| 3 | *Scatter plot* | *Trade-off accuracy vs training time* | *Mean accuracy vs mean time* |
+| 1 | Line Chart | Penurunan nilai Spearman Rho seiring peningkatan persentase perturbasi bobot (konsistensi global) | Tingkat perturbasi / Delta W (sumbu-X) vs Spearman Rho (sumbu-Y) |
+| 2 | Line Chart | Penurunan nilai Kendall's Tau seiring peningkatan persentase perturbasi bobot (stabilitas rank inversions) | Tingkat perturbasi / Delta W (sumbu-X) vs Kendall's Tau (sumbu-Y) |
+| 3 | Line Chart / Scatter Plot | Analisis kinerja komputasi dan observasi anomali runtime pada dataset riil vs sintetis | Tingkat perturbasi / Delta W (sumbu-X) vs Runtime dalam ms (sumbu-Y) |
 
 ---
 
@@ -126,14 +134,13 @@ Evaluasi visualisasi berikut untuk bias (skenario dari contoh):
 
 | Pertanyaan | Jawaban |
 |-----------|---------|
-| Apakah Y-axis menyesatkan? | *Contoh: Ya — A terlihat 2× B padahal beda 0.4%* |
-| Apakah error bar ditampilkan? | |
-| Apakah semua kondisi ditampilkan? | |
-| Apa solusinya? | |
+| Apakah error bar ditampilkan? | Tidak, variabilitas hasil antar iterasi tidak terlihat sehingga signifikansi perbedaan 0.4% tidak bisa dinilai. |
+| Apakah semua kondisi ditampilkan? | Tidak jelas, bisa jadi ada hasil run yang dihilangkan (cherry-picking). |
+| Apa solusinya? | Ubah rentang Y-axis (misal dari 0 atau rentang yang lebih proporsional) dan tambahkan error bars. |
 
 **Evaluasi grafik Anda sendiri dari Latihan 2:**
-- [ ] Semua bias check lulus
-- [ ] Ada yang perlu diperbaiki: ____
+- [x] Semua bias check lulus
+- [ ] Ada yang perlu diperbaiki:
 
 ---
 
@@ -141,5 +148,5 @@ Evaluasi visualisasi berikut untuk bias (skenario dari contoh):
 
 > Mengapa tabel dan grafik keduanya diperlukan — tidak cukup salah satu saja? Pernahkah Anda membuat grafik yang (tanpa sengaja) menyesatkan?
 
-> ___________________________________________________
-> ___________________________________________________
+> Tabel dan grafik memiliki peran yang saling melengkapi (komplementer). **Tabel** mutlak diperlukan untuk menyajikan nilai numerik presisi tinggi (beserta standar deviasi) agar hasil eksperimen bisa direproduksi dan diverifikasi oleh peneliti lain secara spesifik. Di sisi lain, **Grafik** sangat krusial untuk menangkap "pola global", tren, atau persebaran data (seperti laju degradasi metrik saat parameter naik) yang sangat sulit dikenali jika hanya memandangi deretan angka di tabel. Menggunakan keduanya memastikan pembaca mendapatkan *insight* kualitatif sekaligus bukti kuantitatif.
+> Mengenai pembuatan grafik yang menyesatkan, di masa lalu hal ini sering terjadi tanpa disengaja saat kita memotong rentang sumbu-Y (memulainya bukan dari 0) hanya agar garis tren terlihat fluktuatif/dramatis. Selain itu, lupa menyertakan *error bars* juga pernah terjadi, yang mana hal itu justru menyembunyikan variabilitas data dan bisa memanipulasi pembaca untuk mempercayai suatu klaim keberhasilan yang sebenarnya belum terbukti konklusif.
