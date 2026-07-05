@@ -14,11 +14,10 @@ Catatan kronologis pelaksanaan tiap tahap (sumber: riwayat commit git & dokumen 
 | 2026-07-02 | Tahap 3 | Menyiapkan struktur direktori kode (05-kode, 06-output) & inisialisasi draf worksheet (Pesan: "Update worksheets and add experiment/visualization files") | - |
 | 2026-07-04 | Tahap 3 | Melengkapi rencana parameter eksekusi (5 seed, delta 10%-50%) (Pesan: "ws10-selesai") | [ws-10](../../worksheets/ws-10-execution-data.md) |
 | 2026-07-06 | Tahap 3 | Menyelesaikan checklist validasi kebersihan data & mitigasi (Pesan: "ws11-selesai") | [ws-11](../../worksheets/ws-11-data-validation.md) |
-| 2026-07-06 | Tahap 4 | Mengunggah dataset (riil & sintetis 10k) serta modul skrip utama (`main.py`, AHP-TOPSIS) (Pesan: "Upload 04-data" & "Upload 05-code") | - |
+| 2026-07-06 | Tahap 4 | Mengunggah dataset (riil & sintetis 10k) serta modul skrip utama (`main.py`, AHP-TOPSIS) (Pesan: "Upload 04-data" & "Upload 05-code") | [04-data](../04-data), [05-kode](../05-kode) |
 | 2026-07-06 | Tahap 4 | Eksekusi program AHP-TOPSIS skala penuh (60 runs: 30 dataset riil, 30 dataset sintetis) dan ekstraksi anomali | `benchmark_log.csv` |
-| 2026-07-06 | Tahap 4 | Reorganisasi direktori output ke sub-folder `/logs` & `/plots`, serta pembaruan path pada `experiment_config.json` | - |
-| 2026-07-06 | Tahap 4 | Penyeragaman konvensi penamaan grafik menjadi `fig_*.png` agar selaras dengan format README | [06-output](../../example-riset-directory/06-output/README.md) |
-| 2026-07-06 | Tahap 2 | Validasi keselarasan instrumen eksperimen dengan rumusan masalah pada dokumen proposal | - |
+| 2026-07-06 | Tahap 4 |  Reorganisasi direktori output ke sub-folder `/logs` & `/plots`, serta pembaruan path pada `experiment_config.json` | - |
+| 2026-07-06 | Tahap 2 |  Validasi keselarasan instrumen eksperimen dengan rumusan masalah pada dokumen proposal | - |
 | 2026-07-06 | Tahap 4 | Eksekusi 60 runs simulasi, plotting 3 grafik hasil, & penulisan kesimpulan tabel data,serta pengerjaan ws13 (Pesan: "ws12-selesai") | [ws-12](../../worksheets/ws-12-result-presentation.md) |
 | 2026-07-06 | Tahap 4 | Mendokumentasikan *cleaning* & justifikasi normalisasi TOPSIS (Pesan: "ws13-selesai") | [ws-13](../../worksheets/ws-13-preprocessing.md) |
 
