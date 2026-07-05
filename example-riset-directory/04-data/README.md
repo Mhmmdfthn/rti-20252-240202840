@@ -1,13 +1,11 @@
 # 04-data
 
-Data mentah hasil pengujian — output dari **Tahap 3**, input untuk **Tahap 4**.
+Direktori ini berisi data mentah (raw data) yang digunakan sebagai masukan (input) dalam eksperimen Evaluasi Soft Skill berbasis AHP-TOPSIS.
 
-## Isi yang diharapkan
+## Isi Direktori
 
-- Hasil pengujian k6 dalam format CSV/JSON, per kombinasi mode (`CACHE_MODE=none|hybrid`) × jenis traffic (legitimate/attack/mixed)
-- Metrik resource container (CPU, memori) PostgreSQL & Redis selama pengujian
-- Metadata eksekusi tiap run (timestamp, konfigurasi, durasi)
+- **`synthetic_10k.csv`**: Dataset sintetis yang berisi 10.000 data penilaian siswa. Dataset ini digenerate secara khusus untuk pengujian stabilitas peringkat dan sensitivitas bobot pada skala besar.
 
 ## Catatan
 
-Data di folder ini bersifat mentah (raw) dan belum diolah. Hasil olahan (statistik, grafik) disimpan di [../06-output/](../06-output/).
+Data di folder ini merupakan data penilaian kinerja/kriteria. Hasil dari eksperimen (berupa peringkat awal, metrik sensitivitas, perubahan peringkat, dan log) akan tersimpan di [../05-kode/experiment/results/](../05-kode/experiment/results/).
