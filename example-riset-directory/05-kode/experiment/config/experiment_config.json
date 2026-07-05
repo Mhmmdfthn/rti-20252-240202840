@@ -23,15 +23,15 @@
   },
   "runs_per_scenario": 5,
   "seeds_per_run": [42, 123, 456, 789, 1001],
-  "criteria": ["K1", "K2", "K3", "K4", "KO1", "KO2", "KO3", "KP1", "KP2", "KP3", "TJ1", "TJ2", "TJ3"],
+  "criteria": ["C11", "C12", "C13", "C14", "C21", "C22", "C23", "C31", "C32", "C33", "C41", "C42", "C43"],
   "criteria_categories": {
-    "K": ["K1", "K2", "K3", "K4"],
-    "KO": ["KO1", "KO2", "KO3"],
-    "KP": ["KP1", "KP2", "KP3"],
-    "TJ": ["TJ1", "TJ2", "TJ3"]
+    "C1": ["C11", "C12", "C13", "C14"],
+    "C2": ["C21", "C22", "C23"],
+    "C3": ["C31", "C32", "C33"],
+    "C4": ["C41", "C42", "C43"]
   },
   "output": {
-    "dir": "results",
+    "dir": "output",
     "filename": "benchmark_log.csv",
     "log_filename": "run_log.jsonl"
   }

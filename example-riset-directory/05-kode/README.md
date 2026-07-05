@@ -1,25 +1,28 @@
 # 05-kode
 
-Source code implementasi — **Tahap 2** (API Gateway) dan **Tahap 3** (skrip pengujian k6).
+Direktori ini berisi source code implementasi untuk **Eksperimen Sensitivitas Bobot AHP-TOPSIS** (Decision Support System Evaluasi Soft Skill).
 
-## Struktur yang direncanakan
+## Struktur Direktori
 
-```
+```text
 05-kode/
-├── gateway/              # API Gateway (Go + Echo)
-│   ├── cmd/gateway/
-│   ├── internal/
-│   ├── migrations/       # migration SQL (signing_keys, rate_limit_counters)
-│   ├── scripts/          # skrip seed (generate RSA keypair, insert signing_keys)
-│   ├── docker-compose.yml
-│   └── .env.example
-└── k6/                   # skrip pengujian k6
-    ├── legitimate.js
-    ├── attack.js
-    └── mixed.js
+└── experiment/               # Direktori utama kode eksperimen
+    ├── src/                  # Modul source code utama
+    │   ├── ahp_topsis.py     # Implementasi algoritma AHP dan TOPSIS
+    │   ├── data_loader.py    # Modul untuk memuat atau men-generate data (Synthetic)
+    │   ├── logger.py         # Sistem logging untuk mencatat hasil eksperimen
+    │   └── sensitivity_test.py # Modul uji sensitivitas bobot
+    ├── config/               # Konfigurasi
+    │   └── experiment_config.json
+    ├── main.py               # Entry-point utama untuk menjalankan eksperimen
+    └── requirements.txt      # Daftar dependensi Python
 ```
+
 
 ## Acuan
 
-- Rencana implementasi Gateway: [../09-docs/tahap-2-implementasi-gateway.md](../09-docs/tahap-2-implementasi-gateway.md)
-- Rencana skrip k6: [../09-docs/tahap-3-pengujian-k6.md](../09-docs/tahap-3-pengujian-k6.md)
+Referensi dan landasan untuk implementasi kode eksperimen ini dapat dilihat pada dokumen berikut:
+- **Perancangan Sistem & Eksperimen**: [../../worksheets/ws-06-system-experiment.md](../../worksheets/ws-06-system-experiment.md)
+- **Desain Eksperimen Sensitivitas**: [../../worksheets/ws-07-experiment-design.md](../../worksheets/ws-07-experiment-design.md)
+- **Implementasi (Kode)**: [../../worksheets/ws-09-implementation.md](../../worksheets/ws-09-implementation.md)
+- **Validasi Data (AHP-TOPSIS)**: [../../worksheets/ws-11-data-validation.md](../../worksheets/ws-11-data-validation.md)

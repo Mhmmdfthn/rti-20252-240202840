@@ -11,15 +11,23 @@ Struktur:
 
 import numpy as np
 
-
 # ══════════════════════════════════════════════════════════
 # AHP — Analytic Hierarchy Process
 # ══════════════════════════════════════════════════════════
 
 # Random Index (RI) untuk n = 1..10
-_RI_TABLE = {1: 0.00, 2: 0.00, 3: 0.58, 4: 0.90,
-             5: 1.12, 6: 1.24, 7: 1.32, 8: 1.41,
-             9: 1.45, 10: 1.51}
+_RI_TABLE = {
+    1: 0.00,
+    2: 0.00,
+    3: 0.58,
+    4: 0.90,
+    5: 1.12,
+    6: 1.24,
+    7: 1.32,
+    8: 1.41,
+    9: 1.45,
+    10: 1.51,
+}
 
 
 class AHPCalculator:
@@ -49,9 +57,7 @@ class AHPCalculator:
         """Hitung Consistency Ratio (CR). Nilai < 0.1 diterima."""
         if self._cr is None:
             w = self.compute_weights()
-            lam_max = float(np.mean(
-                (self.matrix @ w) / w
-            ))
+            lam_max = float(np.mean((self.matrix @ w) / w))
             n = self.n
             ci = (lam_max - n) / (n - 1)
             ri = _RI_TABLE.get(n, 1.51)
@@ -72,6 +78,7 @@ class AHPCalculator:
 # ══════════════════════════════════════════════════════════
 # TOPSIS — Technique for Order Preference by Similarity to Ideal Solution
 # ══════════════════════════════════════════════════════════
+
 
 class TOPSISRanker:
     """
@@ -121,7 +128,7 @@ class TOPSISRanker:
         if self._ranks is None:
             scores = self.compute_scores()
             # rankdata dari scipy versi sederhana (descending)
-            order = np.argsort(-scores)           # indeks dari skor tertinggi
+            order = np.argsort(-scores)  # indeks dari skor tertinggi
             ranks = np.empty_like(order)
             ranks[order] = np.arange(1, self.m + 1)
             self._ranks = ranks
@@ -130,11 +137,11 @@ class TOPSISRanker:
     # ── Private ─────────────────────────────────────────
     def _topsis_pipeline(self) -> np.ndarray:
         dm = self.dm
-        w  = self.weights
+        w = self.weights
 
         # 1. Normalisasi vektor (Euclidean)
         norms = np.linalg.norm(dm, axis=0)
-        norms[norms == 0] = 1e-12               # hindari division by zero
+        norms[norms == 0] = 1e-12  # hindari division by zero
         normalized = dm / norms
 
         # 2. Matriks keputusan berbobot
@@ -159,6 +166,7 @@ class TOPSISRanker:
 # ══════════════════════════════════════════════════════════
 # Entry-point tunggal
 # ══════════════════════════════════════════════════════════
+
 
 def run_ahp_topsis(
     decision_matrix: np.ndarray,
@@ -191,7 +199,7 @@ def run_ahp_topsis(
     """
     # ── Langkah 1: AHP bobot kategori ──────────────────
     ahp = AHPCalculator(pairwise_matrix)
-    category_weights = ahp.compute_weights()    # shape (4,)
+    category_weights = ahp.compute_weights()  # shape (4,)
 
     # ── Langkah 2: Distribusi ke 13 kriteria ───────────
     # Kategori: K(4), KO(3), KP(3), TJ(3)
@@ -199,10 +207,9 @@ def run_ahp_topsis(
 
     if sub_weights is None:
         # Uniform dalam setiap kategori
-        final_weights = np.concatenate([
-            np.full(sz, cw / sz)
-            for cw, sz in zip(category_weights, category_sizes)
-        ])
+        final_weights = np.concatenate(
+            [np.full(sz, cw / sz) for cw, sz in zip(category_weights, category_sizes)]
+        )
     else:
         # Gunakan sub_weights yang sudah dimodifikasi (untuk uji sensitivitas)
         final_weights = np.asarray(sub_weights, dtype=float)
@@ -215,12 +222,12 @@ def run_ahp_topsis(
     # ── Langkah 3: TOPSIS ──────────────────────────────
     topsis = TOPSISRanker(decision_matrix, final_weights)
     scores = topsis.compute_scores()
-    ranks  = topsis.get_ranking()
+    ranks = topsis.get_ranking()
 
     return {
-        "weights":       final_weights,
-        "scores":        scores,
-        "ranks":         ranks,
-        "cr":            ahp.consistency_ratio(),
+        "weights": final_weights,
+        "scores": scores,
+        "ranks": ranks,
+        "cr": ahp.consistency_ratio(),
         "is_consistent": ahp.is_consistent(),
     }

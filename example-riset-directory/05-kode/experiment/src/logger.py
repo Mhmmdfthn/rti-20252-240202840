@@ -32,7 +32,7 @@ class ExperimentLogger:
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
-        self._csv_path  = self.output_dir / "benchmark_log.csv"
+        self._csv_path = self.output_dir / "benchmark_log.csv"
         self._jsonl_path = self.output_dir / "run_log.jsonl"
 
         self._entries: list[dict] = []
@@ -51,10 +51,19 @@ class ExperimentLogger:
     @staticmethod
     def _csv_fields() -> list[str]:
         return [
-            "run_id", "timestamp", "scenario", "dataset_size",
-            "seed", "delta_w_pct", "code_version",
-            "spearman_rho", "kendall_tau", "runtime_ms",
-            "reversal_detected", "anomaly_flag", "notes",
+            "run_id",
+            "timestamp",
+            "scenario",
+            "dataset_size",
+            "seed",
+            "delta_w_pct",
+            "code_version",
+            "spearman_rho",
+            "kendall_tau",
+            "runtime_ms",
+            "reversal_detected",
+            "anomaly_flag",
+            "notes",
         ]
 
     # ── Logging ────────────────────────────────────────
@@ -84,19 +93,19 @@ class ExperimentLogger:
         timestamp = datetime.now(tz=timezone.utc).isoformat()
 
         entry = {
-            "run_id":            run_id,
-            "timestamp":         timestamp,
-            "scenario":          scenario,
-            "dataset_size":      dataset_size,
-            "seed":              seed,
-            "delta_w_pct":       delta_w_pct,
-            "code_version":      self.VERSION,
-            "spearman_rho":      round(spearman_rho, 6),
-            "kendall_tau":       round(kendall_tau, 6),
-            "runtime_ms":        round(runtime_ms, 3),
+            "run_id": run_id,
+            "timestamp": timestamp,
+            "scenario": scenario,
+            "dataset_size": dataset_size,
+            "seed": seed,
+            "delta_w_pct": delta_w_pct,
+            "code_version": self.VERSION,
+            "spearman_rho": round(spearman_rho, 6),
+            "kendall_tau": round(kendall_tau, 6),
+            "runtime_ms": round(runtime_ms, 3),
             "reversal_detected": reversal_detected,
-            "anomaly_flag":      anomaly_flag,
-            "notes":             notes,
+            "anomaly_flag": anomaly_flag,
+            "notes": notes,
         }
 
         self._entries.append(entry)
@@ -127,20 +136,20 @@ class ExperimentLogger:
         if not self._entries:
             return {}
 
-        rhos      = [e["spearman_rho"] for e in self._entries]
-        runtimes  = [e["runtime_ms"]   for e in self._entries]
+        rhos = [e["spearman_rho"] for e in self._entries]
+        runtimes = [e["runtime_ms"] for e in self._entries]
         reversals = [e["reversal_detected"] for e in self._entries]
 
         return {
-            "total_runs":         len(self._entries),
-            "spearman_rho_mean":  round(sum(rhos)     / len(rhos),    4),
-            "spearman_rho_min":   round(min(rhos),    4),
-            "spearman_rho_max":   round(max(rhos),    4),
-            "runtime_ms_mean":    round(sum(runtimes) / len(runtimes), 3),
-            "runtime_ms_min":     round(min(runtimes), 3),
-            "runtime_ms_max":     round(max(runtimes), 3),
-            "total_reversals":    sum(reversals),
-            "reversal_rate_pct":  round(100 * sum(reversals) / len(reversals), 2),
+            "total_runs": len(self._entries),
+            "spearman_rho_mean": round(sum(rhos) / len(rhos), 4),
+            "spearman_rho_min": round(min(rhos), 4),
+            "spearman_rho_max": round(max(rhos), 4),
+            "runtime_ms_mean": round(sum(runtimes) / len(runtimes), 3),
+            "runtime_ms_min": round(min(runtimes), 3),
+            "runtime_ms_max": round(max(runtimes), 3),
+            "total_reversals": sum(reversals),
+            "reversal_rate_pct": round(100 * sum(reversals) / len(reversals), 2),
         }
 
     def get_csv_path(self) -> str:

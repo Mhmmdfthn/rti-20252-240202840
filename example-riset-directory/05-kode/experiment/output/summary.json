@@ -1,0 +1,11 @@
+{
+  "total_runs": 60,
+  "spearman_rho_mean": 0.9932,
+  "spearman_rho_min": 0.9603,
+  "spearman_rho_max": 1.0,
+  "runtime_ms_mean": 11.234,
+  "runtime_ms_min": 0.263,
+  "runtime_ms_max": 33.419,
+  "total_reversals": 40,
+  "reversal_rate_pct": 66.67
+}

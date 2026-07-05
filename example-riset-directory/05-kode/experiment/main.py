@@ -4,29 +4,27 @@ main.py
 =======
 Entry-point utama eksperimen AHP-TOPSIS.
 
-Menjalankan pengujian sensitivitas bobot pada dua skenario:
-  1. Real Dataset   (n=140)
-  2. Synthetic Dataset (n=10000)
+Menjalankan pengujian sensitivitas bobot pada dataset sintetis (n=10.000).
+Data riil akan dimasukkan secara terpisah oleh peneliti.
 
-Setiap skenario dijalankan dengan beberapa seed berbeda (multiple runs)
-untuk mendapatkan distribusi hasil yang valid secara statistik.
+Setiap run menggunakan seed berbeda (multiple runs) untuk mendapatkan
+distribusi hasil yang valid secara statistik.
 
 Penggunaan:
-  python main.py                          # jalankan semua (default)
-  python main.py --dataset real           # hanya dataset riil
-  python main.py --dataset synthetic      # hanya dataset sintetis
-  python main.py --dataset all --n 10000  # semua, sintetis 10000 baris
+  python main.py                          # jalankan dengan default
+  python main.py --n 10000               # tentukan jumlah data sintetis
+  python main.py --delta-range 0 50 --step 10
   python main.py --help                   # lihat semua opsi
 """
 
 import argparse
+import io
 import json
 import os
 import sys
 import time
 from pathlib import Path
 
-import io
 import numpy as np
 
 # ── Paksa UTF-8 di Windows ─────────────────────────────
@@ -34,21 +32,15 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="repla
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
 
 # ── Impor modul eksperimen ──────────────────────────────
-from data_loader import (
-    generate_synthetic_data,
-    load_real_dataset,
-    get_pairwise_matrix,
-    CRITERIA,
-    set_seed,
-)
-from ahp_topsis import run_ahp_topsis
-from sensitivity_test import run_sensitivity_test
-from logger import ExperimentLogger
-
+from src.ahp_topsis import run_ahp_topsis
+from src.data_loader import CRITERIA, generate_synthetic_data, get_pairwise_matrix, load_real_data, set_seed
+from src.logger import ExperimentLogger
+from src.sensitivity_test import run_sensitivity_test
 
 # ══════════════════════════════════════════════════════════
 # CLI Argument Parser
 # ══════════════════════════════════════════════════════════
+
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
@@ -65,16 +57,16 @@ Contoh penggunaan:
     )
 
     parser.add_argument(
-        "--dataset",
-        choices=["real", "synthetic", "all"],
-        default="all",
-        help="Skenario dataset yang akan dijalankan (default: all)",
-    )
-    parser.add_argument(
         "--n",
         type=int,
         default=10000,
-        help="Jumlah data sintetis (default: 10000)",
+        help="Jumlah data sintetis yang di-generate (default: 10000)",
+    )
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=42,
+        help="Seed awal untuk reprodusibilitas (default: 42)",
     )
     parser.add_argument(
         "--delta-range",
@@ -99,19 +91,27 @@ Contoh penggunaan:
     parser.add_argument(
         "--output",
         type=str,
-        default="results",
-        help="Direktori output hasil (default: results/)",
+        default="output",
+        help="Direktori output hasil (default: output/)",
+    )
+    parser.add_argument(
+        "--quiet",
+        "-q",
+        action="store_true",
+        help="Suppress output terminal (hanya tampilkan error)",
+    )
+
+    parser.add_argument(
+        "--dataset",
+        choices=["all", "real", "synthetic"],
+        default="all",
+        help="Skenario dataset yang dijalankan: all | real | synthetic (default: all)",
     )
     parser.add_argument(
         "--real-csv",
         type=str,
         default=None,
-        help="Path ke file CSV dataset riil (opsional, default: auto-generate)",
-    )
-    parser.add_argument(
-        "--quiet", "-q",
-        action="store_true",
-        help="Suppress output terminal (hanya tampilkan error)",
+        help="Path ke CSV dataset riil (default: auto-detect 04-data/datasetsimulasi_riil_140.csv)",
     )
 
     return parser
@@ -120,6 +120,7 @@ Contoh penggunaan:
 # ══════════════════════════════════════════════════════════
 # Fungsi Utilitas
 # ══════════════════════════════════════════════════════════
+
 
 def print_header(text: str, quiet: bool = False) -> None:
     if not quiet:
@@ -142,6 +143,7 @@ def print_result(label: str, value, quiet: bool = False) -> None:
 # ══════════════════════════════════════════════════════════
 # Skenario Eksperimen
 # ══════════════════════════════════════════════════════════
+
 
 def run_scenario(
     scenario_name: str,
@@ -178,11 +180,15 @@ def run_scenario(
         t_end = time.perf_counter()
         baseline_runtime = (t_end - t_start) * 1000
 
-        base_ranks   = baseline["ranks"]
+        base_ranks = baseline["ranks"]
         base_weights = baseline["weights"]
-        cr           = baseline["cr"]
+        cr = baseline["cr"]
 
-        print_result("CR (AHP):", f"{cr:.4f} {'OK' if baseline['is_consistent'] else 'FAIL CR>0.1!'}", quiet)
+        print_result(
+            "CR (AHP):",
+            f"{cr:.4f} {'OK' if baseline['is_consistent'] else 'FAIL CR>0.1!'}",
+            quiet,
+        )
         print_result("Baseline runtime:", f"{baseline_runtime:.2f} ms", quiet)
 
         # Log baseline
@@ -201,7 +207,7 @@ def run_scenario(
         # ── Loop delta values ─────────────────────────
         for delta in delta_values:
             if delta == 0:
-                continue    # sudah di-log sebagai baseline
+                continue  # sudah di-log sebagai baseline
 
             t_start = time.perf_counter()
             try:
@@ -234,7 +240,7 @@ def run_scenario(
                 )
 
                 reversal_mark = " [REVERSAL]" if result["reversal_detected"] else ""
-                anomaly_mark  = " [ANOMALY]"  if anomaly else ""
+                anomaly_mark = " [ANOMALY]" if anomaly else ""
                 print_result(
                     f"  δ={delta:4.0f}%:",
                     f"ρ={result['spearman_rho']:.4f}  "
@@ -245,7 +251,10 @@ def run_scenario(
                 )
 
                 if anomaly:
-                    logger.log_anomaly(run_id, f"Runtime anomaly: {runtime_ms:.2f}ms vs baseline {baseline_runtime:.2f}ms")
+                    logger.log_anomaly(
+                        run_id,
+                        f"Runtime anomaly: {runtime_ms:.2f}ms vs baseline {baseline_runtime:.2f}ms",
+                    )
 
             except MemoryError:
                 t_end = time.perf_counter()
@@ -261,8 +270,12 @@ def run_scenario(
                     anomaly_flag=True,
                     notes="OOM error — skipped",
                 )
-                logger.log_anomaly(run_id, f"MemoryError pada delta={delta}%, n={n_students}")
-                print_progress(f"  [OOM] Pada delta={delta}% -- dicatat & dilanjutkan", quiet)
+                logger.log_anomaly(
+                    run_id, f"MemoryError pada delta={delta}%, n={n_students}"
+                )
+                print_progress(
+                    f"  [OOM] Pada delta={delta}% -- dicatat & dilanjutkan", quiet
+                )
 
             finally:
                 logger.cleanup_memory()
@@ -274,6 +287,7 @@ def run_scenario(
 # Main
 # ══════════════════════════════════════════════════════════
 
+
 def main() -> None:
     parser = build_parser()
     args = parser.parse_args()
@@ -283,8 +297,7 @@ def main() -> None:
     # ── Setup ─────────────────────────────────────────
     delta_min, delta_max = args.delta_range
     delta_values = [
-        round(d, 1)
-        for d in np.arange(delta_min, delta_max + args.step, args.step)
+        float(round(d, 1)) for d in np.arange(delta_min, delta_max + args.step, args.step)
     ]
     seeds = [42, 123, 456, 789, 1001][: args.runs]
 
@@ -297,27 +310,38 @@ def main() -> None:
         print("  Eksperimen Sensitivitas AHP-TOPSIS")
         print("  DSS Evaluasi Soft Skill -- MA Mu'allimin Sruweng")
         print("-" * 62)
-        print(f"  Dataset   : {args.dataset}")
+        print(f"  Dataset   : {args.dataset.capitalize()}")
         print(f"  Delta (%) : {delta_values}")
         print(f"  Seeds     : {seeds}")
         print(f"  Output    : {output_dir}")
         print("=" * 62)
 
-    # ── Jalankan Skenario ─────────────────────────────
-    if args.dataset in ("real", "all"):
-        df_real = load_real_dataset(csv_path=args.real_csv, seed=42)
-        run_scenario(
-            scenario_name="Real Dataset",
-            df=df_real,
-            pairwise_matrix=pairwise_matrix,
-            delta_values=delta_values,
-            seeds=seeds,
-            logger=logger,
-            quiet=quiet,
-        )
+    run_real    = args.dataset in ("all", "real")
+    run_synth   = args.dataset in ("all", "synthetic")
 
-    if args.dataset in ("synthetic", "all"):
-        df_syn = generate_synthetic_data(n=args.n, seed=42)
+    # ── Dataset Riil ──────────────────────────────────
+    if run_real:
+        try:
+            df_real = load_real_data(args.real_csv)
+            run_scenario(
+                scenario_name="Real Dataset",
+                df=df_real,
+                pairwise_matrix=pairwise_matrix,
+                delta_values=delta_values,
+                seeds=seeds,
+                logger=logger,
+                quiet=quiet,
+            )
+        except FileNotFoundError as e:
+            print(f"\n  [SKIP] Dataset riil tidak ditemukan: {e}", file=sys.stderr)
+        except ValueError as e:
+            print(f"\n  [SKIP] Dataset riil gagal dimuat: {e}", file=sys.stderr)
+
+    # ── Generate & Jalankan Dataset Sintetis ──────────
+    if run_synth:
+        if not quiet:
+            print(f"\n  [Synthetic] Generating {args.n} data (seed={args.seed})...")
+        df_syn = generate_synthetic_data(n=args.n, seed=args.seed)
         run_scenario(
             scenario_name="Synthetic Dataset",
             df=df_syn,

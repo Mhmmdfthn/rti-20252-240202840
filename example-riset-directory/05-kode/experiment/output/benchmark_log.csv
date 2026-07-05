@@ -1,0 +1,65 @@
+run_id,timestamp,scenario,dataset_size,seed,delta_w_pct,code_version,spearman_rho,kendall_tau,runtime_ms,reversal_detected,anomaly_flag,notes
+run-real-dataset-0001,2026-07-05T13:34:12.229923+00:00,Real Dataset,140,42,0.0,1.0.0,1.0,1.0,0.357,False,False,"baseline, CR=0.0433"
+run-real-dataset-0002,2026-07-05T13:34:12.233158+00:00,Real Dataset,140,42,10.0,1.0.0,0.999073,0.980678,1.877,True,True,runtime anomaly suspected
+run-real-dataset-0001,2026-07-05T13:34:57.157801+00:00,Real Dataset,140,42,0.0,1.0.0,1.0,1.0,0.308,False,False,"baseline, CR=0.0433"
+run-real-dataset-0002,2026-07-05T13:34:57.160223+00:00,Real Dataset,140,42,10,1.0.0,0.999073,0.980678,1.476,True,False,
+run-real-dataset-0001,2026-07-05T13:35:16.419936+00:00,Real Dataset,140,42,0.0,1.0.0,1.0,1.0,0.305,False,False,"baseline, CR=0.0433"
+run-real-dataset-0002,2026-07-05T13:35:16.422909+00:00,Real Dataset,140,42,10.0,1.0.0,0.999073,0.980678,2.003,True,True,runtime anomaly suspected
+run-real-dataset-0003,2026-07-05T13:35:16.470270+00:00,Real Dataset,140,42,20.0,1.0.0,0.995006,0.949846,1.714,True,True,runtime anomaly suspected
+run-real-dataset-0004,2026-07-05T13:35:16.506924+00:00,Real Dataset,140,42,30.0,1.0.0,0.988878,0.920041,1.639,True,True,runtime anomaly suspected
+run-real-dataset-0005,2026-07-05T13:35:16.543295+00:00,Real Dataset,140,42,40.0,1.0.0,0.977438,0.882014,1.61,True,True,runtime anomaly suspected
+run-real-dataset-0006,2026-07-05T13:35:16.576778+00:00,Real Dataset,140,42,50.0,1.0.0,0.960294,0.838027,1.552,True,True,runtime anomaly suspected
+run-real-dataset-0007,2026-07-05T13:35:16.614077+00:00,Real Dataset,140,123,0.0,1.0.0,1.0,1.0,0.379,False,False,"baseline, CR=0.0433"
+run-real-dataset-0008,2026-07-05T13:35:16.616573+00:00,Real Dataset,140,123,10.0,1.0.0,0.999073,0.980678,1.602,True,False,
+run-real-dataset-0009,2026-07-05T13:35:16.655139+00:00,Real Dataset,140,123,20.0,1.0.0,0.995006,0.949846,1.816,True,False,
+run-real-dataset-0010,2026-07-05T13:35:16.689967+00:00,Real Dataset,140,123,30.0,1.0.0,0.988878,0.920041,1.455,True,False,
+run-real-dataset-0011,2026-07-05T13:35:16.734670+00:00,Real Dataset,140,123,40.0,1.0.0,0.977438,0.882014,2.111,True,True,runtime anomaly suspected
+run-real-dataset-0012,2026-07-05T13:35:16.775845+00:00,Real Dataset,140,123,50.0,1.0.0,0.960294,0.838027,2.392,True,True,runtime anomaly suspected
+run-real-dataset-0013,2026-07-05T13:35:16.820813+00:00,Real Dataset,140,456,0.0,1.0.0,1.0,1.0,0.365,False,False,"baseline, CR=0.0433"
+run-real-dataset-0014,2026-07-05T13:35:16.823919+00:00,Real Dataset,140,456,10.0,1.0.0,0.999073,0.980678,2.236,True,True,runtime anomaly suspected
+run-real-dataset-0015,2026-07-05T13:35:16.863472+00:00,Real Dataset,140,456,20.0,1.0.0,0.995006,0.949846,2.202,True,True,runtime anomaly suspected
+run-real-dataset-0016,2026-07-05T13:35:16.902628+00:00,Real Dataset,140,456,30.0,1.0.0,0.988878,0.920041,1.757,True,False,
+run-real-dataset-0017,2026-07-05T13:35:16.949157+00:00,Real Dataset,140,456,40.0,1.0.0,0.977438,0.882014,2.531,True,True,runtime anomaly suspected
+run-real-dataset-0018,2026-07-05T13:35:16.985216+00:00,Real Dataset,140,456,50.0,1.0.0,0.960294,0.838027,1.364,True,False,
+run-real-dataset-0019,2026-07-05T13:35:17.035657+00:00,Real Dataset,140,789,0.0,1.0.0,1.0,1.0,0.522,False,False,"baseline, CR=0.0433"
+run-real-dataset-0020,2026-07-05T13:35:17.040157+00:00,Real Dataset,140,789,10.0,1.0.0,0.999073,0.980678,2.904,True,True,runtime anomaly suspected
+run-real-dataset-0021,2026-07-05T13:35:17.074968+00:00,Real Dataset,140,789,20.0,1.0.0,0.995006,0.949846,1.106,True,False,
+run-real-dataset-0022,2026-07-05T13:35:17.112216+00:00,Real Dataset,140,789,30.0,1.0.0,0.988878,0.920041,3.094,True,True,runtime anomaly suspected
+run-real-dataset-0023,2026-07-05T13:35:17.155885+00:00,Real Dataset,140,789,40.0,1.0.0,0.977438,0.882014,2.621,True,True,runtime anomaly suspected
+run-real-dataset-0024,2026-07-05T13:35:17.192427+00:00,Real Dataset,140,789,50.0,1.0.0,0.960294,0.838027,1.675,True,False,
+run-real-dataset-0025,2026-07-05T13:35:17.237142+00:00,Real Dataset,140,1001,0.0,1.0.0,1.0,1.0,0.263,False,False,"baseline, CR=0.0433"
+run-real-dataset-0026,2026-07-05T13:35:17.239872+00:00,Real Dataset,140,1001,10.0,1.0.0,0.999073,0.980678,2.054,True,True,runtime anomaly suspected
+run-real-dataset-0027,2026-07-05T13:35:17.280008+00:00,Real Dataset,140,1001,20.0,1.0.0,0.995006,0.949846,1.372,True,True,runtime anomaly suspected
+run-real-dataset-0028,2026-07-05T13:35:17.315445+00:00,Real Dataset,140,1001,30.0,1.0.0,0.988878,0.920041,1.63,True,True,runtime anomaly suspected
+run-real-dataset-0029,2026-07-05T13:35:17.355343+00:00,Real Dataset,140,1001,40.0,1.0.0,0.977438,0.882014,2.75,True,True,runtime anomaly suspected
+run-real-dataset-0030,2026-07-05T13:35:17.390588+00:00,Real Dataset,140,1001,50.0,1.0.0,0.960294,0.838027,1.167,True,False,
+run-synthetic-dataset-0031,2026-07-05T13:35:20.161343+00:00,Synthetic Dataset,10000,42,0.0,1.0.0,1.0,1.0,9.302,False,False,"baseline, CR=0.0433"
+run-synthetic-dataset-0032,2026-07-05T13:35:20.185865+00:00,Synthetic Dataset,10000,42,10.0,1.0.0,0.999974,0.995705,20.792,False,False,
+run-synthetic-dataset-0033,2026-07-05T13:35:20.249062+00:00,Synthetic Dataset,10000,42,20.0,1.0.0,0.999881,0.99071,18.018,False,False,
+run-synthetic-dataset-0034,2026-07-05T13:35:20.317528+00:00,Synthetic Dataset,10000,42,30.0,1.0.0,0.99969,0.984952,25.326,True,False,
+run-synthetic-dataset-0035,2026-07-05T13:35:20.392262+00:00,Synthetic Dataset,10000,42,40.0,1.0.0,0.999364,0.978405,20.299,True,False,
+run-synthetic-dataset-0036,2026-07-05T13:35:20.463412+00:00,Synthetic Dataset,10000,42,50.0,1.0.0,0.998864,0.971106,22.48,True,False,
+run-synthetic-dataset-0037,2026-07-05T13:35:20.522115+00:00,Synthetic Dataset,10000,123,0.0,1.0.0,1.0,1.0,7.791,False,False,"baseline, CR=0.0433"
+run-synthetic-dataset-0038,2026-07-05T13:35:20.545014+00:00,Synthetic Dataset,10000,123,10.0,1.0.0,0.999974,0.995705,21.543,False,False,
+run-synthetic-dataset-0039,2026-07-05T13:35:20.624593+00:00,Synthetic Dataset,10000,123,20.0,1.0.0,0.999881,0.99071,30.578,False,False,
+run-synthetic-dataset-0040,2026-07-05T13:35:20.707670+00:00,Synthetic Dataset,10000,123,30.0,1.0.0,0.99969,0.984952,23.721,True,False,
+run-synthetic-dataset-0041,2026-07-05T13:35:20.794760+00:00,Synthetic Dataset,10000,123,40.0,1.0.0,0.999364,0.978405,24.534,True,False,
+run-synthetic-dataset-0042,2026-07-05T13:35:20.873975+00:00,Synthetic Dataset,10000,123,50.0,1.0.0,0.998864,0.971106,24.551,True,False,
+run-synthetic-dataset-0043,2026-07-05T13:35:20.951467+00:00,Synthetic Dataset,10000,456,0.0,1.0.0,1.0,1.0,13.537,False,False,"baseline, CR=0.0433"
+run-synthetic-dataset-0044,2026-07-05T13:35:20.975124+00:00,Synthetic Dataset,10000,456,10.0,1.0.0,0.999974,0.995705,22.522,False,False,
+run-synthetic-dataset-0045,2026-07-05T13:35:21.049508+00:00,Synthetic Dataset,10000,456,20.0,1.0.0,0.999881,0.99071,21.894,False,False,
+run-synthetic-dataset-0046,2026-07-05T13:35:21.120637+00:00,Synthetic Dataset,10000,456,30.0,1.0.0,0.99969,0.984952,23.115,True,False,
+run-synthetic-dataset-0047,2026-07-05T13:35:21.224188+00:00,Synthetic Dataset,10000,456,40.0,1.0.0,0.999364,0.978405,24.042,True,False,
+run-synthetic-dataset-0048,2026-07-05T13:35:21.282076+00:00,Synthetic Dataset,10000,456,50.0,1.0.0,0.998864,0.971106,15.673,True,False,
+run-synthetic-dataset-0049,2026-07-05T13:35:21.383048+00:00,Synthetic Dataset,10000,789,0.0,1.0.0,1.0,1.0,8.538,False,False,"baseline, CR=0.0433"
+run-synthetic-dataset-0050,2026-07-05T13:35:21.400088+00:00,Synthetic Dataset,10000,789,10.0,1.0.0,0.999974,0.995705,16.021,False,False,
+run-synthetic-dataset-0051,2026-07-05T13:35:21.476104+00:00,Synthetic Dataset,10000,789,20.0,1.0.0,0.999881,0.99071,22.039,False,False,
+run-synthetic-dataset-0052,2026-07-05T13:35:21.549080+00:00,Synthetic Dataset,10000,789,30.0,1.0.0,0.99969,0.984952,17.996,True,False,
+run-synthetic-dataset-0053,2026-07-05T13:35:21.615815+00:00,Synthetic Dataset,10000,789,40.0,1.0.0,0.999364,0.978405,21.686,True,False,
+run-synthetic-dataset-0054,2026-07-05T13:35:21.703076+00:00,Synthetic Dataset,10000,789,50.0,1.0.0,0.998864,0.971106,28.737,True,False,
+run-synthetic-dataset-0055,2026-07-05T13:35:21.768130+00:00,Synthetic Dataset,10000,1001,0.0,1.0.0,1.0,1.0,9.862,False,False,"baseline, CR=0.0433"
+run-synthetic-dataset-0056,2026-07-05T13:35:21.791481+00:00,Synthetic Dataset,10000,1001,10.0,1.0.0,0.999974,0.995705,22.146,False,False,
+run-synthetic-dataset-0057,2026-07-05T13:35:21.883672+00:00,Synthetic Dataset,10000,1001,20.0,1.0.0,0.999881,0.99071,23.381,False,False,
+run-synthetic-dataset-0058,2026-07-05T13:35:21.968213+00:00,Synthetic Dataset,10000,1001,30.0,1.0.0,0.99969,0.984952,27.514,True,False,
+run-synthetic-dataset-0059,2026-07-05T13:35:22.059339+00:00,Synthetic Dataset,10000,1001,40.0,1.0.0,0.999364,0.978405,33.419,True,False,
+run-synthetic-dataset-0060,2026-07-05T13:35:22.133448+00:00,Synthetic Dataset,10000,1001,50.0,1.0.0,0.998864,0.971106,22.8,True,False,
