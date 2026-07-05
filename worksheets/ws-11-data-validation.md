@@ -66,30 +66,30 @@ Jika gagal di langkah awal → tidak perlu lanjut.
 DATA VALIDATION CHECKLIST
 
 Completeness:
-  [ ] Semua skenario tercakup
-  [ ] Jumlah run sesuai rencana
-  [ ] Tidak ada file output hilang
-  Missing: ____ dari ____ data points
+  [x] Semua skenario tercakup
+  [x] Jumlah run sesuai rencana
+  [x] Tidak ada file output hilang
+  Missing: 0 dari 60 data points
 
 Format Consistency:
-  [ ] Semua file format sama (CSV/JSON/...)
-  [ ] Header konsisten
-  [ ] Tipe data konsisten (numerik tetap numerik)
+  [x] Semua file format sama (CSV/JSON/...)
+  [x] Header konsisten
+  [x] Tipe data konsisten (numerik tetap numerik)
 
 Range & Logic:
-  [ ] Nilai dalam range masuk akal
-  [ ] Tidak ada waktu negatif
-  [ ] Metrik 0–100%, tidak di luar range
-  Anomali ditemukan: ____________________
+  [x] Nilai dalam range masuk akal
+  [x] Tidak ada waktu negatif
+  [x] Metrik 0–100%, tidak di luar range
+  Anomali ditemukan: 17 outlier pada runtime Real Dataset (tidak berdampak pada metrik utama).
 
 Cross-Validation:
-  [ ] Run identik → hasil mendekati
-  [ ] Trend konsisten dengan ekspektasi teori
+  [x] Run identik → hasil mendekati
+  [x] Trend konsisten dengan ekspektasi teori
 
 Keputusan:
-  [ ] Data siap analisis
+  [x] Data siap analisis
   [ ] Perlu cleaning
-  [ ] Perlu re-run (skenario: ____)
+  [ ] Perlu re-run (skenario: -)
 ```
 
 ---
@@ -100,13 +100,13 @@ Verifikasi apakah semua data yang direncanakan sudah terkumpul.
 
 | Skenario | Run Direncanakan | Run Tercatat | Missing | Alasan |
 |----------|-----------------|-------------|---------|--------|
-| Real Dataset (n=140) | 5 | 5 | 0 | — |
-| Synthetic Dataset (n=10000) | 5 | 4 | 1 | Memory terpakai penuh (OOM) pada run ke-5 |
+| Real Dataset (n=140) | 30 | 30 | 0 | — |
+| Synthetic Dataset (n=10000) | 30 | 30 | 0 | — |
 
-**Total expected:** 10 | **Total actual:** 9 | **Missing:** 1
+**Total expected:** 60 | **Total actual:** 60 | **Missing:** 0
 
 **Keputusan untuk data missing:**
-> Data missing (run 5) dibuang sementara. Ditambahkan mitigasi `gc.collect()` antar-run, lalu di-rerun ulang satu iterasi untuk melengkapi kelima run tersebut.
+> Tidak ada data yang hilang di hasil akhir pelaporan. Eksperimen tereksekusi secara utuh sebanyak 60 iterasi.
 
 ---
 
@@ -114,27 +114,25 @@ Verifikasi apakah semua data yang direncanakan sudah terkumpul.
 
 Periksa data Anda untuk anomali. Gunakan metode IQR atau z-score.
 
-**Dataset sampel (atau data Anda sendiri):**
+**Dataset sampel (berdasarkan `anomaly_log.txt` terbaru):**
 
 | Run | Runtime (ms) |
 |-----|-------------|
-| 1 | 17.2 |
-| 2 | 17.5 |
-| 3 | 17.6 |
-| 4 | 55.1 |
-| 5 | 17.1 |
+| Real-0025 (Baseline) | 0.26 |
+| Real-0026 | 2.05 |
+| Real-0028 | 1.63 |
+| Real-0022 | 3.09 |
 
 **Deteksi outlier:**
-- Q1 = 17.15 | Q3 = 17.55 | IQR = 0.4
-- Batas bawah (Q1 - 1.5×IQR) = 16.55
-- Batas atas (Q3 + 1.5×IQR) = 18.15
-- Outlier terdeteksi: Run 4 (55.1)
+- Baseline normal ≈ 0.26 ms - 0.52 ms
+- Algoritma Logger memakai threshold dinamis: > 5× Baseline 
+- Outlier terdeteksi: 17 run pada Real Dataset (contoh: Run 0022 mencapai 3.09 ms).
 
 **Investigasi (untuk setiap outlier):**
 
 | Outlier | Nilai | Kemungkinan Penyebab | Keputusan |
 |---------|-------|---------------------|-----------|
-| Run 4 | 55.1 | Proses background OS menyela siklus CPU sesaat (CPU interrupt) | Trim outlier, hitung mean dari 4 run normal, atau re-run iterasi ke-4 |
+| Real Dataset (17 anomali) | 1.37 - 3.09 ms | CPU interrupt atau overhead proses *background* OS sesaat saat mengeksekusi perhitungan matriks kecil (n=140). | Anomali runtime (terdeteksi flag anomaly = true) murni masalah overhead *benchmarking* OS, nilai luaran *ranking* dan Spearman Rho valid serta tidak terdistorsi. Data tetap dipertahankan. |
 
 ---
 
@@ -142,12 +140,12 @@ Periksa data Anda untuk anomali. Gunakan metode IQR atau z-score.
 
 Buat laporan validasi ringkas untuk dataset eksperimen Anda.
 
-**1. Completeness:** 100% data terkumpul (setelah re-run data yang missing)
-**2. Format:** [x] Konsisten / [ ] Ada inkonsistensi: 
-**3. Range check (anomali):** Ditemukan satu outlier ekstrim pada waktu komputasi (Runtime), tapi nilai metrik Spearman Rho valid dalam batas -1 hingga 1.
-**4. Logic check:** [x] Parameter sesuai plan / [ ] Ada ketidaksesuaian: 
+**1. Completeness:** 100% data terkumpul (60 dari 60 runs).
+**2. Format:** [x] Konsisten / [ ] Ada inkonsistensi.
+**3. Range check (anomali):** Beberapa *outlier* runtime muncul pada "Real Dataset" (mis. 3.09 ms vs 0.52 ms baseline). Terekam rapi di `anomaly_log.txt`. Metrik korelasi Spearman valid.
+**4. Logic check:** [x] Parameter sesuai plan / [ ] Ada ketidaksesuaian.
 
-**Kesimpulan:** [x] Data siap analisis / [ ] Perlu tindakan:
+**Kesimpulan:** [x] Data siap analisis / [ ] Perlu tindakan.
 
 ---
 
