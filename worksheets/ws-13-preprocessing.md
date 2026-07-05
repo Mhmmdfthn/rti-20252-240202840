@@ -122,7 +122,7 @@ Tentukan apakah data Anda perlu normalisasi, dan jika ya, metode apa yang tepat.
 |----------|-----------|-----------|----------|-------------------|--------|
 | *Contoh: response_time* | *0.1 – 45.2s* | *Right-skewed* | *Ya (45.2s)* | *Robust scaling* | *Ada outlier, perlu robust* |
 | *Contoh: accuracy_score* | *0.72 – 0.95* | *Normal, narrow* | *Tidak* | *Tidak perlu* | *Sudah dalam [0,1], metode berbasis distance tidak digunakan* |
-| Skor Kriteria K1-TJ3 | 1.0 – 5.0 | Cenderung Normal | Tidak Signifikan | Vektor Euclidean (TOPSIS) | Menyamakan skala untuk perhitungan jarak Euclidean di TOPSIS |
+| Skor Kriteria C11-C43 | 1.0 – 5.0 | Cenderung Normal | Tidak Signifikan | Vektor Euclidean (TOPSIS) | Menyamakan skala untuk perhitungan jarak Euclidean di TOPSIS |
 | | | | | | |
 
 **Apakah normalisasi diperlukan?** [x] Ya / [ ] Tidak
@@ -143,7 +143,7 @@ Buat ringkasan preprocessing lengkap — dokumentasi yang cukup bagi orang lain 
 PREPROCESSING SUMMARY
 
 1. Dataset: Penilaian Soft Skill Siswa (AHP-TOPSIS)
-2. Data awal: 143 records, 13 features (K1-TJ3)
+2. Data awal: 143 records, 13 features (C11-C43)
 3. Cleaning:
    - Missing values: 3 kasus, metode: Mean imputation
    - Duplikat: 2 kasus, tindakan: Keep first (hapus salah satu)
@@ -160,5 +160,4 @@ PREPROCESSING SUMMARY
 
 > Apakah Anda pernah melakukan normalisasi "karena biasa dilakukan" tanpa mempertimbangkan apakah benar-benar diperlukan? Apa risiko over-preprocessing?
 
-> ___________________________________________________
-> ___________________________________________________
+> Seringkali normalisasi dilakukan secara otomatis karena terbawa kebiasaan analisis machine learning standar (seperti Min-Max Scaler atau Z-score). Padahal, risiko dari *over-preprocessing* adalah hilangnya makna varians alami (distorsi jarak komparatif antar alternatif) yang sesungguhnya esensial. Dalam kasus AHP-TOPSIS, kita tidak boleh sembarangan menormalisasi rentang Likert (1-5) dengan Z-score sebelum matriks keputusan dibuat, melainkan harus menggunakan normalisasi vektor Euclidean (membagi setiap skor dengan akar jumlah kuadrat kriteria tersebut). Hal ini dilakukan secara inheren pada fase TOPSIS agar struktur rasio dan jarak ke Solusi Ideal tetap murni secara matematis. Memaksakan scaler lain di awal justru akan memicu *data leakage* dan menyebabkan hasil peringkat berbalik (rank reversal).
