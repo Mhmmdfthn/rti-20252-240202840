@@ -6,17 +6,22 @@ Catatan kronologis pelaksanaan tiap tahap (sumber: riwayat commit git & dokumen 
 
 | Tanggal | Tahap | Aktivitas | Referensi |
 |---|---|---|---|
-| 2026-06-25 14:55 | Tahap 2 | Penyusunan dokumen ws08 | [ws-08](../../worksheets/ws-08-proposal-integration.md) |
-| 2026-06-26 | Tahap 3 | Pencarian data dan penyusunan dokumen ws09 | [ws-09](../../worksheets/ws-09-implementation.md) |
-| 2026-06-26 16:34 | Tahap 3 | Mengirim email ke jurnal rujukan untuk meminta data riil untuk pengujian | - |
-| 2026-06-26 20:29 | - | Commit & push dokumen ws08 dan folder example-riset-directory (Pesan: "ws08-selesai") | - |
-| 2026-06-29 00:00 | Tahap 3 | Commit & push dokumen ws09 (Pesan: "ws09-selesai") | [ws-09](../../worksheets/ws-09-implementation.md) |
-| 2026-07-02 | Tahap 3 | Commit & push inisiasi eksperimen & visualisasi (Pesan: "Update worksheets and add experiment/visualization files") | - |
-| 2026-07-04 | Tahap 3 | Commit & push dokumen ws10 (Pesan: "ws10-selesai") | [ws-10](../../worksheets/ws-10-execution-data.md) |
-| 2026-07-05 | Tahap 3 | Commit & push dokumen ws11 (Pesan: "ws11-selesai") | [ws-11](../../worksheets/ws-11-data-validation.md) |
-| 2026-07-06 | Tahap 4 | Integrasi folder data mentah dan skrip Python (Pesan: "Upload 04-data" & "Upload 05-code") | - |
-| 2026-07-06 | Tahap 4 | Commit & push dokumen ws12 serta reorganisasi folder 06-output (Pesan: "ws12-selesai") | [ws-12](../../worksheets/ws-12-result-presentation.md) |
-| 2026-07-06 | Tahap 4 | Commit & push dokumen ws13 (Pesan: "ws13-selesai") | [ws-13](../../worksheets/ws-13-preprocessing.md) |
+| 2026-06-25 | Tahap 2 | Penyusunan draf awal dokumen integrasi proposal riset | [ws-08](../../worksheets/ws-08-proposal-integration.md) |
+| 2026-06-26 | Tahap 3 | Pencarian referensi data dan penyusunan draf implementasi kode | [ws-09](../../worksheets/ws-09-implementation.md) |
+| 2026-06-26 | Tahap 3 | Mengirim email ke jurnal rujukan untuk meminta data riil 140 entri | - |
+| 2026-06-26 | Tahap 2 | Finalisasi integrasi proposal & matriks evaluasi (Pesan: "ws08-selesai") | [ws-08](../../worksheets/ws-08-proposal-integration.md) |
+| 2026-06-29 | Tahap 3 | Finalisasi rancangan arsitektur implementasi skrip (Pesan: "ws09-selesai") | [ws-09](../../worksheets/ws-09-implementation.md) |
+| 2026-07-02 | Tahap 3 | Menyiapkan struktur direktori kode (05-kode, 06-output) & inisialisasi draf worksheet (Pesan: "Update worksheets and add experiment/visualization files") | - |
+| 2026-07-04 | Tahap 3 | Melengkapi rencana parameter eksekusi (5 seed, delta 10%-50%) (Pesan: "ws10-selesai") | [ws-10](../../worksheets/ws-10-execution-data.md) |
+| 2026-07-06 | Tahap 3 | Menyelesaikan checklist validasi kebersihan data & mitigasi (Pesan: "ws11-selesai") | [ws-11](../../worksheets/ws-11-data-validation.md) |
+| 2026-07-06 | Tahap 4 | Mengunggah dataset (riil & sintetis 10k) serta modul skrip utama (`main.py`, AHP-TOPSIS) (Pesan: "Upload 04-data" & "Upload 05-code") | - |
+| 2026-07-06 | Tahap 4 | Eksekusi program AHP-TOPSIS skala penuh (60 runs: 30 dataset riil, 30 dataset sintetis) dan ekstraksi anomali | `benchmark_log.csv` |
+| 2026-07-06 | Tahap 4 | Reorganisasi direktori output ke sub-folder `/logs` & `/plots`, serta pembaruan path pada `experiment_config.json` | - |
+| 2026-07-06 | Tahap 4 | Penyeragaman konvensi penamaan grafik menjadi `fig_*.png` agar selaras dengan format README | [06-output](../../example-riset-directory/06-output/README.md) |
+| 2026-07-06 | Tahap 2 | Validasi keselarasan instrumen eksperimen dengan rumusan masalah pada dokumen proposal | - |
+| 2026-07-06 | Tahap 4 | Eksekusi 60 runs simulasi, plotting 3 grafik hasil, & penulisan kesimpulan tabel data,serta pengerjaan ws13 (Pesan: "ws12-selesai") | [ws-12](../../worksheets/ws-12-result-presentation.md) |
+| 2026-07-06 | Tahap 4 | Mendokumentasikan *cleaning* & justifikasi normalisasi TOPSIS (Pesan: "ws13-selesai") | [ws-13](../../worksheets/ws-13-preprocessing.md) |
+
 
 ## Status Ringkas 
 
