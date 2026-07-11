@@ -116,13 +116,13 @@ Tentukan uji statistik yang tepat untuk eksperimen Anda.
 
 | Pertanyaan | Jawaban |
 |-----------|---------|
-| Berapa grup yang dibandingkan? | *Contoh: 3 (BERT, LSTM, SVM)* |
-| Apakah data berpasangan (paired)? | |
-| Apakah distribusi normal? (uji normalitas) | |
-| **Uji yang dipilih:** | |
-| **Justifikasi:** | |
+| Berapa grup yang dibandingkan? | 6 skenario (Baseline, Perturbasi 10%, 20%, 30%, 40%, 50%) |
+| Apakah data berpasangan (paired)? | Tidak, setiap run pengujian perturbasi berjalan independen |
+| Apakah distribusi normal? (uji normalitas) | Dengan sampel kecil (n=5 per grup), data diasumsikan tidak normal |
+| **Uji yang dipilih:** | Uji Kruskal-Wallis (non-parametrik) |
+| **Justifikasi:** | Membandingkan lebih dari 2 grup sampel independen dengan asumsi distribusi data tidak normal akibat N yang sangat kecil |
 
-**Effect size yang akan dilaporkan:** [ ] Cohen's d / [ ] Eta-squared / [ ] Lainnya: ____
+**Effect size yang akan dilaporkan:** [ ] Cohen's d / [x] Eta-squared / [ ] Lainnya: Epsilon-squared
 
 ---
 
@@ -130,21 +130,21 @@ Tentukan uji statistik yang tepat untuk eksperimen Anda.
 
 Gunakan data berikut (atau data riil Anda) untuk berlatih interpretasi.
 
-**Data:**
-| Model | Accuracy (mean ± std) | n |
+**Data (Riil: Analisis Waktu Komputasi):**
+| Skenario | Runtime ms (mean ± std) | n |
 |-------|----------------------|---|
-| A | 89.2 ± 1.5 | 10 |
-| B | 87.8 ± 2.1 | 10 |
+| Perturbasi 10% | 2.02 ± 0.47 | 5 |
+| Baseline (Δw = 0%) | 0.36 ± 0.08 | 5 |
 
-p = 0.045, Cohen's d = 0.74, CI 95% = [0.03, 2.77]
+p = 0.008, Cohen's d = 4.89, CI 95% = [0.85, 2.47] *(Asumsi uji-t Welch)*
 
 | Aspek | Interpretasi |
 |-------|-------------|
-| Signifikansi statistik | *Contoh: p < 0.05 → signifikan pada α=0.05* |
-| Effect size | *Contoh: d=0.74 → medium-to-large effect* |
-| Practical significance | |
-| Hubungan ke RQ | |
-| Perbandingan literatur | |
+| Signifikansi statistik | p < 0.01 → Terdapat perbedaan waktu komputasi yang signifikan secara statistik antara Baseline dan saat diberi perturbasi. |
+| Effect size | d = 4.89 → Effect size sangat besar (large effect). Gangguan perturbasi bobot memberikan lonjakan waktu eksekusi yang nyata. |
+| Practical significance | Secara teknis terdapat perlambatan 1.66 ms, namun secara praktis kenaikan ini sangat insignifikan untuk interaksi manusia. DSS tetap terasa instan. |
+| Hubungan ke RQ | Menjawab RQ mengenai konsistensi sistem: Implementasi AHP-TOPSIS komprehensif tetap sangat efisien meskipun model dipaksa menghitung ulang perturbasi berulang kali. |
+| Perbandingan literatur | Konsisten dengan temuan studi MCDM lainnya bahwa algoritma matriks terpadu sangat ringan secara komputasi pada N berskala kecil-menengah (<500 entitas). |
 
 ---
 
@@ -152,22 +152,21 @@ p = 0.045, Cohen's d = 0.74, CI 95% = [0.03, 2.77]
 
 Latih kemampuan failure analysis: hipotesis TIDAK didukung. Apa yang bisa dipelajari?
 
-**Skenario:** Metode baru Anda mendapat F1 = 83.2%, baseline = 84.7%. p = 0.12 (tidak signifikan).
+**Skenario (Kasus Alternatif):** Saat diuji ke 10.000 simulasi data siswa, metode DSS AHP-TOPSIS Anda membutuhkan waktu komputasi rata-rata 14,2 detik dibandingkan 2,1 detik pada sistem baseline konvensional. Kecepatan memburuk dan p = 0.12 (tidak ada perbedaan akurasi yang signifikan dengan sistem biasa).
 
 | Pertanyaan | Jawaban |
 |-----------|---------|
-| Apakah ini "gagal"? | *Contoh: Bukan gagal total — hipotesis tidak terdukung adalah temuan yang valid dan bisa menjadi kontribusi.* |
-| Kemungkinan penyebab? | *Contoh: Metode baru menambah kompleksitas komputasi (+40% waktu) tanpa peningkatan F1 yang cukup — overhead tidak sebanding.* |
-| Boundary condition? | *Contoh: Metode ini hanya efektif ketika data ≥ 10.000 record; di dataset kecil (<1.000), baseline lebih stabil.* |
-| Insight yang bisa diambil? | *Contoh: Ada trade-off ukuran data vs kompleksitas — rekomendasikan hybrid approach yang adaptif berdasarkan ukuran dataset.* |
-| Apakah layak dilaporkan? Mengapa? | *Contoh: Ya — negative result + boundary condition analysis adalah kontribusi riset yang diakui komunitas (ex: ACL, SIGIR). Mencegah riset duplikasi yang berulang.* |
+| Apakah ini "gagal"? | Bukan gagal total. Tidak terbuktinya signifikansi akurasi dengan trade-off waktu lambat adalah temuan valid mengenai kapasitas sistem dan bottleneck komputasional. |
+| Kemungkinan penyebab? | Proses normalisasi matriks 13 indikator pada TOPSIS ditambah perhitungan CR dari AHP sangat membebani RAM jika tidak menggunakan batch processing. |
+| Boundary condition? | Model AHP-TOPSIS yang diusulkan hanya berjalan secara optimal dan stabil pada dataset institusi berukuran kecil (< 1.000 record). |
+| Insight yang bisa diambil? | Ada trade-off tajam antara kompleksitas hierarki kriteria dan waktu komputasi skala besar. Disarankan untuk menggunakan arsitektur caching perhitungan eigen AHP. |
+| Apakah layak dilaporkan? Mengapa? | Ya — temuan batas kapasitas (boundary condition) sangat berguna agar sistem ini tidak diadopsi buta-buta oleh sekolah ber-volume tinggi tanpa persiapan server yang kuat. |
 
 **Limitation terkait:**
 | Jenis | Ancaman | Dampak |
 |-------|---------|--------|
-| *Contoh: Statistical* | *Contoh: Hanya 5 run per skenario* | *Power test rendah* |
-| | | |
-| | | |
+| External validity | Pengujian hanya dilakukan pada 140 dataset sampel siswa. | Kinerja dan ketajaman peringkat (Vi) belum teruji stabil di skala ribuan siswa (big data). |
+| Statistical limitation | Hanya dilakukan uji coba sampel n=5 iterasi. | Low statistical power; variansi data pada hasil waktu komputasi mungkin tidak cukup mewakili kestabilan. |
 
 ---
 
@@ -175,5 +174,4 @@ Latih kemampuan failure analysis: hipotesis TIDAK didukung. Apa yang bisa dipela
 
 > Apakah "failure" dalam riset benar-benar gagal, atau justru kontribusi? Bagaimana failure analysis mengubah cara Anda melihat hasil negatif?
 
-> ___________________________________________________
-> ___________________________________________________
+> "Failure" dalam riset bukanlah sebuah kegagalan total, melainkan bentuk batas (boundary condition) dari suatu algoritma atau gagasan. Mengetahui kelemahan model —seperti saat AHP-TOPSIS kehilangan kestabilan di volume data raksasa— adalah kontribusi ilmiah yang penting. Pendekatan failure analysis mengubah pandangan saya: bahwa penolakan atas hipotesis alternatif (H1) tetap membawa *insight* yang tajam. Dengan menganalisis kegagalan, kita mencegah redundansi eksperimen bagi peneliti selanjutnya, melengkapi dokumentasi dengan batasan terukur, dan menyediakan pijakan argumen empiris untuk perbaikan (future work). Lapisan analisis sedalam ini justru lebih berharga daripada memaksakan klaim sukses dengan metode p-hacking.
