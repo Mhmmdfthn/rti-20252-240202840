@@ -116,13 +116,13 @@ Buat outline paper untuk riset Anda menggunakan struktur IMRAD.
 
 | Section | Konten Utama (2-3 kalimat) | Target Kata |
 |---------|---------------------------|------------|
-| Abstract | *Contoh: Sistem rekomendasi memiliki akurasi tinggi tapi satisfaction rendah. Studi ini menguji CF+context signal. Hasil: satisfaction naik 38% tanpa penurunan RMSE signifikan.* | 200-250 |
-| Introduction | *Contoh: Konteks: gap antara akurasi dan kepuasan pengguna. Gap: tidak ada studi yang mengkombinasikan CF+context. RQ: apakah CF+context meningkatkan satisfaction?* | 500-700 |
-| Related Work | | 700-1000 |
-| Method | | 800-1200 |
-| Results | | 500-800 |
-| Discussion | | 600-900 |
-| Conclusion | | 200-400 |
+| Abstract | Masalah subjektivitas penilaian soft skill siswa. Mengusulkan integrasi metode AHP-TOPSIS untuk penilaian yang objektif. Hasil pengujian menunjukkan CR ≤ 0.1 dan mampu merangking siswa dengan baik namun terjadi pelambatan komputasi pada sampel besar. | 200-250 |
+| Introduction | Konteks: Pentingnya penilaian soft skill yang objektif. Gap: Metode konvensional sangat bias dan subjektif, belum ada DSS berbasis AHP-TOPSIS komprehensif untuk kasus ini. RQ: Bagaimana efektivitas integrasi AHP-TOPSIS dalam penilaian soft skill? | 500-700 |
+| Related Work | Review metode MCDM pada DSS, batasan penggunaan TOPSIS tunggal, dan keunggulan integrasi pembobotan AHP dengan perankingan TOPSIS. | 700-1000 |
+| Method | Desain sistem DSS, definisi 4 kriteria utama dan 13 indikator, perhitungan bobot prioritas (AHP), pengujian rasio konsistensi (CR), dan algoritma pemeringkatan (TOPSIS). | 800-1200 |
+| Results | Evaluasi pada 140 sampel data siswa. Hasil uji konsistensi kriteria, tabel hasil akhir Cci, distribusi peringkat, dan pengujian waktu komputasi (baseline vs model) dalam n=5. | 500-800 |
+| Discussion | Interpretasi objektivitas hasil, trade-off antara komprehensivitas kriteria dengan kompleksitas/waktu komputasi (boundary condition pada >1000 data). | 600-900 |
+| Conclusion | AHP-TOPSIS efektif meningkatkan transparansi penilaian soft skill, namun memiliki limitasi skalabilitas data. Future work disarankan menggunakan arsitektur caching. | 200-400 |
 
 ---
 
@@ -132,22 +132,20 @@ Buat consistency matrix untuk memverifikasi internal consistency paper Anda.
 
 |  | Intro | Method | Result | Discussion | Conclusion |
 |--|-------|--------|--------|-----------|-----------|
-| *Contoh: RQ1* | *✓* | *✓* | *✓* | *✓* | *✓* |
-| *Contoh: Metrik-X* | *✗ ←* | *✗ ←* | *✓* | *✗ ←* | *✗ ←* |
-| RQ1 | | | | | |
-| RQ2 | | | | | |
-| Metrik utama | | | | | |
-| Variabel IV | | | | | |
-| Variabel DV | | | | | |
-| Klaim/kontribusi | | | | | |
+| RQ1 (Efektivitas AHP-TOPSIS) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| RQ2 (Efisiensi Waktu Komputasi) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Metrik utama (CR & Waktu Komputasi) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Variabel IV (Kriteria Soft Skill) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Variabel DV (Nilai Peringkat Siswa) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Klaim/kontribusi (Objektivitas meningkat, komputasi berat) | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 **Isi setiap sel:** ✓ (ada & konsisten), ✗ (missing), ~ (ada tapi inkonsisten)
 
 **Inkonsistensi yang ditemukan:**
-> ___________________________________________________
+> Semua bagian telah konsisten membahas metode, metrik, dan trade-off komputasional dari pendahuluan hingga kesimpulan.
 
 **Tindakan perbaikan:**
-> ___________________________________________________
+> Menjaga alur argumen (Red Thread) agar tetap berfokus pada efektivitas objektivitas versus skalabilitas performa sistem pada semua bagian, memastikan setiap claim didukung angka dari results.
 
 ---
 
@@ -156,16 +154,16 @@ Buat consistency matrix untuk memverifikasi internal consistency paper Anda.
 Ambil satu paragraf dari tulisan Anda (atau tulis paragraf baru) dan evaluasi kualitasnya.
 
 **Paragraf asli:**
-> (tempel paragraf Anda di sini)
+> Pengujian sistem menghasilkan nilai yang bagus dimana CR kurang dari 0.1 dan waktu untuk menghitung rank siswa sedikit lebih lama dibanding sistem yang lama tapi hasil urutan siswa cukup masuk akal.
 
 | Kriteria | Evaluasi | Perbaikan |
 |----------|---------|-----------|
-| Clarity | *Contoh: kalimat ke-3 ambigu — "performa" bisa berarti accuracy atau speed* | *Ubah menjadi: "accuracy meningkat..."* |
-| Precision | | |
-| Conciseness | | |
+| Clarity | Kalimat bertele-tele dan kurang profesional ("nilai yang bagus", "cukup masuk akal") | "Nilai Rasio Konsistensi (CR) ≤ 0.1 mengindikasikan pembobotan kriteria valid. Sistem mengurutkan alternatif secara akurat meskipun membutuhkan tambahan waktu komputasi." |
+| Precision | Tidak menyebutkan angka spesifik atau signifikansi perbandingan komputasi | "Waktu komputasi meningkat sebesar 1.66 ms dibandingkan sistem baseline (p=0.008, d=4.89)." |
+| Conciseness | Ada filler words ("dimana", "tapi") dan penggabungan gagasan yang terlalu panjang | Hapus kata hubung redundan, gabungkan fakta utama secara lugas. |
 
 **Paragraf setelah perbaikan:**
-> (tulis paragraf yang sudah diperbaiki)
+> Pengujian metode AHP-TOPSIS menghasilkan nilai Rasio Konsistensi (CR) ≤ 0.1, mengindikasikan validitas pembobotan kriteria. Meskipun waktu komputasi meningkat sebesar 1.66 ms dibandingkan sistem baseline (p=0.008, d=4.89), metode ini secara akurat mampu mengklasifikasikan peringkat soft skill siswa.
 
 ---
 
@@ -173,5 +171,4 @@ Ambil satu paragraf dari tulisan Anda (atau tulis paragraf baru) dan evaluasi ku
 
 > Apa perbedaan antara menulis "tentang" riset dan menulis sebagai "argumen" riset? Bagaimana urutan penulisan (Method → Discussion → Introduction) mengubah kualitas tulisan?
 
-> ___________________________________________________
-> ___________________________________________________
+> Menulis "tentang" riset sekadar melaporkan aktivitas kronologis (apa yang dilakukan dari awal ke akhir), sedangkan menulis sebagai "argumen" riset berarti menyusun alur logis dari masalah hingga kontribusi, meyakinkan pembaca bahwa metode dan hasil yang didapat benar-benar menjawab problem statement (Red Thread). Urutan penulisan (Method → Results → Discussion → Introduction) sangat membantu kualitas tulisan karena kita membangun argumen dari pondasi yang paling pasti (data dan metode), lalu memberikan interpretasi (discussion), dan akhirnya membingkai pendahuluan (introduction) agar sesuai persis dengan apa yang benar-benar ditemukan di lapangan. Hal ini menghindari terjadinya overclaiming dan inkonsistensi janji di awal dengan temuan riil di akhir.
