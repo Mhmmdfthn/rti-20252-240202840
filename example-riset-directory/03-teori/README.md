@@ -1,18 +1,19 @@
 # 03-teori
 
-Arsitektur, desain, dan landasan teori sistem DSS Evaluasi Soft Skill — hasil **Tahap 1**.
+Arsitektur, desain, dan landasan teori instrumen penelitian — **Evaluasi Sensitivitas Algoritma Hibrida AHP-TOPSIS**.
 
-## Isi yang diharapkan
+## Isi
 
-- Diagram arsitektur komponen (Antarmuka Pengguna, Mesin Kalkulasi, Database)
-- Alur kalkulasi model hibrida (Fase AHP & Fase TOPSIS)
-- Skema database (Tabel alternatif, kriteria, perbandingan berpasangan, nilai evaluasi)
-- Pemetaan ke implementasi kode sistem
+- Diagram arsitektur komponen benchmarking (Data Loader, Weight Manipulator, AHP-TOPSIS Engine, Metric Evaluator)
+- Flowchart alur kalkulasi lengkap: dari input data → noise injection → korelasi Rank Spearman
+- Skema struktur file CSV (input: `dataset_riil.csv`, `bobot_ahp.csv` — output: `experiment_log.csv`)
+- Pemetaan ke implementasi modul skrip benchmarking CLI
 
 ## Berkas
 
-- [arsitektur-dan-skema.md](arsitektur-dan-skema.md) — diagram Mermaid (arsitektur komponen, alur kalkulasi AHP-TOPSIS, ERD database), dan pemetaan ke modul program.
+- [arsitektur-dan-skema.md](arsitektur-dan-skema.md) — diagram Mermaid (arsitektur komponen, flowchart noise injection AHP-TOPSIS), dan pemetaan ke modul `data_loader`, `ahp_topsis`, `sensitivity_test`, `logger`.
 
 ## Acuan
 
-(Referensi pengembangan model matematika dari literatur AHP dan TOPSIS)
+- Proposal penelitian: [../../Proposal/Proposal_revisi.md](../../Proposal/Proposal_revisi.md)
+- Matriks literatur: [../02-literatur/matriks-literatur.md](../02-literatur/matriks-literatur.md)
