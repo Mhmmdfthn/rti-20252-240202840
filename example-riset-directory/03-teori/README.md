@@ -1,18 +1,18 @@
 # 03-teori
 
-Arsitektur, desain, dan landasan teori sistem — hasil **Tahap 1**.
+Arsitektur, desain, dan landasan teori sistem DSS Evaluasi Soft Skill — hasil **Tahap 1**.
 
 ## Isi yang diharapkan
 
-- Diagram alur resolusi kunci (mitigasi JWKS flooding)
-- Skema database PostgreSQL (`signing_keys`, `rate_limit_counters`)
-- Skema Redis (positive/negative cache)
-- Diagram arsitektur komponen (Gateway, Redis, PostgreSQL)
+- Diagram arsitektur komponen (Antarmuka Pengguna, Mesin Kalkulasi, Database)
+- Alur kalkulasi model hibrida (Fase AHP & Fase TOPSIS)
+- Skema database (Tabel alternatif, kriteria, perbandingan berpasangan, nilai evaluasi)
+- Pemetaan ke implementasi kode sistem
 
 ## Berkas
 
-- [arsitektur-dan-skema.md](arsitektur-dan-skema.md) — diagram Mermaid (arsitektur komponen, alur resolusi kunci, fail-closed/fail-open, ERD database), skema Redis, dan pemetaan ke implementasi kode
+- [arsitektur-dan-skema.md](arsitektur-dan-skema.md) — diagram Mermaid (arsitektur komponen, alur kalkulasi AHP-TOPSIS, ERD database), dan pemetaan ke modul program.
 
 ## Acuan
 
-Detail teknis lengkap Tahap 1 (status: selesai): [../09-docs/tahap-1-arsitektur-dan-skema-database.md](../09-docs/tahap-1-arsitektur-dan-skema-database.md)
+(Referensi pengembangan model matematika dari literatur AHP dan TOPSIS)
