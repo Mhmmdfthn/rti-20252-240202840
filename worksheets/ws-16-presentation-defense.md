@@ -82,6 +82,7 @@ Prediksi pertanyaan berdasarkan kategori:
 
 ## Template A.16 — Defense Preparation Sheet
 
+
 ```
 DEFENSE PREPARATION
 
