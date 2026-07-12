@@ -7,7 +7,7 @@
 **1. Abstrak**
 - Latar belakang kerentanan SPK terhadap perubahan bobot (bias preferensi).
 - Metode eksperimen: Simulasi komputasi *noise injection* (deviasi bobot) untuk menguji *rank reversal*.
-- Parameter uji: Koefisien Korelasi Spearman ($\rho$) dan Waktu Eksekusi (*Runtime*).
+- Parameter uji: Korelasi Spearman ($\rho$), Kendall Tau ($\tau$), dan Waktu Eksekusi (*Runtime*).
 - Dataset: 140 riil & hingga 10.000 sintetis.
 - Hasil singkat: Peta toleransi ketangguhan algoritma AHP-TOPSIS.
 
@@ -25,12 +25,12 @@
 **4. Metodologi**
 - Desain eksperimen komputasi (*benchmarking*) menggunakan instrumen CLI.
 - Variabel independen: Injeksi deviasi bobot $\Delta W$ ($\pm 10\%$ s.d. $\pm 50\%$).
-- Variabel dependen: Stabilitas peringkat (Korelasi Spearman $\rho$) dan *Runtime* komputasi (ms).
+- Variabel dependen: Stabilitas peringkat (Korelasi Spearman $\rho$, Kendall Tau $\tau$) dan *Runtime* komputasi (ms).
 - Prosedur skenario dari validasi AHP, injeksi *noise*, hingga perbandingan *baseline* vs intervensi.
 
 **5. Hasil dan Pembahasan**
 - Pemeringkatan *baseline* dan hasil CR AHP.
-- Stabilitas peringkat: AHP-TOPSIS tahan uji pada deviasi $\le \pm 20\%$ (Spearman $\rho \ge 0.95$).
+- Stabilitas peringkat: AHP-TOPSIS tahan uji pada deviasi $\le \pm 20\%$ (Spearman $\rho \ge 0.95$, Kendall Tau $\tau \ge 0.95$).
 - Kejadian *Rank Reversal*: Penurunan akurasi drastis pada deviasi $\ge \pm 30\%$.
 - Efisiensi komputasi: *Noise* tidak memengaruhi *runtime*, melainkan volume baris data yang menciptakan *bottleneck* eksponensial.
 
