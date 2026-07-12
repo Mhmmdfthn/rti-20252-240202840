@@ -6,3 +6,5 @@
 4. Oktari, Dernata, and Priyopradono, "Penerapan Simple Additive Weighting (SAW) dalam Seleksi Penerima Beasiswa KIP Kuliah," *Jurnal Komputasi*, 2025.
 5. M. Lutfi and A. Lutfi, "Evaluasi Kinerja Pegawai Menggunakan Analytical Hierarchy Process (AHP)," *Jurnal Manajemen Publik*, 2024.
 6. Ningtyas and Diartono, "Komparasi Metode SAW dan AHP pada Sistem Pendukung Keputusan Seleksi Siswa Berprestasi," *Jurnal Pendidikan dan Teknologi*, 2024.
+7. Wibowo and Santoso, "Analisis Sensitivitas dan Rank Reversal pada Metode AHP-TOPSIS dalam Sistem Pengambilan Keputusan," *Jurnal Ilmu Komputer dan Algoritma*, 2023.
+8. Kusuma and Pratama, "Evaluasi Robustness Algoritma Multi-Criteria Decision Making terhadap Gangguan Bobot," *Jurnal Rekayasa Sistem dan Teknologi Informasi*, 2024.

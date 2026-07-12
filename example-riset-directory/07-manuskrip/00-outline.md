@@ -1,36 +1,40 @@
-# Outline Manuskrip
+# Outline Naskah Jurnal
 
-**Judul:** Integrasi Metode AHP-TOPSIS dalam Sistem Pendukung Keputusan untuk Evaluasi Soft Skill Siswa yang Objektif
+**Judul Jurnal:** ANALISIS PERFORMA ALGORITMA HIBRIDA AHP-TOPSIS DALAM REDUKSI SUBJEKTIVITAS DATA PADA SISTEM PENGAMBIL KEPUTUSAN
 
-**Target:** Jurnal Nasional Sinta 2 / Konferensi Internasional
+## Struktur Draf
 
-**Abstract**
-Masalah subjektivitas penilaian soft skill siswa. Mengusulkan integrasi metode AHP-TOPSIS untuk penilaian yang objektif. Hasil pengujian menunjukkan CR ≤ 0.1 dan mampu merangking siswa dengan baik namun terjadi pelambatan komputasi pada sampel besar.
+**1. Abstrak**
+- Latar belakang kerentanan SPK terhadap perubahan bobot (bias preferensi).
+- Metode eksperimen: Simulasi komputasi *noise injection* (deviasi bobot) untuk menguji *rank reversal*.
+- Parameter uji: Koefisien Korelasi Spearman ($\rho$) dan Waktu Eksekusi (*Runtime*).
+- Dataset: 140 riil & hingga 10.000 sintetis.
+- Hasil singkat: Peta toleransi ketangguhan algoritma AHP-TOPSIS.
 
-**1. Pendahuluan**
-- Konteks: Pentingnya penilaian soft skill yang objektif (Kurikulum Merdeka).
-- Gap: Metode konvensional sangat bias dan subjektif, belum ada DSS berbasis AHP-TOPSIS komprehensif untuk kasus ini.
-- RQ: Bagaimana efektivitas integrasi AHP-TOPSIS dalam penilaian soft skill?
+**2. Pendahuluan**
+- Pentingnya SPK untuk mengubah data kualitatif menjadi kuantitatif objektif.
+- Permasalahan: SPK sangat bergantung pada bobot awal. Deviasi kecil bisa memicu *rank reversal*.
+- Pengenalan integrasi AHP-TOPSIS, namun mempertanyakan ketahanan (*robustness*) secara struktural di lingkungan *backend*.
+- Tujuan riset: Mencari ambang toleransi stabilitas peringkat (korelasi) vs intervensi *noise injection* dinamis.
 
-**2. Tinjauan Pustaka**
-- Review metode MCDM pada DSS.
-- Batasan penggunaan TOPSIS tunggal (tidak punya mekanisme pembobotan konsisten).
-- Keunggulan integrasi pembobotan AHP dengan perankingan TOPSIS.
+**3. Tinjauan Pustaka**
+- Kelebihan dan kekurangan TOPSIS (efisien tapi bobot arbitrer).
+- Solusi AHP-TOPSIS (mengukur *Consistency Ratio*).
+- Identifikasi *gap*: Literatur selama ini bersifat "statis", jarang mengekspos model pada uji batas ketahanan dinamis (*sensitivity analysis* & *rank reversal*).
 
-**3. Metodologi**
-- Desain sistem DSS.
-- Definisi 4 kriteria utama dan 13 indikator.
-- Perhitungan bobot prioritas (AHP) dan pengujian rasio konsistensi (CR).
-- Algoritma pemeringkatan (TOPSIS).
+**4. Metodologi**
+- Desain eksperimen komputasi (*benchmarking*) menggunakan instrumen CLI.
+- Variabel independen: Injeksi deviasi bobot $\Delta W$ ($\pm 10\%$ s.d. $\pm 50\%$).
+- Variabel dependen: Stabilitas peringkat (Korelasi Spearman $\rho$) dan *Runtime* komputasi (ms).
+- Prosedur skenario dari validasi AHP, injeksi *noise*, hingga perbandingan *baseline* vs intervensi.
 
-**4. Hasil dan Pembahasan**
-- Evaluasi pada 140 sampel data siswa.
-- Hasil uji konsistensi kriteria (CR ≤ 0.1).
-- Distribusi peringkat dan hasil akhir Cci.
-- Pengujian waktu komputasi (waktu eksekusi naik 1.66 ms, p=0.008, d=4.89).
-- Trade-off antara objektivitas vs skalabilitas komputasi.
+**5. Hasil dan Pembahasan**
+- Pemeringkatan *baseline* dan hasil CR AHP.
+- Stabilitas peringkat: AHP-TOPSIS tahan uji pada deviasi $\le \pm 20\%$ (Spearman $\rho \ge 0.95$).
+- Kejadian *Rank Reversal*: Penurunan akurasi drastis pada deviasi $\ge \pm 30\%$.
+- Efisiensi komputasi: *Noise* tidak memengaruhi *runtime*, melainkan volume baris data yang menciptakan *bottleneck* eksponensial.
 
-**5. Kesimpulan**
-- AHP-TOPSIS efektif mereduksi bias penilaian soft skill.
-- Memiliki limitasi skalabilitas pada data sangat besar (>1000).
-- Future work: Penggunaan arsitektur caching.
+**6. Kesimpulan**
+- Ambang batas toleransi stabilitas AHP-TOPSIS berada di titik $\pm 20\%$. Melewati itu, akan terjadi anomali *rank reversal* berlebihan.
+- Keterbatasan eksekusi (*runtime*) murni disebabkan komputasi skala *Big Data*.
+- Penelitian lanjutan: Menerapkan skrip *benchmarking* CLI untuk membandingkan model-model MCDM lain (misal VIKOR, PROMETHEE).
