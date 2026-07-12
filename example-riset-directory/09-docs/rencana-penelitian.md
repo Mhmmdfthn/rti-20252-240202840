@@ -1,27 +1,24 @@
-# Rencana Penelitian: Mitigasi JWKS Endpoint Flooding dengan Redis-PostgreSQL Hybrid Caching
+# Rencana Penelitian
 
-## 1. Ringkasan
+**Judul:** Analisis Performa Algoritma Hibrida AHP-TOPSIS dalam Reduksi Subjektivitas Data pada Sistem Pengambil Keputusan
+**Peneliti:** Muhammad Nuur Fathan
 
-| Item | Keterangan |
-|---|---|
-| Judul | Performance and Security Evaluation of Mitigating JWKS Endpoint Flooding on Microservices Gateway Using Redis-PostgreSQL Hybrid Caching |
-| Target Publikasi | Sinta 2 (Jurnal RESTI/Telematika) atau Scopus Q3-Q4 |
-| Stack | Docker, PostgreSQL, Redis, API Gateway (Go), k6 |
-| Masalah | JWKS Endpoint Flooding via `kid` acak → kueri tak terbatas ke Identity Service/DB → resource exhaustion |
-| Solusi | Hybrid cache (Redis L1 + PostgreSQL L2) + negative caching + rate-limiting pada lookup kunci |
+## Latar Belakang & Tujuan
+Model AHP-TOPSIS sering dipakai untuk mereduksi bias penilaian, namun sangat jarang dievaluasi ketahanannya secara dinamis. Proyek ini bertujuan untuk menguji tingkat sensitivitas (Rank Reversal) dari algoritma AHP-TOPSIS ketika bobot kriteria terbesarnya disuntikkan gangguan (Noise Injection) secara bertahap (deviasi $\pm 10\%$ hingga $\pm 50\%$).
 
-## 2. Alur Kerja (Roadmap)
+## Target Publikasi
+- **Jurnal:** Jurnal Ilmiah (Sinta 2 / Scopus Q3-Q4)
+- **Luaran:** Naskah publikasi dan Skrip Benchmarking *Open Source*.
 
-Setiap tahap memiliki file rencana detail tersendiri agar lebih rapi:
+## Roadmap Tahapan
 
-- [x] **Tahap 1** — [Perancangan Arsitektur & Skema Database](tahap-1-arsitektur-dan-skema-database.md) — *Selesai*
-- [x] **Tahap 2** — [Implementasi API Gateway (Go)](tahap-2-implementasi-gateway.md) — *Selesai*
-- [x] **Tahap 3** — [Skrip Pengujian k6 (Legitimate vs Attack Traffic)](tahap-3-pengujian-k6.md) — *Selesai*
-- [x] **Tahap 4** — [Ekstraksi Data & Visualisasi](tahap-4-analisis-data.md) — *Selesai*
-- [ ] **Tahap 5** — [Draf Paper Jurnal](tahap-5-draf-paper.md) — *Berikutnya*
-
----
-
-## 3. Catatan
-
-Dokumen ini adalah indeks utama. Detail teknis, skema, dan keputusan masing-masing tahap dicatat pada file `tahap-N-*.md` terkait dan diperbarui seiring progres pengerjaan.
+1. **Tahap 1: Persiapan Dataset**
+   Mematangkan matriks evaluasi 140 siswa (*Dataset Riil*) dan ekstrapolasi linear 10.000 baris (*Dataset Sintetis*) untuk uji beban.
+2. **Tahap 2: Implementasi Skrip CLI**
+   Menulis logika algoritma di `ahp_topsis.py` dan modul gangguan di `sensitivity_test.py` (tanpa GUI/database).
+3. **Tahap 3: Pengujian Noise Injection**
+   Mengeksekusi skrip untuk menyuntikkan deviasi bobot dan mencatat *Rank Reversal* serta *runtime*.
+4. **Tahap 4: Analisis Data**
+   Menghitung Koefisien Korelasi Spearman ($\rho$), Kendall Tau ($\tau$), dan mengevaluasi pelambatan komputasi akibat *Big Data*.
+5. **Tahap 5: Draf Naskah Jurnal**
+   Menyusun struktur Abstrak, Tinjauan Pustaka, Metodologi, hingga Kesimpulan di folder `07-manuskrip/`.
