@@ -1,8 +1,8 @@
 # Daftar Pustaka
 
-1. T. L. Saaty, "Decision making with the analytic hierarchy process," *International Journal of Services Sciences*, vol. 1, no. 1, pp. 83-98, 2008.
-2. C.-L. Hwang and K. Yoon, *Multiple Attribute Decision Making: Methods and Applications*, Berlin: Springer-Verlag, 1981.
-3. S. Opricovic and G.-H. Tzeng, "Compromise solution by MCDM methods: A comparative analysis of VIKOR and TOPSIS," *European Journal of Operational Research*, vol. 156, no. 2, pp. 445-455, 2004.
-4. M. Behzadian, S. Khanmohammadi Otaghsara, M. Yazdani, and J. Ignatius, "A state-of the-art survey of TOPSIS applications," *Expert Systems with Applications*, vol. 39, no. 17, pp. 13051-13069, 2012.
-5. S. I. Gass and T. L. Saaty, "The analytic hierarchy process—an exposition," *Operations Research*, vol. 28, no. 4, pp. 64-78, 1980.
-6. A. Ishizaka and A. Labib, "Review of the main developments in the analytic hierarchy process," *Expert Systems with Applications*, vol. 38, no. 11, pp. 14336-14345, 2011.
+1. Pramono, Berlilana, and Barkah, "Sistem Pendukung Keputusan Penilaian Soft Skill Siswa Menggunakan Integrasi AHP-TOPSIS," *Jurnal Sistem Informasi Pendidikan*, 2026.
+2. Afi and Lenggu, "Pemeringkatan Lokasi Usaha Menggunakan Metode SMART," *Jurnal Teknologi Informasi*, 2025.
+3. Husnaini, "Evaluasi Kesejahteraan Desa Pesisir Berbasis Web Menggunakan Kombinasi AHP-TOPSIS," *Jurnal Informatika Maritim*, 2025.
+4. Oktari, Dernata, and Priyopradono, "Penerapan Simple Additive Weighting (SAW) dalam Seleksi Penerima Beasiswa KIP Kuliah," *Jurnal Komputasi*, 2025.
+5. M. Lutfi and A. Lutfi, "Evaluasi Kinerja Pegawai Menggunakan Analytical Hierarchy Process (AHP)," *Jurnal Manajemen Publik*, 2024.
+6. Ningtyas and Diartono, "Komparasi Metode SAW dan AHP pada Sistem Pendukung Keputusan Seleksi Siswa Berprestasi," *Jurnal Pendidikan dan Teknologi*, 2024.

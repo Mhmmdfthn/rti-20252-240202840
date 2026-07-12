@@ -1,6 +1,6 @@
-# Integrasi Metode AHP-TOPSIS dalam Sistem Pendukung Keputusan untuk Evaluasi Soft Skill Siswa yang Objektif
+# ANALISIS PERFORMA ALGORITMA HIBRIDA AHP-TOPSIS DALAM REDUKSI SUBJEKTIVITAS DATA PADA SISTEM PENGAMBIL KEPUTUSAN
 
-**Penulis:** [Nama Penulis]
+**Penulis:** Muhammad Nuur Fathan
 
 **Abstrak—** Penilaian *soft skill* siswa pada institusi pendidikan saat ini sebagian besar masih dilakukan secara kualitatif berdasarkan observasi guru, sehingga rentan terhadap bias individu dan inkonsistensi. Penelitian ini mengusulkan sebuah Sistem Pendukung Keputusan (DSS) yang mengintegrasikan metode *Analytical Hierarchy Process* (AHP) dan *Technique for Order of Preference by Similarity to Ideal Solution* (TOPSIS) untuk memberikan standardisasi penilaian kuantitatif yang lebih objektif. Metode AHP digunakan untuk menentukan bobot prioritas dari 4 kriteria utama dan 13 indikator *soft skill* dengan mengevaluasi tingkat rasio konsistensi (CR) dari penilaian pakar, sementara algoritma TOPSIS diterapkan untuk merangking alternatif. Pengujian dilakukan menggunakan data multidimensional dari 140 siswa. Hasil evaluasi menunjukkan bahwa sistem berhasil mempertahankan objektivitas dengan nilai CR ≤ 0,1, yang mengindikasikan validitas pembobotan kriteria. Walaupun terjadi peningkatan beban komputasi sebesar 1,66 ms dibandingkan sistem *baseline* ($p=0,008$, $d=4,89$), metode hibrida ini terbukti mampu mengklasifikasikan peringkat *soft skill* siswa secara akurat dan konsisten. Penelitian ini menyimpulkan bahwa metode AHP-TOPSIS efektif meningkatkan transparansi penilaian, namun membutuhkan optimasi arsitektur seperti teknik *caching* jika diimplementasikan pada skala data yang jauh lebih besar (>1000 data).
 
@@ -83,9 +83,9 @@ Walaupun algoritma sistem terbukti stabil, integrasi fase AHP dan kalkulasi TOPS
 Untuk mengeliminasi limitasi kecepatan eksekusi dalam aplikasi sentralisasi data berskala besar (>1000 alternatif instansi pendidikan), peneliti merekomendasikan penggunaan arsitektur *caching* yang membatasi komputasi berulang dari AHP selama rasio bobot preferensi tidak diubah, sehingga fokus daya komputasi *server* hanya didelegasikan pada kalkulasi TOPSIS yang ringan.
 
 ## Daftar Pustaka
-1. T. L. Saaty, "Decision making with the analytic hierarchy process," *International Journal of Services Sciences*, vol. 1, no. 1, pp. 83-98, 2008.
-2. C.-L. Hwang and K. Yoon, *Multiple Attribute Decision Making: Methods and Applications*, Berlin: Springer-Verlag, 1981.
-3. S. Opricovic and G.-H. Tzeng, "Compromise solution by MCDM methods: A comparative analysis of VIKOR and TOPSIS," *European Journal of Operational Research*, vol. 156, no. 2, pp. 445-455, 2004.
-4. M. Behzadian, S. Khanmohammadi Otaghsara, M. Yazdani, and J. Ignatius, "A state-of the-art survey of TOPSIS applications," *Expert Systems with Applications*, vol. 39, no. 17, pp. 13051-13069, 2012.
-5. S. I. Gass and T. L. Saaty, "The analytic hierarchy process—an exposition," *Operations Research*, vol. 28, no. 4, pp. 64-78, 1980.
-6. A. Ishizaka and A. Labib, "Review of the main developments in the analytic hierarchy process," *Expert Systems with Applications*, vol. 38, no. 11, pp. 14336-14345, 2011.
+1. Pramono, Berlilana, and Barkah, "Sistem Pendukung Keputusan Penilaian Soft Skill Siswa Menggunakan Integrasi AHP-TOPSIS," *Jurnal Sistem Informasi Pendidikan*, 2026.
+2. Afi and Lenggu, "Pemeringkatan Lokasi Usaha Menggunakan Metode SMART," *Jurnal Teknologi Informasi*, 2025.
+3. Husnaini, "Evaluasi Kesejahteraan Desa Pesisir Berbasis Web Menggunakan Kombinasi AHP-TOPSIS," *Jurnal Informatika Maritim*, 2025.
+4. Oktari, Dernata, and Priyopradono, "Penerapan Simple Additive Weighting (SAW) dalam Seleksi Penerima Beasiswa KIP Kuliah," *Jurnal Komputasi*, 2025.
+5. M. Lutfi and A. Lutfi, "Evaluasi Kinerja Pegawai Menggunakan Analytical Hierarchy Process (AHP)," *Jurnal Manajemen Publik*, 2024.
+6. Ningtyas and Diartono, "Komparasi Metode SAW dan AHP pada Sistem Pendukung Keputusan Seleksi Siswa Berprestasi," *Jurnal Pendidikan dan Teknologi*, 2024.
