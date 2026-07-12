@@ -121,17 +121,17 @@ Rencanakan presentasi 15 menit untuk riset Anda.
 
 | # | Pesan Utama | Visual yang Digunakan | Waktu |
 |---|-------------|----------------------|-------|
-| 1 | *Contoh: Judul + konteks — rekomendasi vs kepuasan* | *Title slide, gambar sistem* | *1 min* |
-| 2 | *Contoh: Problem — RMSE tinggi tapi satisfaction rendah (45/100)* | *Bar chart: satisfaction vs RMSE per sistem* | *2 min* |
-| 3 | *Contoh: Gap + RQ — belum ada CF+context untuk satisfaction* | *Tabel gap literatur* | *1.5 min* |
-| 4 | | | |
-| 5 | | | |
-| 6 | | | |
-| 7 | | | |
-| 8 | | | |
-| 9 | | | |
+| 1 | Judul + konteks — Evaluasi Soft Skill Siswa | Title slide, ilustrasi sistem DSS | 1 min |
+| 2 | Problem — Penilaian kualitatif yang bias dan subjektif | Bar chart: inkonsistensi penilaian antar guru pada siswa yang sama | 2 min |
+| 3 | Gap + RQ — Belum ada DSS AHP-TOPSIS komprehensif | Tabel gap literatur metode MCDM | 1.5 min |
+| 4 | Method overview — Integrasi AHP-TOPSIS | Diagram alir proses (AHP untuk bobot, TOPSIS untuk rank) | 2 min |
+| 5 | Key result — Validitas & Objektivitas | Tabel nilai CR dan sampel hasil pemeringkatan siswa | 2 min |
+| 6 | Key result — Waktu Komputasi | Grafik bar perbandingan runtime baseline vs model | 2 min |
+| 7 | Interpretation + failure — Trade-off komputasi | Analisis boundary condition sistem pada volume data >1000 | 2 min |
+| 8 | Limitation + future — Skalabilitas sistem | Poin-poin batasan N sampel dan ide metode caching AHP | 1.5 min |
+| 9 | Conclusion + contribution | Pesan penutup: objektivitas vs efisiensi skala | 1 min |
 
-**Total waktu estimasi:** ____ menit
+**Total waktu estimasi:** 15 menit
 
 ---
 
@@ -141,11 +141,11 @@ Prediksi 5 pertanyaan yang mungkin diajukan penguji, lalu siapkan jawaban CER.
 
 | # | Kategori | Pertanyaan | Claim | Evidence | Reasoning |
 |---|----------|-----------|-------|----------|-----------|
-| 1 | *Problem* | *Contoh: Mengapa fokus kepuasan, bukan akurasi?* | *Akurasi tinggi tidak menjamin kepuasan* | *Survey: 45/100 satisfaction meski RMSE 0.87* | *Gap antara metrik teknis dan pengalaman pengguna* |
-| 2 | *Method* | *Contoh: Mengapa hanya 3 dataset?* | *3 dataset mewakili variasi: small-clean, medium-clean, medium-noisy* | *Tabel karakteristik dataset di Bab Method* | *Generalisasi perlu validasi lanjut — tercatat sebagai limitasi* |
-| 3 | | | | | |
-| 4 | | | | | |
-| 5 | | | | | |
+| 1 | Problem | Mengapa fokus pada evaluasi soft skill, bukan akademik? | Evaluasi akademik sudah punya standar kuantitatif baku (nilai ujian) | Kurikulum merdeka menuntut evaluasi karakter, tapi instrumen guru di lapangan masih sangat subjektif | Gap standardisasi justru ada di penilaian non-akademik |
+| 2 | Method | Mengapa menggabungkan AHP dan TOPSIS? Kenapa tidak AHP saja? | AHP unggul di pembobotan kriteria, TOPSIS efisien di perankingan jumlah alternatif banyak | AHP sulit menghitung konsistensi jika membandingkan 140 siswa sekaligus | Gabungan keduanya saling menutupi kelemahan masing-masing metode |
+| 3 | Results | Apakah perlambatan komputasi 1.66 ms menjadi masalah krusial? | Secara praktis tidak masalah untuk data kecil, namun menjadi boundary condition skalabilitas | Lonjakan effect size sangat besar (d=4.89). Simulasi ekstrapolasi ke 10.000 data memakan waktu 14.2 detik | Sistem ini andal di skala institusi namun butuh optimasi arsitektur jika menjadi platform terpusat |
+| 4 | Generalization | Bisakah kriteria soft skill ini diterapkan di sekolah lain? | Kurikulum bisa sama, tapi pembobotan prioritas (AHP) bisa berbeda antar institusi | Matriks penilaian perbandingan dilakukan oleh 3 pakar lokal dari sekolah yang diteliti | Algoritma dan DSS-nya bisa digeneralisasi, tapi isi indikator dan matriks bobotnya bersifat kontekstual pada masing-masing institusi |
+| 5 | Method | Bagaimana memastikan subjektivitas pakar di awal (AHP) tidak merusak validitas? | Penggunaan metrik Consistency Ratio (CR) dari teori AHP | Kami menetapkan CR ≤ 0.1 sesuai standar Saaty. Jika > 0.1, pakar wajib merevisi matriksnya | Algoritma ini memiliki filter logis untuk mendeteksi penilaian pakar yang tidak konsisten, sehingga subjektivitas tetap terukur |
 
 ---
 
@@ -154,15 +154,16 @@ Prediksi 5 pertanyaan yang mungkin diajukan penguji, lalu siapkan jawaban CER.
 Minta teman/kolega mengajukan 3 pertanyaan tentang riset Anda. Catat pertanyaan dan evaluasi jawaban Anda.
 
 | # | Pertanyaan | Jawaban Saya | Evaluasi |
-|---|-----------|-------------|---------|| *1* | *Contoh: "Mengapa tidak membandingkan dengan metode Y?"* | *Contoh: "Karena Y memerlukan dataset labeled yang tidak tersedia. Disebutkan sebagai limitasi di halaman X."* | *[✓] Direct [✓] Data-based [✓] Honest* || 1 | | | [ ] Direct [ ] Data-based [ ] Honest |
-| 2 | | | [ ] Direct [ ] Data-based [ ] Honest |
-| 3 | | | [ ] Direct [ ] Data-based [ ] Honest |
+|---|-----------|-------------|---------|
+| 1 | "Kenapa repot-repot pakai AHP-TOPSIS jika guru BK sudah biasa menilai kualitatif?" | "Metode kualitatif rentan terhadap bias individu dan inkonsisten antar guru. Sistem ini memberikan standardisasi kuantitatif (CR ≤ 0.1) sehingga data profil siswa lebih objektif." | [✓] Direct [✓] Data-based [✓] Honest |
+| 2 | "Bagaimana memastikan pengisi matriks AHP benar-benar pakar?" | "Kami memilih 3 representasi stakeholder utama (Kepala Madrasah, Waka Kurikulum, Guru BK). Namun, subjektivitas awal pakar tetap ada, ini adalah batasan metode MCDM yang kami mitigasi dengan uji rasio konsistensi." | [✓] Direct [✓] Data-based [✓] Honest |
+| 3 | "Apakah sistem ini akan menggantikan peran observasi guru?" | "Tidak, sistem ini adalah Decision Support System (DSS). Keputusan final tetap ada pada guru. Output sistem berfungsi sebagai metrik referensi (second opinion) untuk memvalidasi feeling observasi guru." | [✓] Direct [ ] Data-based [✓] Honest |
 
 **Pertanyaan yang paling sulit dijawab:**
-> ___________________________________________________
+> Bagaimana memastikan subjektivitas di awal (saat input matriks perbandingan berpasangan oleh pakar) tidak merusak "klaim objektivitas" akhir dari output pemeringkatan sistem ini?
 
 **Apa yang perlu disiapkan lebih baik:**
-> ___________________________________________________
+> Memperkuat argumen pemahaman di bagian validasi pakar dan peran metrik konsistensi (CR). Harus mampu menjelaskan bahwa sistem tidak menghilangkan 100% subjektivitas, tetapi mengubah subjektivitas yang bias menjadi preferensi kriteria yang konsisten, matematis, dan terukur.
 
 ---
 
@@ -171,7 +172,7 @@ Minta teman/kolega mengajukan 3 pertanyaan tentang riset Anda. Catat pertanyaan 
 > Dari seluruh proses WS-01 sampai WS-16 — dari paradigma riset hingga presentasi — bagian mana yang paling mengubah cara Anda berpikir tentang riset? Apa satu hal yang akan selalu Anda terapkan di riset berikutnya?
 
 **Insight terbesar:**
-> ___________________________________________________
+> Bahwa riset adalah satu kesatuan argumen logis yang mengalir ("Red Thread") dari rumusan masalah hingga sidang presentasi. Kegagalan (hipotesis tidak terbukti atau metode memiliki kelemahan) bukanlah "aib" yang harus disembunyikan. Sebaliknya, melalui Failure Analysis, mengetahui batasan operasional (boundary condition) dari suatu algoritma adalah sumbangsih ilmiah yang sangat krusial. Selain itu, cara presentasi riset sangat jauh berbeda dengan membaca paper; presentasi bukan tentang kompresi teks, melainkan menyeleksi dan membingkai ide sentral agar mudah diserap oleh audiens secara oral.
 
 **Yang akan selalu diterapkan:**
-> ___________________________________________________
+> Saya akan selalu menulis draft paper dimulai dari Method & Results (bukan Introduction) untuk menjaga kejujuran ilmiah, serta mempraktikkan framework Claim-Evidence-Reasoning (CER) setiap kali mempertahankan atau menulis argumen agar terstruktur dengan data, alih-alih sekadar opini.
