@@ -2,7 +2,7 @@
 
 Hasil olahan data & visualisasi — **Tahap 4** (lihat [../09-docs/tahap-4-analisis-data.md](../09-docs/tahap-4-analisis-data.md)).
 
-Dihasilkan oleh `05-kode/experiment/main.py` dan divisualisasikan oleh `05-kode/experiment/plot_results.py` dari data eksperimen `04-data/` (dataset riil 140 baris & dataset sintetis 10k baris, masing-masing 5 replikasi).
+Dihasilkan oleh `05-kode/experiment/main.py` dan divisualisasikan oleh `05-kode/experiment/plot_results.py` dari data eksperimen `04-data/` (dataset riil 140 baris & dataset sintetis 10.000 baris, masing-masing 5 replikasi).
 
 ## logs/
 

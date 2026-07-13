@@ -14,7 +14,7 @@ Catatan kronologis pelaksanaan tiap tahap (sumber: riwayat commit git & dokumen 
 | 2026-07-02 | Tahap 3 | Menyiapkan struktur direktori kode (05-kode, 06-output) & inisialisasi draf worksheet (Pesan: "Update worksheets and add experiment/visualization files") | - |
 | 2026-07-04 | Tahap 3 | Melengkapi rencana parameter eksekusi (5 seed, delta 10%-50%) (Pesan: "ws10-selesai") | [ws-10](../../worksheets/ws-10-execution-data.md) |
 | 2026-07-06 | Tahap 3 | Menyelesaikan checklist validasi kebersihan data & mitigasi (Pesan: "ws11-selesai") | [ws-11](../../worksheets/ws-11-data-validation.md) |
-| 2026-07-06 | Tahap 4 | Mengunggah dataset (riil & sintetis 10k) serta modul skrip utama (`main.py`, AHP-TOPSIS) (Pesan: "Upload 04-data" & "Upload 05-code") | [04-data](../04-data), [05-kode](../05-kode) |
+| 2026-07-06 | Tahap 4 | Mengunggah dataset (riil & sintetis 10.000) serta modul skrip utama (`main.py`, AHP-TOPSIS) (Pesan: "Upload 04-data" & "Upload 05-code") | [04-data](../04-data), [05-kode](../05-kode) |
 | 2026-07-06 | Tahap 4 | Eksekusi program AHP-TOPSIS skala penuh (60 runs: 30 dataset riil, 30 dataset sintetis) dan ekstraksi anomali | `benchmark_log.csv` |
 | 2026-07-06 | Tahap 4 |  Reorganisasi direktori output ke sub-folder `/logs` & `/plots`, serta pembaruan path pada `experiment_config.json` | - |
 | 2026-07-06 | Tahap 2 |  Validasi keselarasan instrumen eksperimen dengan rumusan masalah pada dokumen proposal | - |

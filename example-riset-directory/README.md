@@ -16,15 +16,15 @@ Detail lengkap topik & roadmap: [09-docs/rencana-penelitian.md](09-docs/rencana-
 | Folder | Isi |
 |---|---|
 | [00-admin/](00-admin/) | Administrasi penelitian (jadwal, korespondensi) |
-| [01-proposal/](01-proposal/) | Proposal penelitian awal |
-| [02-literatur/](02-literatur/) | Referensi & *paper* terkait (Matriks Literatur Sensitivitas MCDM) |
-| [03-teori/](03-teori/) | Arsitektur skrip *benchmarking* & desain skema CSV |
-| [04-data/](04-data/) | Data mentah berupa *dataset* riil 140 baris & sintetis 10k baris |
-| [05-kode/](05-kode/) | *Source code* Python (Modul *AHP-TOPSIS Engine* & *Noise Injection*) |
-| [06-output/](06-output/) | Statistik & visualisasi *Spearman*, *Kendall Tau*, dan *Runtime* |
-| [07-manuskrip/](07-manuskrip/) | Draf naskah jurnal akhir |
-| [08-laporan/](08-laporan/) | Laporan komprehensif penelitian |
-| [09-docs/](09-docs/) | Dokumen perencanaan & *roadmap* tahap-tahap penelitian |
+| [01-proposal/](01-proposal/) | Proposal penelitian |
+| [02-literatur/](02-literatur/) | Referensi & paper terkait (Tinjauan Pustaka) |
+| [03-teori/](03-teori/) | Arsitektur & desain sistem (Tahap 1) |
+| [04-data/](04-data/) | Data mentah hasil pengujian k6 & metrik container |
+| [05-kode/](05-kode/) | Source code: API Gateway (Go) & skrip k6 (Tahap 2 & 3) |
+| [06-output/](06-output/) | Statistik & visualisasi hasil pengujian (Tahap 4) |
+| [07-manuskrip/](07-manuskrip/) | Draf naskah jurnal (Tahap 5) |
+| [08-laporan/](08-laporan/) | Laporan progres/akhir penelitian |
+| [09-docs/](09-docs/) | Dokumen perencanaan & roadmap tahap-tahap penelitian |
 
 ## Status Tahapan
 

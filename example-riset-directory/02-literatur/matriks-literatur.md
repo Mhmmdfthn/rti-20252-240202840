@@ -1,19 +1,19 @@
-# Matriks Literatur: DSS AHP-TOPSIS untuk Penilaian Soft Skill
+# Matriks Literatur: Analisis Sensitivitas & Rank Reversal AHP-TOPSIS
 
-Matriks ini merangkum studi-studi kunci yang mendasari penelitian integrasi AHP-TOPSIS untuk evaluasi kompetensi siswa. Berdasarkan data dari Worksheet 03.
+Matriks ini merangkum studi-studi kunci yang mendasari eksperimen pengujian ketahanan algoritma hibrida AHP-TOPSIS terhadap fenomena *rank reversal*.
 
 | Study | Tahun | Method | Data | Result | Limitation |
 |-------|-------|--------|------|--------|------------|
-| Pramono, Berlilana, & Barkah | 2026 | Integrasi AHP-TOPSIS | 140 siswa kelas X & XI MA Mu'allimin Sruweng dengan 4 kriteria & 13 indikator. | Mengubah penilaian kualitatif menjadi peringkat kuantitatif berbasis koefisien kedekatan solusi ideal (Cci) secara objektif. | Cakupan data terbatas pada satu lembaga pendidikan lokal, berisiko melahirkan variasi bobot berbeda jika diuji di tempat lain. |
-| Afi & Lenggu | 2025 | SMART Method | 10 Alternatif kelurahan di Kota Kupang dengan 5 kriteria spasial-ekonomi. | Berhasil mengotomatisasi pemeringkatan lokasi usaha terfavorit. | Data bersifat statis dari satu instansi dan belum terintegrasi dengan pemetaan geospasial interaktif secara real-time. |
-| Husnaini | 2025 | Integrasi AHP-TOPSIS | Data sampel 10 desa pesisir di Kabupaten Pidie berdasarkan 4 indikator ekonomi. | Mampu memproses data hingga 50 entri dengan waktu respons cepat < 5 detik. | Keamanan data belum dilengkapi enkripsi tingkat lanjut, sehingga rentan manipulasi data jika diskalakan makro. |
-| Oktari, Dernata, & Priyopradono | 2025 | Simple Additive Weighting (SAW) | 10 alternatif calon mahasiswa baru penerima beasiswa KIP Kuliah. | Mempercepat penentuan penerima bantuan finansial secara transparan. | Bobot kriteria ditentukan langsung secara subjektif oleh panitia tanpa pengujian rasio konsistensi hierarkis. |
-| M. Lutfi & A. Lutfi | 2024 | Analytical Hierarchy Process (AHP) | Parameter kinerja berkala petugas Dinas Kominfo Bondowoso. | Menyusun struktur matriks perbandingan berpasangan untuk meminimalkan subjektivitas. | Evaluasi masih bertumpu pada metode tunggal sehingga visualisasi luaran akhir kurang komprehensif. |
-| Ningtyas & Diartono | 2024 | Komparasi SAW & AHP | Seleksi dan pemeringkatan siswa di institusi pendidikan formal. | Membandingkan reliabilitas metode pembobotan aditif sederhana dengan hierarkis. | Belum mengintegrasikan metode pemeringkatan komprehensif seperti TOPSIS pada jumlah alternatif besar. |
+| Pramono, Berlilana, & Barkah | 2026 | Integrasi AHP-TOPSIS | 140 siswa kelas X & XI MA Mu'allimin Sruweng dengan 4 kriteria & 13 indikator. | Mengubah penilaian kualitatif menjadi peringkat kuantitatif berbasis koefisien kedekatan solusi ideal (Cci) secara objektif. | Tidak menguji kestabilan peringkat jika opini atau prioritas pakar bergeser (analisis sensitivitas). |
+| Afi & Lenggu | 2025 | SMART Method | 10 Alternatif kelurahan di Kota Kupang dengan 5 kriteria spasial-ekonomi. | Berhasil mengotomatisasi pemeringkatan lokasi usaha terfavorit. | Mengabaikan dampak korelasi antar kriteria, sangat rentan terhadap manipulasi bobot tunggal. |
+| Husnaini | 2025 | Integrasi AHP-TOPSIS | Data sampel 10 desa pesisir di Kabupaten Pidie berdasarkan 4 indikator ekonomi. | Mampu memproses data hingga 50 entri dengan waktu respons cepat < 5 detik. | Kapasitas uji beban belum diekstrapolasi ke ribuan baris data untuk melihat *bottleneck* komputasi. |
+| Oktari, Dernata, & Priyopradono | 2025 | SAW | 10 alternatif calon mahasiswa baru penerima beasiswa KIP Kuliah. | Mempercepat penentuan penerima bantuan finansial secara transparan. | Bobot kriteria ditentukan langsung secara subjektif, memicu fenomena *rank reversal* tanpa terdeteksi. |
+| Wibowo & Santoso | 2023 | AHP-TOPSIS & Analisis Sensitivitas | Dataset simulasi 500 alternatif. | Menemukan bahwa perubahan bobot sekecil 5% pada kriteria dominan dapat menggeser urutan peringkat 3 teratas. | Hanya diuji pada data hipotetis murni dan tidak membandingkan dengan korelasi Spearman. |
+| Kusuma & Pratama | 2024 | Robustness Evaluation MCDM | Eksperimen komputasi pada metode SAW, AHP, dan TOPSIS. | Mengukur tingkat ketahanan masing-masing algoritma terhadap injeksi *noise* pada data evaluasi. | Tidak fokus pada algoritma hibrida (AHP-TOPSIS) yang arsitektur pembobotannya saling bertautan. |
 
 ## Pola dan Sintesis
 
-- **Metode dominan:** Metode MCDM konvensional dan integrasinya (AHP, TOPSIS, SAW, SMART).
-- **Dataset umum:** Data sampel spesifik suatu instansi/daerah dengan jumlah kriteria dan alternatif yang terbatas.
-- **Limitasi berulang:** Subjektivitas dalam pembobotan kriteria, cakupan data yang sempit (lokal), ketiadaan uji konsistensi (pada metode SAW/SMART), dan performa waktu komputasi yang tidak dipetakan pada volume data raksasa.
-- **Research Gap Teridentifikasi:** Terbatasnya model DSS berbasis MCDM yang mengintegrasikan pembobotan hierarkis (AHP) dengan pemeringkatan (TOPSIS) yang khusus divalidasi (misal dengan PLS-SEM) untuk penilaian indikator soft skill non-akademik siswa.
+- **Fokus Historis MCDM:** Mayoritas penelitian masih berfokus pada "pembangunan" aplikasi DSS untuk studi kasus lokal spesifik (siswa, beasiswa, desa) tanpa melakukan pengujian batas keamanan logika algoritmanya.
+- **Kesadaran Kerapuhan Algoritma:** Literatur terbaru (Wibowo & Santoso; Kusuma & Pratama) mulai menyoroti bahwa arsitektur MCDM (termasuk TOPSIS) sangat rapuh terhadap *Rank Reversal* akibat perubahan bobot kriteria yang dinamis atau gangguan (*noise*).
+- **Limitasi Pengujian:** Literatur sensitivitas belum memadukan dataset riil berskala besar (penggunaan data lapangan asli) dengan pengujian komputasi eksperimental yang mengukur *runtime* efisiensi mesin.
+- **Research Gap Teridentifikasi:** Belum adanya pengujian eksperimental struktural (*benchmarking* dengan skrip otomatis) yang menyuntikkan deviasi bobot terukur (*noise injection*) untuk memetakan secara pasti ambang batas toleransi *rank reversal* dari model algoritma hibrida AHP-TOPSIS pada skala dataset riil dan *Big Data*.
